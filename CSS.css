@@ -1,4 +1,3 @@
-body{
     :root {
       --bg: #0d1117;
       --surface: #161b22;
@@ -481,4 +480,3 @@ body{
       main { margin-left: 0; max-width: 100%; padding: 24px 20px; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
     }
-   }
