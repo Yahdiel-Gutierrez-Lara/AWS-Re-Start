@@ -38,6 +38,30 @@
           {
             "imagen": "assets/lab-11/EXTRA 05.png",
             "descripcion": "Instancia Type."
+          },
+          { "texto": "En la sección Key pair (login) seleccionamos <b> Proceed without a key pair (Not recommended) </b>" },
+          {
+            "imagen": "assets/lab-11/EXTRA 06.png",
+            "descripcion": "Sección Key pair (login)."
+          },
+          { "texto": "Dentro de la sección Network settings daremos clic en el botón **Edit** y seleccionaremos:" },
+          {"texto": "1. En VCP-required la opción <b> Lab VPC </b>"},
+          {"texto": "2. En Subnet la opción <b> Public Subnet 2 </b>"},
+          {"texto": "3. En Security group name escribiremos **Web Server security group**"},
+          {"texto": "4. En Description escribiremos **Security group for my web server**"},
+          {
+            "imagen": "assets/lab-11/EXTRA 07.png",
+            "descripcion": "Sección Network Settings."
+          },
+          {"texto": "En la sección Configure storage también la mantendremos con los valores por defecto."},
+          {
+            "imagen": "assets/lab-11/EXTRA 08.png",
+            "descripcion": "Sección Configure storage."
+          },
+          {"texto": "Se habilita la Termination protection dentro de los Advance Details."},
+          {
+            "imagen": "assets/lab-11/EXTRA 09.png",
+            "descripcion": "Seleccionamos la opción **Enable**."
           }
         ]
       },
