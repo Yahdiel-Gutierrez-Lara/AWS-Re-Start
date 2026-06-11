@@ -108,7 +108,6 @@
       <p class="page-desc">Documentación personal de laboratorios prácticos del programa AWS re/Start. Cada lab incluye objetivo, pasos clave, evidencias y aprendizajes.</p>
     </div>
 
-    <!-- Stats -->
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-icon orange"><i class="fa-solid fa-flask"></i></div>
@@ -139,151 +138,67 @@
         </div>
       </div>
     </div>
-
-    <!-- Recent labs -->
-   <!-- <div class="section-title">Labs recientes</div>
-      <div class="labs-grid">
-
-      <a href="#" class="lab-card" style="--card-color:#f0883e">
-        <div class="lab-card-top">
-          <div class="lab-icon" style="background:rgba(240,136,62,0.15);color:var(--accent)"><i class="fa-brands fa-aws"></i></div>
-          <span class="lab-status badge-done">Completado</span>
-        </div>
-        <div class="lab-num">Lab 01 · Cloud Foundations</div>
-        <div class="lab-name">Introducción a AWS Management Console</div>
-        <div class="lab-desc">Exploración inicial de la consola, regiones y zonas de disponibilidad.</div>
-        <div class="lab-tags">
-          <span class="tag">Console</span>
-          <span class="tag">IAM</span>
-          <span class="tag">Regions</span>
-        </div>
-      </a>
-
-      <a href="#" class="lab-card" style="--card-color:#58a6ff">
-        <div class="lab-card-top">
-          <div class="lab-icon" style="background:rgba(88,166,255,0.15);color:var(--accent2)"><i class="fa-brands fa-linux"></i></div>
-          <span class="lab-status badge-done">Completado</span>
-        </div>
-        <div class="lab-num">Lab 05 · Linux</div>
-        <div class="lab-name">Comandos básicos y gestión de archivos</div>
-        <div class="lab-desc">Navegación, permisos, usuarios y scripts en Bash sobre EC2.</div>
-        <div class="lab-tags">
-          <span class="tag">Bash</span>
-          <span class="tag">EC2</span>
-          <span class="tag">Permissions</span>
-        </div>
-      </a>
-
-      <a href="#" class="lab-card" style="--card-color:#3fb950">
-        <div class="lab-card-top">
-          <div class="lab-icon" style="background:rgba(63,185,80,0.15);color:var(--green)"><i class="fa-solid fa-network-wired"></i></div>
-          <span class="lab-status badge-wip">En curso</span>
-        </div>
-        <div class="lab-num">Lab 09 · Networking</div>
-        <div class="lab-name">Creación de una VPC personalizada</div>
-        <div class="lab-desc">Subredes públicas y privadas, Internet Gateway y tablas de rutas.</div>
-        <div class="lab-tags">
-          <span class="tag">VPC</span>
-          <span class="tag">Subnets</span>
-          <span class="tag">IGW</span>
-        </div>
-      </a>
-
-    </div> -->
+    
+    <button id="btn-back" class="hidden-view" style="margin-top: 20px; padding: 10px 20px; background: #24292e; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      <i class="fa-solid fa-arrow-left"></i> Volver al índice
+    </button>
   </section>
 
-  <!-- Modules index -->
   <section id="modulos">
     <div class="section-title">Índice de módulos</div>
-    <div class="module-list">
-
-      <a href="#mod1" class="module-item">
+    <div class="module-list" id="modules-container">
+      <a href="#mod1" class="module-item" data-module="Cloud Foundations">
         <span class="module-num">01</span>
-        <div class="module-icon-wrap" style="background:rgba(240,136,62,0.15);color:var(--accent)"><i class="fa-solid fa-cloud"></i></div>
+        <div class="module-icon-wrap" style="background:rgba(240,136,62,0.15);color:#f0883e"><i class="fa-solid fa-cloud"></i></div>
         <div class="module-info">
           <div class="module-name">Cloud Foundations</div>
-          <div class="module-meta">1 labs · Conceptos de nube, consola, IAM</div>
+          <div class="module-meta">Conceptos de nube, consola, IAM</div>
         </div>
-        <div class="module-right">
-          <span class="module-progress">1/1</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:100%"></div></div>
-          <span class="nav-badge badge-done">✓</span>
-        </div>
+        <div class="module-right"><span class="nav-badge badge-done">Ver Lista</span></div>
       </a>
 
-      <a href="#mod2" class="module-item">
+      <a href="#mod2" class="module-item" data-module="Linux">
         <span class="module-num">02</span>
-        <div class="module-icon-wrap" style="background:rgba(88,166,255,0.15);color:var(--accent2)"><i class="fa-brands fa-linux"></i></div>
+        <div class="module-icon-wrap" style="background:rgba(88,166,255,0.15);color:#58a6ff"><i class="fa-brands fa-linux"></i></div>
         <div class="module-info">
           <div class="module-name">Linux</div>
-          <div class="module-meta">14 labs · CLI, scripting, permisos, SSH</div>
+          <div class="module-meta">CLI, scripting, permisos, SSH</div>
         </div>
-        <div class="module-right">
-          <span class="module-progress">8/14</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:58%;background:var(--accent2)"></div></div>
-          <span class="nav-badge badge-wip">58%</span>
-        </div>
+        <div class="module-right"><span class="nav-badge badge-wip">Ver Lista</span></div>
       </a>
-<!--
-      <a href="#mod3" class="module-item">
-        <span class="module-num">03</span>
-        <div class="module-icon-wrap" style="background:rgba(63,185,80,0.15);color:var(--green)"><i class="fa-solid fa-network-wired"></i></div>
-        <div class="module-info">
-          <div class="module-name">Networking &amp; Content Delivery</div>
-          <div class="module-meta">4 labs · VPC, Route 53, CloudFront</div>
-        </div>
-        <div class="module-right">
-          <span class="module-progress">1/4</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:25%;background:var(--green)"></div></div>
-          <span class="nav-badge badge-wip">25%</span>
-        </div>
-      </a>
+      
+      </div>
+  </section>
 
-      <a href="#mod4" class="module-item">
-        <span class="module-num">04</span>
-        <div class="module-icon-wrap" style="background:rgba(188,140,255,0.15);color:var(--purple)"><i class="fa-solid fa-server"></i></div>
-        <div class="module-info">
-          <div class="module-name">AWS Core Services</div>
-          <div class="module-meta">5 labs · EC2, S3, RDS, ELB, Auto Scaling</div>
-        </div>
-        <div class="module-right">
-          <span class="module-progress">0/5</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:0%"></div></div>
-          <span class="nav-badge badge-todo">—</span>
-        </div>
-      </a>
+  <section id="labs-index-view" class="hidden-view">
+    <div class="section-title" id="labs-index-title">Laboratorios disponibles</div>
+    <div class="labs-grid" id="labs-list-container">
+      </div>
+  </section>
 
-      <a href="#mod5" class="module-item">
-        <span class="module-num">05</span>
-        <div class="module-icon-wrap" style="background:rgba(248,81,73,0.15);color:var(--red)"><i class="fa-solid fa-shield-halved"></i></div>
-        <div class="module-info">
-          <div class="module-name">Security</div>
-          <div class="module-meta">3 labs · IAM avanzado, KMS, CloudTrail</div>
-        </div>
-        <div class="module-right">
-          <span class="module-progress">0/3</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:0%"></div></div>
-          <span class="nav-badge badge-todo">—</span>
-        </div>
-      </a>
-
-      <a href="#mod6" class="module-item">
-        <span class="module-num">06</span>
-        <div class="module-icon-wrap" style="background:rgba(88,166,255,0.15);color:var(--accent2)"><i class="fa-solid fa-database"></i></div>
-        <div class="module-info">
-          <div class="module-name">Databases</div>
-          <div class="module-meta">3 labs · RDS, DynamoDB, migraciones</div>
-        </div>
-        <div class="module-right">
-          <span class="module-progress">0/3</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:0%"></div></div>
-          <span class="nav-badge badge-todo">—</span>
-        </div>
-      </a>
-    -->
+  <section id="evidence-view" class="hidden-view" style="background: white; padding: 30px; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+    <div class="breadcrumb" style="margin-bottom: 15px;">
+      <span id="evidence-module-breadcrumb">Módulo</span> <i class="fa-solid fa-chevron-right"></i> <span id="evidence-title-breadcrumb">Lab</span>
     </div>
+    <h2 id="evidence-title" style="margin-top: 0; font-family: 'IBM Plex Sans', sans-serif;"></h2>
+    <div style="margin: 15px 0;">
+      <span id="evidence-status" class="nav-badge"></span>
+    </div>
+    <p id="evidence-desc" class="page-desc" style="font-size: 1.1rem; color: #444;"></p>
+    
+    <div style="text-align: center; margin: 25px 0; background: #fafafa; border-radius: 6px; padding: 15px; border: 1px dashed #e1e4e8;">
+      <img id="evidence-img" src="" alt="Evidencia del Laboratorio" style="max-width: 100%; max-height: 500px; border-radius: 4px; object-fit: contain;">
+    </div>
+
+    <div class="lab-tags" id="evidence-tags" style="margin-bottom: 25px;"></div>
+
+    <a id="evidence-repo-link" href="#" target="_blank" class="nav-link" style="display: inline-block; background: #24292e; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500;">
+      <i class="fa-brands fa-github"></i> Ver documentación en repositorio
+    </a>
   </section>
 </main>
+
+<script src="script.js"></script>
 
 </body>
 </html>
