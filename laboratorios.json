@@ -19,7 +19,26 @@
             "imagen": "assets/lab-11/EXTRA 01.png",
             "descripcion": "Uso de la barra de búsqueda global de AWS para localizar el servicio Amazon EC2."
           },
-          { "texto": "Una vez localizado el servicio, seleccionamos EC2 para acceder a su panel de administración." }
+          { "texto": "Una vez localizado el servicio, seleccionamos EC2 para acceder a su panel de administración. Enseguida, damos clic en el botón  <b> Launch instance </b>." },
+          {
+            "imagen": "assets/lab-11/EXTRA 02.png",
+            "descripcion": "Botón Launch Instance."
+          },
+          { "texto": "Al entrar nos pide asignarle un nombre a nuestra instancia, en este caso será <b> Web Server </b>." },
+          {
+            "imagen": "assets/lab-11/EXTRA 03.png",
+            "descripcion": "Name and Tags."
+          },
+          { "texto": "Lo siguiente es seleccionar nuestra Amazon Machine Image, que por defecto nos aparece como Amazon Linux 2023." },
+          {
+            "imagen": "assets/lab-11/EXTRA 04.png",
+            "descripcion": "AMI Amazon Linux 2023."
+          },
+          { "texto": "De igual manera, para nuestro tipo de instancia dejamos seleccionado la opción por defeco <b>t3.micro</b>" },
+          {
+            "imagen": "assets/lab-11/EXTRA 05.png",
+            "descripcion": "Instancia Type."
+          }
         ]
       },
       {
