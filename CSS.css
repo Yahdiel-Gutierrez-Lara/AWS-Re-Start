@@ -480,3 +480,7 @@
       main { margin-left: 0; max-width: 100%; padding: 24px 20px; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
     }
+
+    .hidden-view {
+    display: none !important;
+}
