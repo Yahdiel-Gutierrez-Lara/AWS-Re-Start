@@ -1,20 +1,32 @@
 [
   {
-    "id": "lab-01",
+    "id": "Lab 11",
     "modulo": "Cloud Foundations",
-    "numero": "Lab 01",
-    "titulo": "Introducción a AWS Management Console",
-    "descripcion_general": "Exploración inicial de la consola global de AWS, análisis de la distribución global de regiones, zonas de disponibilidad y configuración de alertas básicas de facturación.",
+    "numero": "Lab 11",
+    "titulo": "Introducción a Amazon EC2",
+    "descripcion_general": "Este laboratorio explora el como lanzar, Redimensionar, administrar y monitoriar una instancia de Amazon EC2 que ejecuta una página web sencilla.",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["Console", "IAM", "Regions"],
-    "enlace_github": "https://github.com/tu-usuario/aws-restart-labs",
+    "tags": ["EC2", "User data"],
     "pasos": [
       {
-        "subtitulo": "Paso 1: Acceso a la Consola y Configuración de Región",
-        "texto": "Se ingresó a la consola de administración utilizando las credenciales de AWS Academy. Se validó el cambio de región a N. Virginia (us-east-1) para desplegar los recursos recomendados.",
-        "imagen": "assets/imagenes/lab01_paso1.png"
-      },
+  "subtitulo": "Paso 1: Lanzamiento de una Amazon EC2",
+  "secciones": [
+    {
+      "texto": "Nuestra primera tarea dentro de este laboratorio es inicializar una instancia Amazon EC2 de acuerdo con las configuraciones establecidas."
+    },
+    {
+      "texto": "Al ingresar nos encontramos con la AWS Management Console, donde debemos utilizar la AWS Search Bar para escribir EC2."
+    },
+    {
+      "imagen": "assets/lab-11/EXTRA 01.png",
+      "descripcion": "Uso de la barra de búsqueda global de AWS para localizar el servicio Amazon EC2."
+    },
+    {
+      "texto": "Una vez localizado el servicio, seleccionamos EC2 para acceder a su panel de administración."
+    }
+  ]
+},
       {
         "subtitulo": "Paso 2: Exploración de Servicios Base e IAM",
         "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
