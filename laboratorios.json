@@ -4,23 +4,22 @@
     "modulo": "Cloud Foundations",
     "numero": "Lab 01",
     "titulo": "Introducción a AWS Management Console",
-    "descripcion": "Exploración inicial de la consola global de AWS, análisis de la distribución global de regiones, zonas de disponibilidad y configuración de alertas básicas de facturación.",
+    "descripcion_general": "Exploración inicial de la consola global de AWS, análisis de la distribución global de regiones, zonas de disponibilidad y configuración de alertas básicas de facturación.",
     "status": "done",
     "status_texto": "Completado",
-    "imagen": "assets/imagenes/lab01_console.png",
     "tags": ["Console", "IAM", "Regions"],
-    "enlace_github": "https://github.com/tu-usuario/aws-restart-labs/tree/main/cloud-foundations/lab01"
-  },
-  {
-    "id": "lab-05",
-    "modulo": "Linux",
-    "numero": "Lab 05",
-    "titulo": "Comandos básicos y gestión de archivos",
-    "descripcion": "Práctica profunda de navegación por el sistema de archivos Linux, gestión de permisos mediante chmod/chown y automatización de tareas con scripts en Bash sobre una instancia EC2.",
-    "status": "wip",
-    "status_texto": "En curso",
-    "imagen": "assets/imagenes/lab05_linux.png",
-    "tags": ["Bash", "EC2", "Permissions"],
-    "enlace_github": "https://github.com/tu-usuario/aws-restart-labs/tree/main/linux/lab05"
+    "enlace_github": "https://github.com/tu-usuario/aws-restart-labs",
+    "pasos": [
+      {
+        "subtitulo": "Paso 1: Acceso a la Consola y Configuración de Región",
+        "texto": "Se ingresó a la consola de administración utilizando las credenciales de AWS Academy. Se validó el cambio de región a N. Virginia (us-east-1) para desplegar los recursos recomendados.",
+        "imagen": "assets/imagenes/lab01_paso1.png"
+      },
+      {
+        "subtitulo": "Paso 2: Exploración de Servicios Base e IAM",
+        "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
+        "imagen": "assets/imagenes/lab01_paso2.png"
+      }
+    ]
   }
 ]
