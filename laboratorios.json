@@ -1,0 +1,26 @@
+[
+  {
+    "id": "lab-01",
+    "modulo": "Cloud Foundations",
+    "numero": "Lab 01",
+    "titulo": "Introducción a AWS Management Console",
+    "descripcion": "Exploración inicial de la consola global de AWS, análisis de la distribución global de regiones, zonas de disponibilidad y configuración de alertas básicas de facturación.",
+    "status": "done",
+    "status_texto": "Completado",
+    "imagen": "assets/imagenes/lab01_console.png",
+    "tags": ["Console", "IAM", "Regions"],
+    "enlace_github": "https://github.com/tu-usuario/aws-restart-labs/tree/main/cloud-foundations/lab01"
+  },
+  {
+    "id": "lab-05",
+    "modulo": "Linux",
+    "numero": "Lab 05",
+    "titulo": "Comandos básicos y gestión de archivos",
+    "descripcion": "Práctica profunda de navegación por el sistema de archivos Linux, gestión de permisos mediante chmod/chown y automatización de tareas con scripts en Bash sobre una instancia EC2.",
+    "status": "wip",
+    "status_texto": "En curso",
+    "imagen": "assets/imagenes/lab05_linux.png",
+    "tags": ["Bash", "EC2", "Permissions"],
+    "enlace_github": "https://github.com/tu-usuario/aws-restart-labs/tree/main/linux/lab05"
+  }
+]
