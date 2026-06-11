@@ -4,38 +4,33 @@
     "modulo": "Cloud Foundations",
     "numero": "Lab 11",
     "titulo": "Introducción a Amazon EC2",
-    "descripcion_general": "Este laboratorio explora el como lanzar, Redimensionar, administrar y monitoriar una instancia de Amazon EC2 que ejecuta una página web sencilla.",
+    "descripcion_general": "Este laboratorio explora el cómo lanzar, redimensionar, administrar y monitorear una instancia de Amazon EC2 que ejecuta una página web sencilla.",
     "status": "done",
     "status_texto": "Completado",
     "tags": ["EC2", "User data"],
+    "enlace_github": "https://github.com/tu-usuario/repo",
     "pasos": [
       {
-  "subtitulo": "Paso 1: Lanzamiento de una Amazon EC2",
-  "secciones": [
-    {
-      "texto": "Nuestra primera tarea dentro de este laboratorio es inicializar una instancia Amazon EC2 de acuerdo con las configuraciones establecidas."
-    },
-    {
-      "texto": "Al ingresar nos encontramos con la AWS Management Console, donde debemos utilizar la AWS Search Bar para escribir EC2."
-    },
-    {
-      "imagen": "assets/lab-11/EXTRA 01.png",
-      "descripcion": "Uso de la barra de búsqueda global de AWS para localizar el servicio Amazon EC2."
-    },
-    {
-      "texto": "Una vez localizado el servicio, seleccionamos EC2 para acceder a su panel de administración."
-    }
-  ]
-},
-      {
-        "subtitulo": "Paso 2: Exploración de Servicios Base e IAM",
-        "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
-        "imagen": "assets/imagenes/lab01_paso2.png"
+        "subtitulo": "Paso 1: Lanzamiento de una Amazon EC2",
+        "secciones": [
+          { "texto": "Nuestra primera tarea dentro de este laboratorio es inicializar una instancia Amazon EC2 de acuerdo con las configuraciones establecidas." },
+          { "texto": "Al ingresar nos encontramos con la AWS Management Console, donde debemos utilizar la AWS Search Bar para escribir EC2." },
+          {
+            "imagen": "assets/lab-11/EXTRA 01.png",
+            "descripcion": "Uso de la barra de búsqueda global de AWS para localizar el servicio Amazon EC2."
+          },
+          { "texto": "Una vez localizado el servicio, seleccionamos EC2 para acceder a su panel de administración." }
+        ]
       },
       {
-        "subtitulo": "Paso 3: Exploración de Servicios Base e IAM",
-        "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
-        "imagen": "assets/imagenes/lab01_paso2.png"
+        "subtitulo": "Paso 2: Configuración de la Instancia",
+        "secciones": [
+          { "texto": "Procedimos a configurar el par de llaves (Key Pair) y seleccionamos la AMI de Amazon Linux 2023." },
+          {
+            "imagen": "assets/lab-11/EXTRA 02.png",
+            "descripcion": "Asignación de grupo de seguridad permitiendo tráfico HTTP en el puerto 80."
+          }
+        ]
       }
     ]
   }
