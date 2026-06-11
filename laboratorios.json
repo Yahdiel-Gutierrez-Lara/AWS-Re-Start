@@ -12,21 +12,17 @@
     "pasos": [
       {
         "subtitulo": "Paso 1: Acceso a la Consola y Configuración de Región",
-        "texto": "Se ingresó a la consola de administración utilizando las credenciales 
-        de AWS Academy. Se validó el cambio de región a N. Virginia (us-east-1) para 
-        desplegar los recursos recomendados.",
+        "texto": "Se ingresó a la consola de administración utilizando las credenciales de AWS Academy. Se validó el cambio de región a N. Virginia (us-east-1) para desplegar los recursos recomendados.",
         "imagen": "assets/imagenes/lab01_paso1.png"
       },
       {
         "subtitulo": "Paso 2: Exploración de Servicios Base e IAM",
-        "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y 
-        se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
+        "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
         "imagen": "assets/imagenes/lab01_paso2.png"
       },
       {
         "subtitulo": "Paso 3: Exploración de Servicios Base e IAM",
-        "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y 
-        se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
+        "texto": "Se localizó el panel de IAM para revisar los roles preconfigurados y se mapearon las zonas de disponibilidad asignadas a nuestra cuenta de estudiante.",
         "imagen": "assets/imagenes/lab01_paso2.png"
       }
     ]
