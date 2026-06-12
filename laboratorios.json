@@ -282,7 +282,7 @@
     "modulo": "Linux",
     "numero": "Lab 229",
     "titulo": "Usuarios y grupos de Linux.",
-    "descripcion_general": "",
+    "descripcion_general": "En este lab se explora la creación de usuarios y grupos, así como su asignación dentro de los mismos. Además se explica como loggearse con los diferentes usuarios.",
     "status": "done",
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
@@ -292,25 +292,56 @@
         {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
       ]
       },
-      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      {"subtitulo":"Paso 1. Creación de usuarios.",
       "secciones":[
+        {"texto":"De acuerdo con la siguiente tabla crearemos diferentes usuarios, definiremos una contraseña default y asignaremos los grupos dentro de este laboratorios."},
+        {
+          "imagen": "assets/lab-229/01.png"},
+
+        {"texto":"Con el comando **sudo useradd** podemos añadir a los usuarios, mientras que con el comando **sudo passwd** les asignamos una contraseña."},
+        {
+          "imagen": "assets/lab-229/02.png"},
+
+        {"texto":"Una vez creados todos los usuarios ejecutamos el comando **sudo cat /etc/passwd | cut -d: f1** para revisar que se hayan guardado correctamente."},
+        {
+          "imagen": "assets/lab-229/04.png"},
+
+        {"texto":"Ahora bien, para crear los grupos usamos el comando **sudo groupadd** y asiganaremos los grupso Sales, HR, Finance, Shipping, Managers y CEO. Para verificar su correcta creación usamos **cat /etc/group**."},
+        {
+          "imagen": "assets/lab-229/06.png"},
+        
+        {"texto":"Mediante el comando **sudo usermod -a -G Nombre_del_grupo** podemos asignarle a cada usuario un grupo según la información proporcionada."},
+        {
+          "imagen": "assets/lab-229/07.png"},
+
+        {"texto":"Al ec2-user lo asignaremos dentro de todos los grupos."},
+        {
+          "imagen": "assets/lab-229/08.png"},
+
+        {"texto":"Visualizamos los grupos creados **cat /etc/group**."},
+        {
+          "imagen": "assets/lab-229/09.png"}
       ]
     
     },
-    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+    {"subtitulo":"Paso 2. Loggeo con otro usuario.",
       "secciones":[
+        {"texto":"Accedemos al usuarios arosalez con **su arosalez** y su contraseña asignada."},
+        {
+          "imagen": "assets/lab-229/10.png"},
+
+        {"texto":"Ahora con este usuario intentamos crear una archivo .txt usando **touch**, podemos observar que se nos niega la autorización para crearlo."},
+        {
+          "imagen": "assets/lab-229/11.png"},
+
+        {"texto":"Intentamos con **sudo touch**, pero nuevamente se nos informa que no tenemos autorización y que esto sintentos serán reportados."},
+        {
+          "imagen": "assets/lab-229/12.png"},
+
+        {"texto":"Con el comando **sudo cat /var/log/secure** podemos revisar los incidentes del intento de creación de un archivo sin autorización."},
+        {
+          "imagen": "assets/lab-229/13.png"}
       ]
-    
-    },
-    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
-      "secciones":[
-      ]
-    
-    },
-    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
-      "secciones":[
-      ]
-    
     }
 
     ]
