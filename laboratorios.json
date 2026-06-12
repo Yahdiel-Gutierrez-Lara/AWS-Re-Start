@@ -62,16 +62,41 @@
           {
             "imagen": "assets/lab-11/EXTRA 09.png",
             "descripcion": "Seleccionamos la opción **Enable**."
+          },
+          {"texto": "Se nos pide copiar el texto del laboratorio dentro de la user data, sin embargo, con ayuda de la IA configuramos este texto para que al acceder a la EC2 nos muestre una imagen y un texto personalizado."},
+          {
+            "imagen": "assets/lab-11/EXTRA 10.png",
+            "descripcion": "User data."
           }
         ]
       },
       {
-        "subtitulo": "Paso 2: Configuración de la Instancia",
+        "subtitulo": "Paso 2: Monitoreo de la instancia",
         "secciones": [
-          { "texto": "Procedimos a configurar el par de llaves (Key Pair) y seleccionamos la AMI de Amazon Linux 2023." },
+          { "texto": "Lo siguiente dentro del laboratorio es realizar un monitoreo breve del estado de la instancia seleccionando **Monitoring tab** lo cual nos enseña algunas metricas de Amazon CloudWatch." },
           {
-            "imagen": "assets/lab-11/EXTRA 02.png",
-            "descripcion": "Asignación de grupo de seguridad permitiendo tráfico HTTP en el puerto 80."
+            "imagen": "assets/lab-11/01.png",
+            "descripcion": "Seleccionar Monitoring Tab"
+          },
+          { "texto": "Se nos despliegan algunas gráficas que podemos seleccionar y amplear como se presenta en la siguiente imagen." },
+          {
+            "imagen": "assets/lab-11/07.png",
+            "descripcion": "CPU utilization (%)"
+          },
+           { "texto": "Ahora bien, si seleccionamos nuestra instancia y damos clic en **Actions** se nos desplegara un listado de opciones disponibles. Nos dirigiremos a **Monitoring and Troubleshoot** > **Get Instance Screenshot**." },
+          {
+            "imagen": "assets/lab-11/08.png",
+            "descripcion": "Esto muestra lo que aparecería en la consola de nuestra instancia Amazon EC2 si hubiera un monitor conectado a ella."
+          }
+        ]
+      },
+      {
+        "subtitulo":"Paso 4. Actualización de los grupos de seguridad y acceso al Web Server",
+        "secciones":[
+          {"texto": "Para este paso es necesario copiar la direccion Public IPv4 que se encuentra en la **Details Tab** al seleccionar nuestra instancia. Enseguida abriremos una pestaña de Chrome en el modo incognito."},
+          {
+            "imagen": "assets/lab-11/08.png",
+            "descripcion": "Esto muestra lo que aparecería en la consola de nuestra instancia Amazon EC2 si hubiera un monitor conectado a ella."
           }
         ]
       }
@@ -173,6 +198,4 @@
     "pasos": [
     ]
   }
-
-
 ]
