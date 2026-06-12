@@ -411,7 +411,7 @@
     "modulo": "Linux",
     "numero": "Lab 233",
     "titulo": "Trabajo con el sistema de archivos.",
-    "descripcion_general": "",
+    "descripcion_general": "Crearemos una estructura de carpetas y archivos de acuerdo con las especificaciones que da el sismtema de laboratorios.",
     "status": "done",
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
@@ -422,27 +422,70 @@
     {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
     ]
     },
-    {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+    {"subtitulo":"Paso 1. Creando una carpeta estructurada.",
       "secciones":[
+        {"texto":"En el laboratorio se nos presenta el siguiente diagrama de jerarquia entre carpetas y archivos."},
+        {
+          "imagen": "assets/lab-233/02.png"},
+        {"texto":"En primer lugar, ejecutamos el comando **pwd** para verificar que nos encontramos en la carpeta de inicio del  usuario ec2-user **/home/ec2/user**. Una vez dentro de esta carpeta, entonces haremos los siguientes pasos: \n Creamos la carpeta CompanyA **mkdir CompanyA** \n Accedemos a esta carpeta **cd Companya** \n Creamos las carpetas Finance, HR y Management **mkdir Finance HR Management** \n Verificamos su creación con el comando **ls**" },
+        {
+          "imagen": "assets/lab-233/01.png"},
+
+        {"texto":"Ahora bien, accedemos a la carpeta HR **cd HR** y crearemos los archivos Assessments.csv y TrialPeriod.csv usando el comando **Touch**. Nuevamente verificamos su creación con **ls**."},
+        {
+          "imagen": "assets/lab-233/02.png"},
+        
+        {"texto":"El siguiente paso es salir de a la carpeta HR y acceder a la carpeta Finance **cd../Finance** y crearemos los archivos ProfitAndLossStatements.csv y Salary.csv usando el comando **Touch**. Nuevamente verificamos su creación con **ls**."},
+        {
+          "imagen": "assets/lab-233/03.png"},
+
+        {"texto":"Salimos de la carpeta Finance **cd..** y sin acceder directamente a la carpeta Management crearemos los archivos Managers.csv y Management.csv usando el comando **Touch**. Nuevamente verificamos su creación con **ls**."},
+        {
+          "imagen": "assets/lab-233/04.png"},
+
+        {"texto":"Para comprobar las creaciones de carpetas y archivos ejecutamos el comando **ls -laR** dentro de la carpeta CompanyA."},
+        {
+          "imagen": "assets/lab-233/05.png"}
     ]
     
     },
-    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+    {"subtitulo":"Paso 2. Eliminando y reorganizando carpetas.",
       "secciones":[
-      ]
-    
-    },
-    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
-      "secciones":[
-      ]
-    
-    },
-    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
-      "secciones":[
-      ]
-    
-    }
+        {"texto":"En el laboratorio nos solicitan un nuevo diagrama de jerarquias donde todos los archivos y carpetas actuales pasarían a estar dentro de la carpeta HR y creariamos una nueva carpeta Employees."},
+        {
+          "imagen": "assets/lab-233/06.png"},
 
+        {"texto":"Verificamos que nuestra localización actual sea la carpeta CompanyA usando  **pwd**."},
+        {
+          "imagen": "assets/lab-233/07.png"},
+
+        {"texto":"Copiamos la carpeta Finance dentro de HR  **cp -r Finance HR** y verificamos que todo este en orden con el comando **ls HR/Finance**."},
+        {
+          "imagen": "assets/lab-233/08.png"},
+
+        {"texto":"Intentamos eliminar la carpeta Finance usando **rmdir**, sin embargo, no se nos permite eliminarla pues este comando solo funciona con carpetas vacias."},
+        {
+          "imagen": "assets/lab-233/09.png"},
+
+        {"texto":"Utilizamos entonces el comando  **rm** para vacear la carpeta Finance y verificamos que todo este en orden con el comando **ls Finance**. De esta manera ya podemos eliminar la carpeta Finance."},
+        {
+          "imagen": "assets/lab-233/10.png"},
+        {
+          "imagen": "assets/lab-233/11.png"},
+
+        {"texto":"Para no realizar este proceso de eliminar la carpeta Management podemos moverla directamente con el comando **mv** y verificando dentro de la carpeta HR."},
+        {
+          "imagen": "assets/lab-233/12.png"},
+        
+        {"texto":"Lo que nos resta es acceder a la carpeta HR, crear la carpeta Employees y mover los archivos Assessments.csv y TrialPeriod.csv dentro de la misma, usando los comandos presentados anteriormente."},
+        {
+          "imagen": "assets/lab-233/13.png"},
+        
+        {"texto":"Para verificar la estructura, salimos a la carpeta CompanyA y ejecutamos el comando ls -laR."},
+        {
+          "imagen": "assets/lab-233/14.png"}
+      ]
+    }
     ]
   },
   {
