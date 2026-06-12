@@ -191,7 +191,11 @@
             "imagen": "assets/lab-225/04.png",
             "descripcion": "Interfaz de PuTTY configuration > SSH > Auth > Credentials"
           },
-        {"texto": "Al seguir la ruta y ingresar a la sección **Credentials** seleccionamos el archivo **labsuser.ppk** y damos clic en open. Enseguida se nos presenta la terminal que nos permite conectanosa la instancia EC2."},
+        {"texto": "Al seguir la ruta y ingresar a la sección **Credentials** seleccionamos el archivo **labsuser.ppk** y damos clic en open. Enseguida se nos presenta la terminal que nos permite conectanosa la instancia EC2."}
+      ]
+      },
+      {"subtitulo":"Paso 2. Ejecutar el comando man",
+      "secciones":[
         {
             "imagen": "assets/lab-225/05.png",
             "descripcion": "Terminal para conectarse a la instancia EC2."
@@ -208,10 +212,9 @@
         {
             "imagen": "assets/lab-225/08.png"
           }
-      ]
-    }
-
-    ]
+        ]
+      }
+    ]    
   },
   {
     "id": "Lab 227",
@@ -223,6 +226,14 @@
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      "secciones":[
+
+
+
+      ]
+    
+    }
     ]
   },
   {
