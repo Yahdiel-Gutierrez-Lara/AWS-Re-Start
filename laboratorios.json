@@ -221,19 +221,60 @@
     "modulo": "Linux",
     "numero": "Lab 227",
     "titulo": "Línea de comandos de Linux.",
-    "descripcion_general": "",
+    "descripcion_general": "Ejecutando comandos que permiten conocer las caracteristicas de tu sistema actual y tu sesión activa.",
     "status": "done",
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+      {"subtitulo":"NOTA IMPORTANTE.",
+      "secciones":[
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+      ]
+      },
       {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
       "secciones":[
+        {"texto":"Como primera actividad ejecutaremos los comandos: \n **whoami** que corresponde al nombre del usuario actual. \n **hostname -s** para obtener la IP pública de la instancia. \n **uptime -p** para conocer el tiempo de actividad que lleva la instancia."},
+        {
+            "imagen": "assets/lab-227/01.png",
+            "descripcion": "Comandos básicos."
+          },
+        {"texto":"Otro comando que nos proporciona información sobre los usuarios loggeados es **who -H -a**."},
+        {
+            "imagen": "assets/lab-227/02.png",
+            "descripcion": "Informacion sobre los usuarios loggeados."
+          },
+        {"texto":"Para conocer la fecha y hora de otras zonas horarias podemos usar: \n **TZ=America/New_York date** \n **TZ=America/Los_Angeles date**."},
+        {
+          "imagen": "assets/lab-227/03.png",
+          "descripcion": "Informacion otras zonas horarias"},
 
+       {"texto":"También tenemos acceso a otros tipos de calendarios como el Juliano o el gregoriano en diferentes formatos usando los comandos: \n **cal -j** Calendarios juliano \n **cal -s** \n **cal -m**."},
+        {
+          "imagen": "assets/lab-227/04.png"},
+        {
+          "imagen": "assets/lab-227/06.png",
+          "descripcion": "Calendarios"},
 
-
+        {"texto":"Con el comando **id ec2-user** podemos visualizar el ID único y la información del grupo sobre un usuario en especifico."},
+        {
+          "imagen": "assets/lab-227/07.png"}
+  
       ]
     
+    },
+    {"subtitulo":"Paso 3. Mejorar el flujo de trabajo mediante el historial y la búsqueda.",
+      "secciones":[
+
+        {"texto":"Para ver el historial de comandos ejecutados usamos **history**."},
+        {
+          "imagen": "assets/lab-227/08.png"},
+
+        {"texto":"Si usamos el comando **date** podemos ver la fecha actual, y para ejecutar el último comando escrito podemos ingresar **!!**."},
+        {
+          "imagen": "assets/lab-227/09.png"}
+      ]
     }
+
     ]
   },
   {
@@ -246,6 +287,32 @@
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+      {"subtitulo":"NOTA IMPORTANTE.",
+      "secciones":[
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+      ]
+      },
+      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    }
+
     ]
   },
   {
@@ -258,6 +325,33 @@
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+
+      {"subtitulo":"NOTA IMPORTANTE.",
+      "secciones":[
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+      ]
+      },
+      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    }
+
     ]
   },
   {
@@ -270,6 +364,33 @@
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+
+    {"subtitulo":"NOTA IMPORTANTE.",
+    "secciones":[
+    {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+    ]
+    },
+    {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      "secciones":[
+    ]
+    
+    },
+    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    }
+
     ]
   },
   {
@@ -282,6 +403,33 @@
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+
+      {"subtitulo":"NOTA IMPORTANTE.",
+      "secciones":[
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+      ]
+      },
+      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    }
+
     ]
   },
   {
@@ -294,6 +442,32 @@
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+      {"subtitulo":"NOTA IMPORTANTE.",
+      "secciones":[
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+      ]
+      },
+      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    }
+
     ]
   },
   {
@@ -306,6 +480,33 @@
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
+
+      {"subtitulo":"NOTA IMPORTANTE.",
+      "secciones":[
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+      ]
+      },
+      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    },
+    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
+      "secciones":[
+      ]
+    
+    }
+
     ]
   }
 ]
