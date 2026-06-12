@@ -170,7 +170,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   },
@@ -182,7 +182,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   },
@@ -194,7 +194,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   },
@@ -206,7 +206,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   },
@@ -218,7 +218,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   },
@@ -230,7 +230,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   },
@@ -242,7 +242,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   },
@@ -254,7 +254,7 @@
     "descripcion_general": "",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["EC2", "User data"],
+    "tags": ["SSH", "Amazon Linux EC2"],
     "pasos": [
     ]
   }
