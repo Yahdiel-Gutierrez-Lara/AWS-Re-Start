@@ -76,5 +76,32 @@
         ]
       }
     ]
+  },
+  {
+    "id": "Lab 225",
+    "modulo": "Linux",
+    "numero": "Lab 225",
+    "titulo": "Introducción a Amazon EC2",
+    "descripcion_general": "Este laboratorio explora el cómo lanzar, redimensionar, administrar y monitorear una instancia de Amazon EC2 que ejecuta una página web sencilla.",
+    "status": "done",
+    "status_texto": "Completado",
+    "tags": ["EC2", "User data"],
+    "enlace_github": "https://github.com/tu-usuario/repo",
+    "pasos": [
+    ]
+  },
+  {
+    "id": "Lab 227",
+    "modulo": "Linux",
+    "numero": "Lab 227",
+    "titulo": "Introducción a Amazon EC2",
+    "descripcion_general": "Este laboratorio explora el cómo lanzar, redimensionar, administrar y monitorear una instancia de Amazon EC2 que ejecuta una página web sencilla.",
+    "status": "done",
+    "status_texto": "Completado",
+    "tags": ["EC2", "User data"],
+    "enlace_github": "https://github.com/tu-usuario/repo",
+    "pasos": [
+    ]
   }
+
 ]
