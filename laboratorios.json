@@ -8,7 +8,6 @@
     "status": "done",
     "status_texto": "Completado",
     "tags": ["EC2", "User data"],
-    "enlace_github": "https://github.com/tu-usuario/repo",
     "pasos": [
       {
         "subtitulo": "Paso 1: Lanzamiento de una Amazon EC2",
@@ -91,13 +90,74 @@
         ]
       },
       {
-        "subtitulo":"Paso 4. Actualización de los grupos de seguridad y acceso al Web Server",
+        "subtitulo":"Paso 3. Actualización de los grupos de seguridad y acceso al Web Server",
         "secciones":[
-          {"texto": "Para este paso es necesario copiar la direccion Public IPv4 que se encuentra en la **Details Tab** al seleccionar nuestra instancia. Enseguida abriremos una pestaña de Chrome en el modo incognito."},
+          {"texto": "Para este paso es necesario copiar la direccion Public IPv4 que se encuentra en la **Details Tab** al seleccionar nuestra instancia. Enseguida abriremos una pestaña de Chrome en el modo incognito y pegaremos la IP en el buscador."},
           {
-            "imagen": "assets/lab-11/08.png",
-            "descripcion": "Esto muestra lo que aparecería en la consola de nuestra instancia Amazon EC2 si hubiera un monitor conectado a ella."
+            "imagen": "assets/lab-11/12.png",
+            "descripcion": "Pestaña en modo incognito con la IP enlazada"
+          },
+          {"texto": "Como se puede observar, el enlance se encuentra caido, esto sucede ya que no habilitamos las inbound rules en las configuraciones iniciales de la instancia EC2."},
+          {"texto": "Para corregirlo nos dirigimos a la EC2 management console y en la parte izquierda ubicamos **Security Groups** y seleccionamos **Network & Security**."},
+          {
+            "imagen": "assets/lab-11/11.png",
+            "descripcion": "SECURITY GROUPS"
+          },
+          {"texto": "Seleccionamos el grupo que configuramos con nombre **Web server security group** y en el panel inferior localizamos la sección **Inbound Rules**. Acontinuación se da clic en Editar inbound rules."},
+          {"texto": "Entonces seleccionamos **Add rule** y se añade una regla que permita el el trásico HTTP de Anywhere-IPv4. Con esa regla añadida podemos dar en recargar a la pestaña y con esto ya podemos visualizar la página web."},
+          {
+            "imagen": "assets/lab-11/06.png",
+            "descripcion": "Página web cargada"
           }
+        ]
+      },
+      {"subtitulo": "Paso 4. Redimensionar la instancia: Tipo de instancia y volumen EBS",
+        "secciones":[
+        {"texto": "El primer paso es detener la instancia seleccionando **Instance state** > **Stop instance** dentro del EC2 Management console."},
+         {
+            "imagen": "assets/lab-11/14.png",
+            "descripcion": "Stop instance"
+          },
+          {"texto": "Una vez detenida nos dirigimos a **Instance settings** > **Change instance type**."},
+         {
+            "imagen": "assets/lab-11/16.png",
+            "descripcion": "Change instance type"
+          },
+          {"texto": "Dentro de está opción seleccionaremos t3.small como el New instance type y damos en guardar."},
+         {
+            "imagen": "assets/lab-11/17.png",
+            "descripcion": "New instance type"
+          },
+          {"texto": "Regresando a la pestaña anterior y buscamos en la parte izquierda de la pestaña la opcción **Volumes** y damos clic.Enseguida seleccionamos **Actions** > **Modify volume**."},
+         {
+            "imagen": "assets/lab-11/18.png",
+            "descripcion": "Modify volume"
+          },
+          {"texto": "Y cambiamos de 8 GiB a 10 GiB el tamaño-"},
+         {
+            "imagen": "assets/lab-11/19.png",
+            "descripcion": "Volumes"
+          }
+        ]
+      },
+      {"subtitulo": "Paso 5. Prueba de protección de terminación",
+        "secciones":[
+        {"texto": "Regresamos al panel de instancias y seleccionamos nuestra instancia **Web Server**. Daremos clic en el menú **Instance state** y enseguida elegiremos **Terminate (delete) instances**."},
+         {
+            "imagen": "assets/lab-11/21.png",
+            "descripcion": "Notificación de error"
+          },
+        {"texto": "Desplegando el menú **Actions** > **Instance settings** > **Change termination protection** desmarcamos el check box **Enable** y guardamos. Reintentamos la terminación y esperamos la notificación de ejecutado."},
+        {
+            "imagen": "assets/lab-11/23.png",
+            "descripcion": "Successfully Termination"
+        }
+        ]
+      }, 
+      {
+        "subtitulo": "Conclusiones",
+        "secciones":[
+          {"texto":"El uso de la consola facilita enormemente el trabajo de las configuraciones antes y durante la ejecución de una instancia EC2. Además de que resulta más intuitivo para los administradores de estas soluciones."}
         ]
       }
     ]
