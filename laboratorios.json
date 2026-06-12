@@ -607,76 +607,70 @@
     }
     ]
   },
-  {
-    "id": "Lab 239",
-    "modulo": "Linux",
-    "numero": "Lab 239",
-    "titulo": "Administración de procesos.",
-    "descripcion_general": "El propósito de este laboratorio es crear un nuevo archivo de registro para listados de procesos, usar el comando top y establecer una tarea repetitiva que ejecute tus comandos de auditoría anteriores una vez al día.",
-    "status": "done",
-    "status_texto": "Completado",
-    "tags": ["SSH", "Amazon Linux EC2"],
-    "pasos": [
-
-      {"subtitulo":"NOTA IMPORTANTE.",
-      "secciones":[
-        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+{
+  "id": "Lab 239",
+  "modulo": "Linux",
+  "numero": "Lab 239",
+  "titulo": "Administración de procesos.",
+  "descripcion_general": "El propósito de este laboratorio es crear un nuevo archivo de registro para listados de procesos, usar el comando top y establecer una tarea repetitiva que ejecute tus comandos de auditoría anteriores una vez al día.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["SSH", "Amazon Linux EC2"],
+  "pasos": [
+    {
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
       ]
-      },
-      {"subtitulo":"Paso 1. Creando una lista de procesos.",
-      "secciones":[
-        {"texto":"Como en laboratorios pasados, el primer paso es validar en que carpeta nos encontramos usando **pwd**. Si no estamos en /home/ec2-user/companyA accedemos a la misma usando **cd companyA**. Enseguida ejecutamos el comando **sudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv** para visualizar todos los procesos corriendo en la máquina y filtros."},
-        {
-          "imagen": "assets/lab-239/01.png"},
-
-        {"texto":"Como en laboratorios pasados, el primer paso es validar en que carpeta nos encontramos usando **pwd**. Si no estamos en /home/ec2-user/companyA accedemos a la misma usando "},
-        {
-          "imagen": "assets/lab-239/02.png"},
-        {"texto":"Como en laboratorios pasados, el primer paso es validar en que carpeta nos encontramos usando **pwd**. Si no estamos en /home/ec2-user/companyA accedemos a la misma usando **cd companyA**. \n Enseguida ejecutamos el comando **sudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv** para visualizar todos los procesos corriendo en la máquina y filtros. \n Para validad nuestro trabajo escribiremos en la terminal **cat SharedFolders/processes.csv**"},
-        {
-          "imagen": "assets/lab-239/01.png"},
-
-        {"texto":"Ejecutando el comando **top** podemos visualizar los procesos e hilos que están activos en el sistema. Para salir de esta vista basta con presionar la letra q."},
-        {
-          "imagen": "assets/lab-239/02.png", 
-          "descripción":"Visualizamos 91 tareas, 1 ejecutandose, 48 en reposo, 0 detenidas, y 0 zombie."},
-        
-        {"texto":"Para ejecutar el comando **top** también se puede usar **top -hv** para visualizar la información de uso y versión."},
-        {
-          "imagen": "assets/lab-239/03.png"}
-      ]
-    
     },
-    {"subtitulo":"Paso 2. Creando un Cron Job.",
-      "secciones":[
-  {"texto":"En primer lugar ejecutamos el comando sudo crontab -e para generar el archivo. Enseguida escribiremos los siguientes comandos dentro del mismo." },{"image":"assets/lab-239/04.png"},
-  {  
-  "configuracion_cron": {
-    "SHELL": "/bin/bash",
-    "PATH": "/usr/bin:/bin:/usr/local/bin",
-    "MAILTO": "root"
-  },
-  "cron_job": "0 * * * * ls -la $(find .) | sed -e 's/..csv/#####.csv/g' > /home/ec2-user/companyA/SharedFolders/filteredAudit.csv",
-  "programacion": {
-    "minuto": "0",
-    "hora": "*",
-    "dia_mes": "*",
-    "mes": "*",
-    "dia_semana": "*",
-    "descripcion": "Se ejecuta al inicio de cada hora."
-  },
-   "funcion_del_cron_job": [
-    "Busca archivos dentro del directorio actual.",
-    "Genera un listado detallado de los archivos encontrados.",
-    "Reemplaza las extensiones .csv por #####.csv en la salida para ocultar o anonimizar los nombres.",
-    "Guarda el resultado en el archivo filteredAudit.csv."
-    ],
-  "validacion": "Ejecutar 'sudo crontab -l' y comprobar que la configuración coincide exactamente con la esperada.",
-
-  "image":"assets/lab-239/05.png" 
-}
+    {
+      "subtitulo": "Paso 1. Creando una lista de procesos.",
+      "secciones": [
+        {
+          "texto": "Como en laboratorios pasados, el primer paso es validar en que carpeta nos encontramos usando **pwd**. Si no estamos en /home/ec2-user/companyA accedemos a la misma usando **cd companyA**. Enseguida ejecutamos el comando **sudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv** para visualizar todos los procesos corriendo en la máquina y filtros. Para validad nuestro trabajo escribiremos en la terminal **cat SharedFolders/processes.csv**"
+        },
+        {
+          "imagen": "assets/lab-239/01.png"
+        },
+        {
+          "texto": "Ejecutando el comando **top** podemos visualizar los procesos e hilos que están activos en el sistema. Para salir de esta vista basta con presionar la letra q."
+        },
+        {
+          "imagen": "assets/lab-239/02.png",
+          "descripción": "Visualizamos 91 tareas, 1 ejecutandose, 48 en reposo, 0 detenidas, y 0 zombie."
+        },
+        {
+          "texto": "Para ejecutar el comando **top** también se puede usar **top -hv** para visualizar la información de uso y versión."
+        },
+        {
+          "imagen": "assets/lab-239/03.png"
+        }
+      ]
+    },
+    {
+      "subtitulo": "Paso 2. Creando un Cron Job.",
+      "secciones": [
+        {
+          "texto": "En primer lugar ejecutamos el comando **sudo crontab -e** para generar el archivo. Enseguida escribiremos los siguientes comandos dentro del mismo."
+        },
+        {
+          "texto": "SHELL=/bin/bash \n PATH=/usr/bin:/bin:/usr/local/bin \n MAILTO=root \n 0 * * * * ls -la $(find .) | sed -e 's/..csv/#####.csv/g' > /home/ec2-user/companyA/SharedFolders/filteredAudit.csv"
+        },
+        {
+          "imagen": "assets/lab-239/04.png"
+        },
+        {
+          "texto": "Básicamente se lleva acabo el siguiente proceso: \n Busca archivos dentro del directorio actual. \n Genera un listado detallado de los archivos encontrados. \n Reemplaza las extensiones .csv por #####.csv en la salida para ocultar o anonimizar los nombres. \n Guarda el resultado en el archivo filteredAudit.csv."
+        },
+        {
+          "texto": "Validamos ejecutando **sudo crontab -l** y comprobar que la configuración coincide exactamente con la esperada."
+        },
+        {
+          "imagen": "assets/lab-239/05.png"
+        }
       ]
     }
-    ]
-  }
-]
+  ]
+}
