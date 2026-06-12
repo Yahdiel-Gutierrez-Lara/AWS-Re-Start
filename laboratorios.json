@@ -351,7 +351,7 @@
     "modulo": "Linux",
     "numero": "Lab 231",
     "titulo": "Edición de archivos.",
-    "descripcion_general": "",
+    "descripcion_general": "Creación y edición de archivos usando vimtutor y Nano.",
     "status": "done",
     "status_texto": "Completado",
     "tags": ["SSH", "Amazon Linux EC2"],
@@ -359,31 +359,52 @@
 
       {"subtitulo":"NOTA IMPORTANTE.",
       "secciones":[
-        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."}
       ]
       },
-      {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
+      {"subtitulo":"Paso 1. Realizar el tutorial de vimtutor.",
       "secciones":[
+        {"texto":"Escribir en la terminal vimtutor y presionar enter."},
+        {
+          "imagen": "assets/lab-231/01.png"},
+        {
+          "imagen": "assets/lab-231/02.png"}
       ]
-    
     },
-    {"subtitulo":"Paso 2. Ejecutando comandos familiares.",
+    {"subtitulo":"Paso 2. Creando y editando un archivo con Vim.",
       "secciones":[
-      ]
-    
-    },
-    {"subtitulo":"Paso 3. Ejecutando comandos familiares.",
-      "secciones":[
-      ]
-    
-    },
-    {"subtitulo":"Paso 4. Ejecutando comandos familiares.",
-      "secciones":[
-      ]
-    
-    }
+      {"texto":"Al Ejecutar el comando **vim** helloworld, se creara un archivo editable. En este podremos escribir como se muestra en la imagen acontinuación."},
+        {
+          "imagen": "assets/lab-231/04.png"},
+        {
+          "imagen": "assets/lab-231/05.png"},
 
-    ]
+        {"texto":"Dentro de está herramienta podemos ejecutar **dd** para eliminar una línea completa."},
+        {
+          "imagen": "assets/lab-231/07.png"},
+
+        {"texto":"**u** para restaurarla y **:wq** para guardar y salir"},
+        {
+          "imagen": "assets/lab-231/08.png"}
+      ]
+    },
+    {"subtitulo":"Paso 3. Creando y editando un archivo con Nano.",
+      "secciones":[
+      {"texto":"Al Ejecutar el comando **nano** cloudworld, se creara un archivo editable. En este podremos escribir como se muestra en la imagen acontinuación."},
+        {
+          "imagen": "assets/lab-231/09.png"},
+        {
+          "imagen": "assets/lab-231/10.png"},
+
+        {"texto":"Con la combinación CTRL + O guardas los cambios y con CTRL + x guardas el archivo y se sale del editor."},
+
+        {"texto":"Podemos verificar escribiendo **nano** cloudworld y dando enter para visualizar el archivo de nuevo."},
+        {
+          "imagen": "assets/lab-231/11.png"}
+      ]
+    }
+  ]
+
   },
   {
     "id": "Lab 233",
