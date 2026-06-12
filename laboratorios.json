@@ -167,11 +167,50 @@
     "modulo": "Linux",
     "numero": "Lab 225",
     "titulo": "Una introducción a Linux.",
-    "descripcion_general": "",
+    "descripcion_general": "Acceso a una Amazon Linux AMI usando SSH, conociendo el proposito del comando man.",
     "status": "done",
     "status_texto": "Completado",
-    "tags": ["SSH", "Amazon Linux EC2"],
+    "tags": ["SSH", "Amazon Linux EC2", "man command"],
     "pasos": [
+      {"subtitulo":"Paso 1. Conectandose a una instancia EC2 Amazon Linux",
+      "secciones":[
+        {"texto": "Nota: Dado que el sistema operativo con el que trabajamos es Windows es necesario repetir el siquiente procedimiento en cada ocasión que debamos ejecutar comandos de Linux."},
+        {"texto": "Nota: Es necesario descargar Putty.exe para poder conectarse a las instancias EC2."},
+        {"texto": "Al iniciar el laboratorio seleccionamos **Details** y damos clic en el botón **Show**. Dentro de la ventana emergente hay que tomar nota de la IP pública y descargamos el archivo .PPK"},
+         {
+            "imagen": "assets/lab-225/extra.png",
+            "descripcion": "Details del laboratorio"
+          },
+        {"texto": "Ejecutar Putty.exe como administrador"},
+         {
+            "imagen": "assets/lab-225/03.png",
+            "descripcion": "Interfaz de PuTTY configuration"
+          },
+        {"texto": "Dentro de la seccion **Host Name (or IP address)** debemos pegar la IP pública guardada anteriormente."},
+          {
+            "imagen": "assets/lab-225/04.png",
+            "descripcion": "Interfaz de PuTTY configuration > SSH > Auth > Credentials"
+          },
+        {"texto": "Al seguir la ruta y ingresar a la sección **Credentials** seleccionamos el archivo **labsuser.ppk** y damos clic en open. Enseguida se nos presenta la terminal que nos permite conectanosa la instancia EC2."},
+        {
+            "imagen": "assets/lab-225/05.png",
+            "descripcion": "Terminal para conectarse a la instancia EC2."
+          },
+        {"texto": "Dentro de la terminal escribimos **ec2-user** para inicializar la instancia."},
+        {
+            "imagen": "assets/lab-225/06.png"
+          },
+        {"texto": "Enseguida escribimos el comando **man man** para abrir el manual del programa man."},
+        {
+            "imagen": "assets/lab-225/07.png"
+          },
+        {"texto": "Exploramos las diferentes secciones desplegadas, especificamente la sección de númerada dentro de la **DESCRIPTION**."},
+        {
+            "imagen": "assets/lab-225/08.png"
+          }
+      ]
+    }
+
     ]
   },
   {
