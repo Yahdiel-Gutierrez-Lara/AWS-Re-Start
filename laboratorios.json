@@ -947,7 +947,83 @@
 ]
 },
 {
-
-  
+"id": "Lab 247",
+  "modulo": "Linux",
+  "numero": "Lab 247",
+  "titulo": "Trabajo con comandos.",
+  "descripcion_general": "El propósito de este laboratorio es aprender el uso de los comandos tee, sort, cut, sed y el operador pipe.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["SSH", "Amazon Linux EC2", "Linux Command"],
+  "pasos": [
+    {   
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+        ]
+    },
+    {
+      "subtitulo":"Paso 1. Uso del comando tee",
+      "secciones":[
+        {"texto":"Este comando permite que una entrada como **hostname** pueda ser desplegada en pantalla y la información sea almacenada en un archivo. Nos aseguramos de encontrarnos en la carpeta **/home/ec2-user** y ejecutamos **hostname | tee file1.txt**."},
+        {
+          "imagen": "assets/lab-247/01.png",
+          "descripción": "tee output. Comprobamos que se haya creado el archivo file1.txt usando **ls**."
+        }
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Uso del comando sort y el operador pipe",
+      "secciones":[
+        {"texto":"Este comando permite ordenar el contenido de un archivo. Nos aseguramos de encontrarnos en la carpeta **/home/ec2-user** y ejecutamos **cat > test.csv** para generar un archivo."},
+        {
+          "imagen": "assets/lab-247/02.png",
+          "descripción": "test.csv."
+        },
+        {"texto":"Una vez vaciada la información, presionamos CTRL + D para cerrar el archivo y revisamos que se haya generado correctamente."},
+        {
+          "imagen": "assets/lab-247/03.png",
+          "descripción": "test.csv."
+        },
+        {"texto":"Ejecutamos **sort test.csv**."},
+        {
+          "imagen": "assets/lab-247/04.png",
+          "descripción": "sort output. El contenido se ordenó alfabeticamente por la primera columna dado que no se configuraron opciones de ordenado."
+        },
+        {"texto":"El operador pipe (|) es usado para conectar comandos entre sí. En este caso para poder localizar la fabrica nombrada **Paris** junto al comando **grep**. Colocar en la terminal el comando **find | grep Paris test.csv**."},
+        {
+          "imagen": "assets/lab-247/05.png",
+          "descripción": "find | grep output."
+        }
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Uso del comando cut",
+      "secciones":[
+        {"texto":"Este comando permite extraer secciones específicas de texto de cada línea de un archivo o del resultado de otro comando. Nos aseguramos de encontrarnos en la carpeta **/home/ec2-user** y ejecutamos **cat > cities.csv** para generar un archivo."},
+        {
+          "imagen": "assets/lab-247/06.png",
+          "descripción": "cities.csv."
+        },
+        {"texto":"Una vez vaciada la información, presionamos CTRL + D para cerrar el archivo. Ejecutamos el comando **cut -d ',' -f 1 cities.csv** donde **-d** delimita apartir de donde iniciar y **-f** corresponde al campo seleccionado."},
+        {
+          "imagen": "assets/lab-247/07.png",
+          "descripción": "Archivo cities.csv cortado."
+        }
+      ]
+    },
+    {
+      "subtitulo":"Reto adicional",
+      "secciones":[
+       {"texto":"Usar el comando sed para reemplazar un texto dentro de un archivo por otro. \n El uso se veria de la siguiente forma: \n sed 's/word being replaced/replacement word/' file name** \n Usar el comando sed para reemplazar ',' por '.' dentro de los archivos test.csv y cities.csv."},
+        {
+          "imagen": "assets/lab-247/08.png",
+          "descripción": "**sed 's/,/./'** es el comando escrito para la salida de la imagen anterior."
+        } 
+      ]
+    }
+  ]
 }
 ]
