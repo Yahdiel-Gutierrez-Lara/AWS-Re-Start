@@ -889,6 +889,64 @@
   ]
 },
 {
+"id": "Lab 245",
+  "modulo": "Linux",
+  "numero": "Lab 245",
+  "titulo": "Administración de archivos de registro.",
+  "descripcion_general": "El propósito de este laboratorio es aprender a revisar los últimos accesos de sesión e intentos de acceso mediante comandos de linux.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["SSH", "Amazon Linux EC2", "lastlog", "secure"],
+  "pasos": [
+    {   
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+        ]
+    },
+    {
+      "subtitulo":"Paso 1. Uso de secure.", 
+      "secciones":[
+        {"texto":"Nos aseguramos de estar dentro de la carpeta companyA."},
+        {
+          "imagen": "assets/lab-245/01.png",
+          "descripción": "Carpeta companyA."
+        },
+        {"texto":"Ejecutamos el comando **sudo less /tmp/log/secure** para testear los inicios de sesión fallidos desde una dirección IP, informando si fallaron la autentificación y desde que puerto. Para salir digitamos **-q**"},
+        {
+          "imagen": "assets/lab-245/02.png",
+          "descripción": "Test secure."
+        }
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Uso de lastlog.", 
+      "secciones":[
+        {"texto":"Ejecutamos el comando **sudo lastlog** para visualizar los últimos inicos de sesión de todos los usuarios en la máquina."},
+        {
+          "imagen": "assets/lab-245/03.png",
+          "descripción": "lastlog output."
+        },
+        {
+          "imagen": "assets/lab-245/04.png",
+          "descripción": "lastlog output."
+        }
+      ]
+    },
+     {
+      "subtitulo":"Reto adicional.", 
+      "secciones":[
+        {"texto":"¿Qué información puede extraerse por alguien para fines empresariales?"},
+        {
+          "texto":"Una de las aplicaciones que podría beneficiar a una empresa el conocer esta información es alertar de ataques mal intencionados o robos de identidad a sus empleados. Identificando patrones de accesos repetitivos desde una misma IP en pocos segundos, o bien, intentos de accesos a horas fuera de lo común."
+        }
+      ]
+    }
+]
+},
+{
 
   
 }
