@@ -706,25 +706,25 @@
           "texto": "Los siguientes pasos serían inicializarlo usando el comando **sudo systemctl start httpd.service** y comprobar nuevamente su estado."
         },
         {
-          "imagen": "assets/lab-239/03.png",
+          "imagen": "assets/lab-241/03.png",
           "descripción": "El estado ha cambiado a activado."
         },
         {
           "texto": "Para comprobar si podemos visualizar el sitio web ingreamos a un navegador en modo incognito y en el buscador pegamos la IP pública de la instancia. Esta IP se uso al inicio del laboratorio para acceder a la terminal por medio de PuTTY."
         },
         {
-          "imagen": "assets/lab-239/04.png",
+          "imagen": "assets/lab-241/04.png",
           "descripción": "Sitio web habilitado."
         },
         {
           "texto": "Detenemos el servicio httpd usando **sudo systemctl stop httpd.service**"
         },
         {
-          "imagen": "assets/lab-239/05.png",
+          "imagen": "assets/lab-241/05.png",
           "descripción": "Sitio web deshabilitado."
         },
         {
-          "imagen": "assets/lab-239/06.png",
+          "imagen": "assets/lab-241/06.png",
           "descripción": "Deteniendo el servicio httpd."
         }
       ]
@@ -734,32 +734,32 @@
       "secciones":[
         {"texto":"Usando el comando **top** desplegaremos la lista de procesos ejecutandose en nuestra instancia EC2."},
         {
-          "imagen": "assets/lab-239/07.png",
+          "imagen": "assets/lab-241/07.png",
           "descripción": "Lista de procesos ejecutandose inicialmente."
         },
         {"texto":"Enseguida ejecutaremos el archivo stress.sh que simula una gran carga de trabajo para nuesta instancia y desplegaremos la lista de procesos nuevamente. **./stress.sh & top**."},
         {
-          "imagen": "assets/lab-239/08.png",
+          "imagen": "assets/lab-241/08.png",
           "descripción": "Lista de procesos ejecutandose al ejecutar stress.sh."
         },
         {"texto":"Para poder visualizar esta carga de trabajo en la instancia de forma gráfica y en tiempo real usaremos la herramienta AWS CloudWatch. Para acceder debemos dirigirnos a la AWS Management Console. Una vez accedemos, escribimos CloudWatch en la barra buscadora."},
         {
-          "imagen": "assets/lab-239/10.png",
+          "imagen": "assets/lab-241/10.png",
           "descripción": "AWS Management Console > AWS CloudWatch."
         },
         {"texto":"En el panel lateral ingresamos a **Dashboards** y seleccionamos **Automatic dashboards**."},
         {
-          "imagen": "assets/lab-239/11.png",
+          "imagen": "assets/lab-241/11.png",
           "descripción": "AWS CloudWatch > Dashboards > Automatic dashboards."
         },
         {"texto":"Daremos clic en **EC2** y visualizaremos diferentes gráficos que proporcionan información sobre nuestra instancia."},
         {
-          "imagen": "assets/lab-239/12.png",
+          "imagen": "assets/lab-241/12.png",
           "descripción": "Automatic dashboards > EC2."
         },
         {"texto":"Abrimos **CPU Utilization: Avarage** y esperamos alrededor de 5 min para visualizar completamente el efecto del archivo stress.sh en nuestra instancia."},
         {
-          "imagen": "assets/lab-239/13.png",
+          "imagen": "assets/lab-241/13.png",
           "descripción": "Se registro un pico en la actividad correspondiente al efecto del archivo stress.sh y 5 min una caída de actividad dado que este archivo está configurado para solo estar activo ese tiempo."
         }
       ]
@@ -782,8 +782,114 @@
         {
           "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
         }
+        ]
+        },
+        {"subtitulo":"Paso 1. Actualizando mi entorno Linux.",
+        "secciones":[
+        {"texto":"En primer lugar, validamos si nos enconcontramos en la carpeta **companyA** usando el comando **pwd**. En caso de no estarlo, accedemos mediante el comando **cd companyA**."},
+        {"texto":"Consultamos el repositorio de actualizaciones disponibles mediante el comando **sudo yum -y check-update**"},
+        {
+          "imagen": "assets/lab-243/01.png",
+          "descripción": "Repositorio de actualizaciones disponibles."
+        },
+        {"texto":"Aplicamos las actualizaciones de seguridad con el comando **sudo yum update --security**"},
+        {
+          "imagen": "assets/lab-243/02.png",
+          "descripción": "Actualización de seguridad."
+        },
+        {"texto":"Para actualizar todos los paquetes instalados usamos el comando **sudo yum -y upgrade**"},
+        {
+          "imagen": "assets/lab-243/03.png",
+          "descripción": "Actualización de paquetes."
+        },
+        {"texto":"Para Instalar el servicio httpd y visualizar su historial de actualizaciones usamos el comando **sudo yum install httpd -y**"},
+        {
+          "imagen": "assets/lab-243/04.png",
+          "descripción": "Instalación de httpd."
+        },
+        {
+          "imagen": "assets/lab-243/05.png",
+          "descripción": "Versión de httpd."
+        }
       ]
+    },
+    {
+      "subtitulo":"Paso 2. Revertir el estado de un paquete.",
+      "secciones":[
+        {"texto":"Nuevamente nos aseguramos de estar en la carpeta **companyA** y ejecutamos el comando **sudo yum history list** para visualizar el historial de actualizaciones."},
+        {
+          "imagen": "assets/lab-243/06.png",
+          "descripción": "Historial de actualizaciones. Tomar nota del ID de nuestra instancia (1)."
+        },
+        {"texto":"Con el comando **sudo yum history info <#>**, donde <#> es el ID de nuestro interes, podemos visualizar las actualizaciones más recientes."},
+        {
+          "imagen": "assets/lab-243/07.png",
+          "descripción": "Actualizaciones más recientes."
+        },
+        {"texto":"Digitamos **sudo yum -y history undo <#>**, donde <#> es el ID de nuestro interes, para revertir la actualización."},
+        {
+          "imagen": "assets/lab-243/08.png",
+          "descripción": "Revirtiendo actualización."
+        },
+        {
+          "imagen": "assets/lab-243/09.png",
+          "descripción": "Revirtiendo actualización."
+        }
+      ]
+    },
+    {"subtitulo":"Paso 3. Instalando AWS CLI en Red Hat Linux.",
+    "secciones":[
+      {"texto":"Verificamos las versiones de python y pip usando **python3 --version** y **pip3 --version** respectivamente. Lo siguiente sería instalar AWS CLI descargando el archivo mediante el comando **curl**, ejecutamos **curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'.**"},
+      {"texto":"**-o** Permite renombrar el archivo descargado."},
+       {
+          "imagen": "assets/lab-243/10.png",
+          "descripción": "Versiones de python y pip."
+        },
+      {
+          "imagen": "assets/lab-243/11.png",
+          "descripción": "Descargando el instalador comprimido."
+      },
+      {"texto":"Descomprimimos el archivo con **unzip awscliv2.zip**, y continuamos la instalación con **sudo ./aws/install**."},
+       {
+          "imagen": "assets/lab-243/13.png"
+        },
+      {
+          "imagen": "assets/lab-243/14.png"
+      },
+      {"texto":"Usando **aws help** podemos leer la documentación."}
+    ]
+    },
+    {"subtitulo": "Paso 4. Configuración de la AWS CLI para conectarse a nuestra cuenta AWS.", 
+    "secciones":[
+      {"texto":"Escribimos el comando **aws configure** y rellenamos lo siguiente: \n **AWS Access Key ID**, permanece en blanco y damos enter. \n **AWS Secret Access Key**, permanece en blanco y damos enter. \n **Default region name**, escribimos **us-west-2* y damos enter. \n **Default output format**, escribimos **json** y damos enter."},
+      {
+        "imagen": "assets/lab-243/16.png"
+      },
+      {"texto":"Dentro de la sección Details del laboratorio accederemos a AWS CLI y copiaremos el contenido en un archivo dentro de nuestra instancia. Ejecutamos **sudo nano ~/.aws/credentials** para crear el archivo y pegamos las credenciales."},
+      {
+          "imagen": "assets/lab-243/18.png",
+          "descripción": "Archivo Credentials."
+      },
+      {"texto":"Accedemos al AWS Management Console y en la barra buscadora escribimos EC2. Enseguida seleccionaremos nuestra instancia para conocer su ID."},
+      {
+          "imagen": "assets/lab-243/20.png",
+          "descripción": "AWS Management Console."
+      },
+      {
+          "imagen": "assets/lab-243/19.png",
+          "descripción": "Instancia ID."
+      },
+      {"texto":"Usando el comando **aws ec2 describe-instance-attribute --instance-id i-02663019f5eccd660 --attribute instanceType** podemos visualizar los atributos de nuestra instancia."},
+      {
+          "imagen": "assets/lab-243/22.png",
+          "descripción": "Atributos de la instancia."
+      }
+    ]
     }
   ]
+},
+{
+
+  
 }
 ]
