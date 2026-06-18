@@ -673,5 +673,117 @@
       ]
     }
   ]
+},
+{
+  "id": "Lab 241",
+  "modulo": "Linux",
+  "numero": "Lab 241",
+  "titulo": "Administración de servicios.",
+  "descripcion_general": "El propósito de este laboratorio es visualizar el estado del servicio httpd para asegurarse que se encuentre activado para poder realizar una conexión mediante dirección IP. Además, aprenderemos a monitorear una instancia Amazon EC2 usando el comando **Top** y el servicio AWS CloudWatch.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["SSH", "Amazon Linux EC2", "AWS CloudWatch", "Conexión httpd"],
+  "pasos": [
+    {
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+      ]
+    },
+    {
+      "subtitulo": "Paso 1. Revisar el estado del servicio httpd.",
+      "secciones": [
+        {
+          "texto": "Httpd es un servicio para un servidor http Apache instalado en tu entorno. Se trata de un servidor web ligero, similar a los que utilizan tus sitios web favoritos. Ahora bien, para visualizar el estado de este servicio usamos el comando **sudo systemctl status httpd.service**."
+        },
+        {
+          "imagen": "assets/lab-241/01.png",
+          "descripción": "Su estado actual es inactivo. También notese que se encuentra cargado y listo para ejecutarse."
+        },
+        {
+          "texto": "Los siguientes pasos serían inicializarlo usando el comando **sudo systemctl start httpd.service** y comprobar nuevamente su estado."
+        },
+        {
+          "imagen": "assets/lab-239/03.png",
+          "descripción": "El estado ha cambiado a activado."
+        },
+        {
+          "texto": "Para comprobar si podemos visualizar el sitio web ingreamos a un navegador en modo incognito y en el buscador pegamos la IP pública de la instancia. Esta IP se uso al inicio del laboratorio para acceder a la terminal por medio de PuTTY."
+        },
+        {
+          "imagen": "assets/lab-239/04.png",
+          "descripción": "Sitio web habilitado."
+        },
+        {
+          "texto": "Detenemos el servicio httpd usando **sudo systemctl stop httpd.service**"
+        },
+        {
+          "imagen": "assets/lab-239/05.png",
+          "descripción": "Sitio web deshabilitado."
+        },
+        {
+          "imagen": "assets/lab-239/06.png",
+          "descripción": "Deteniendo el servicio httpd."
+        }
+      ]
+    },
+    {
+      "subtitulo": "Paso 2. Monitoreando la instancia EC2.",
+      "secciones":[
+        {"texto":"Usando el comando **top** desplegaremos la lista de procesos ejecutandose en nuestra instancia EC2."},
+        {
+          "imagen": "assets/lab-239/07.png",
+          "descripción": "Lista de procesos ejecutandose inicialmente."
+        },
+        {"texto":"Enseguida ejecutaremos el archivo stress.sh que simula una gran carga de trabajo para nuesta instancia y desplegaremos la lista de procesos nuevamente. **./stress.sh & top**."},
+        {
+          "imagen": "assets/lab-239/08.png",
+          "descripción": "Lista de procesos ejecutandose al ejecutar stress.sh."
+        },
+        {"texto":"Para poder visualizar esta carga de trabajo en la instancia de forma gráfica y en tiempo real usaremos la herramienta AWS CloudWatch. Para acceder debemos dirigirnos a la AWS Management Console. Una vez accedemos, escribimos CloudWatch en la barra buscadora."},
+        {
+          "imagen": "assets/lab-239/10.png",
+          "descripción": "AWS Management Console > AWS CloudWatch."
+        },
+        {"texto":"En el panel lateral ingresamos a **Dashboards** y seleccionamos **Automatic dashboards**."},
+        {
+          "imagen": "assets/lab-239/11.png",
+          "descripción": "AWS CloudWatch > Dashboards > Automatic dashboards."
+        },
+        {"texto":"Daremos clic en **EC2** y visualizaremos diferentes gráficos que proporcionan información sobre nuestra instancia."},
+        {
+          "imagen": "assets/lab-239/12.png",
+          "descripción": "Automatic dashboards > EC2."
+        },
+        {"texto":"Abrimos **CPU Utilization: Avarage** y esperamos alrededor de 5 min para visualizar completamente el efecto del archivo stress.sh en nuestra instancia."},
+        {
+          "imagen": "assets/lab-239/13.png",
+          "descripción": "Se registro un pico en la actividad correspondiente al efecto del archivo stress.sh y 5 min una caída de actividad dado que este archivo está configurado para solo estar activo ese tiempo."
+        }
+      ]
+    }
+  ]
+},
+{
+"id": "Lab 243",
+  "modulo": "Linux",
+  "numero": "Lab 243",
+  "titulo": "Administración de software.",
+  "descripcion_general": "El propósito de este laboratorio es actualizar y revertir los efectos de la misma mediante el uso de the packege manager o gestor de paquetes. Finalmente, se llevará acabo la instalación de la AWS Command Line Interface (CLI).",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["SSH", "Amazon Linux EC2", "AWS CLI", "Packege Manager"],
+  "pasos": [
+    {
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+      ]
+    }
+  ]
 }
 ]
