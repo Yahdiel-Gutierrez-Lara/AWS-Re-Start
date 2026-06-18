@@ -1025,5 +1025,134 @@
       ]
     }
   ]
+},
+{
+  "id": "Lab 249",
+  "modulo": "Linux",
+  "numero": "Lab 249",
+  "titulo": "El shell bash.",
+  "descripcion_general": "El propósito de este laboratorio es aprender como crear alias y trabajar con ellos. Además del uso de la variable PATH y como añadir de una nueva carpeta a esta.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["SSH", "Amazon Linux EC2", "Shell Bash"],
+  "pasos": [
+    {   
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+        ]
+    },
+    {
+      "subtitulo":"Paso 1. Crear un alias para una ooperación de respaldo (backup).",
+      "secciones":[
+        {"texto":"Un alias nos permite reemplazar un comando largo, complo difícil de recordar para agilizar el trabajo. En este caso, se utilizara para realizar respaldos por medio del comando **tar**. \n Definimos el alias nombrandolo como backup con el comando **alias backup='tar -cvzf '**."},
+        {
+          "imagen": "assets/lab-249/01.png",
+          "descripción": "Definiendo el alias."
+        },
+        {"texto":"Recordar que: \n **-c** es para crear. \n **-v** perimite visualizar el proceso en pantalla. \n **-z** es para comprimir el archivo. \n **-f** corresponde a nombrar el archivo creado. \n Para crear el respaldo de la carpeta companyA ejecutamos **backup backup_companyA.tar.gz CompanyA**."},
+        {
+          "imagen": "assets/lab-249/02.png",
+          "descripción": "Creación del respaldo."
+        },
+        {"texto":"Comprobamos su creación usando **ls**."},
+        {
+          "imagen": "assets/lab-249/03.png",
+          "descripción": "Backup creado correctamente."
+        }
+      ]
+    },
+    {
+      "subtitulo": "Paso 2. Explora y actualiza la variable de entorno PATH.",
+      "secciones":[
+        {"texto":"La variable de entorno PATH es una lista de directorios que le indica al sistema operativo dónde buscar archivos ejecutables cuando escribes un comando. \n El siguiente paso es una demostración de su uso."},
+        {"texto":"Si queremos navegar a la carpeta bin dentro la carpeta personal (home) de CompanyA usamos el comando **cd /home/ec2-user/CompanyA/bin**. \n Dentro podemos ejecutar el archivo hello.sh **./hello.sh**."},
+        {
+          "imagen": "assets/lab-249/04.png",
+          "descripción": "hello.sh output."
+        },
+        {"texto":"Si retocedemos a la carpeta companyA **cd ..** también podemos ejecutarlo usando **./bin/hello.sh**."},
+        {
+          "imagen": "assets/lab-249/06.png",
+          "descripción": "hello.sh output."
+        },
+        {"texto":"Sin embargo, al tratar de ejecutarlo sin apuntar a la carpeta bin no tendremos el resultado esperado **./hello.sh**."},
+        {
+          "imagen": "assets/lab-249/07.png",
+          "descripción": "hello.sh command not found."
+        },
+        {"texto":"Para conocer el contenido de la variable PATH usaremos **echo $PATH**."},
+        {
+          "imagen": "assets/lab-249/08.png",
+          "descripción": "Valor actual de PATH."
+        },
+        {"texto":"Declaramos un nuevo valor para la variable PATH que apunte a la carpeta bin dentro de la carpeta companyA **PATH=$PATH:/home/ec2-user/CompanyA/bin** y ejecutamos el archivo hello.sh."},
+        {
+          "imagen": "assets/lab-249/09.png",
+          "descripción": "Actualización de PATH."
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "Lab 253",
+  "modulo": "Linux",
+  "numero": "Lab 253",
+  "titulo": "El shell bash (Desafío).",
+  "descripcion_general": "El propósito de este laboratorio es aprender ",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["SSH", "Amazon Linux EC2", "Shell Bash"],
+  "pasos": [
+    {   
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+        ]
+    },
+    {   
+      "subtitulo": "Ejercicio de scripting en shell bash.",
+      "secciones": [
+        {
+          "texto": "Genera un script que cumpla con lo siguiente: \n Crea 25 archivos vacíos (0 KB). (Pista: Usa el comando touch). \n Los nombres de los archivos deben ser <tuNombre><número>, <tuNombre><número+1>, <tuNombre><número+2>, y así sucesivamente. \n Diseña el script de manera que cada vez que lo ejecutes, cree el siguiente lote de 25 archivos con números ascendentes, comenzando desde el último o máximo número que ya exista. \n No escribas estos números de forma fija (hard code). Debes generarlos utilizando automatización."
+        },
+        {
+          "imagen": "assets/lab-253/extra01.png",
+          "descripción": "Código final para el desafío."
+        },
+        {
+          "texto": "¿Cómo funciona? \n En primer lugar **ultimo='$HOME/.ultimo_numero_touch.txt'** es una variable que consulta un archivo oculto en el directorio personal del usuario en donde se almacenara el último valor de archivos generados. Originalmente se planteo el uso de una variable dentro del código y no una consulta a un archivo externo, sin embargo, esto no resulta pues el script reinicia este valor cada que se ejecuta. \n El condicional if es para verificar que se encuentre creado el archivo y tenga un valor dentro, en caso contrario, el valor será considerado como 0. \n El ciclo principal es un for que va de 1 a 25 y donde se crean los archivos en lotes de 25 mediante el comando **touch**. \n Finalmente aprovechamos el comando **echo** para que el valor final **numero** de está ejecución sea escrito dentro de la variable **último**."
+        },
+        {
+          "imagen": "assets/lab-253/06.png",
+          "descripción": "Script ejecutado."
+        }
+        ]
+    },
+    {
+      "subtitulo": "Errores dentro del proceso.",
+      "secciones":[
+        {
+          "imagen": "assets/lab-253/01.png"
+        },
+        {
+          "imagen": "assets/lab-253/02.png"
+        },
+        {
+          "imagen": "assets/lab-253/04.png",
+          "descripción": "Errores de sintaxis por espacios omitidos o suprimidos."
+        },
+        {
+          "imagen": "assets/lab-253/extra.png",
+          "descripción": "El archivo donde se guarda el último valor no se generaba por la falta del comando  **echo '$numero' > '$ultimo'** ."
+        }
+      ]
+    }
+  ]
 }
 ]
