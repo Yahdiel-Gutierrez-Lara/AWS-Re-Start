@@ -228,7 +228,7 @@
     "pasos": [
       {"subtitulo":"NOTA IMPORTANTE.",
       "secciones":[
-        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
       ]
       },
       {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
@@ -289,7 +289,7 @@
     "pasos": [
       {"subtitulo":"NOTA IMPORTANTE.",
       "secciones":[
-        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
       ]
       },
       {"subtitulo":"Paso 1. Creación de usuarios.",
@@ -359,7 +359,7 @@
 
       {"subtitulo":"NOTA IMPORTANTE.",
       "secciones":[
-        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."}
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."}
       ]
       },
       {"subtitulo":"Paso 1. Realizar el tutorial de vimtutor.",
@@ -419,7 +419,7 @@
 
     {"subtitulo":"NOTA IMPORTANTE.",
     "secciones":[
-    {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+    {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
     ]
     },
     {"subtitulo":"Paso 1. Creando una carpeta estructurada.",
@@ -501,7 +501,7 @@
 
       {"subtitulo":"NOTA IMPORTANTE.",
       "secciones":[
-        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
       ]
       },
       {"subtitulo":"Paso 1. Creando un backup.",
@@ -550,7 +550,7 @@
     "pasos": [
       {"subtitulo":"NOTA IMPORTANTE.",
       "secciones":[
-        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
+        {"texto":"En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo. "}
       ]
       },
       {"subtitulo":"Paso 1. Cambiar el propietario de archivos y carpetas.",
@@ -621,7 +621,7 @@
       "subtitulo": "NOTA IMPORTANTE.",
       "secciones": [
         {
-          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
         }
       ]
     },
@@ -688,7 +688,7 @@
       "subtitulo": "NOTA IMPORTANTE.",
       "secciones": [
         {
-          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
         }
       ]
     },
@@ -780,7 +780,7 @@
       "subtitulo": "NOTA IMPORTANTE.",
       "secciones": [
         {
-          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitito en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
         }
       ]
     }
