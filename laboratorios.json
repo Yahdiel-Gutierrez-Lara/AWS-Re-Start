@@ -1,7 +1,7 @@
 [
   {
     "id": "Lab 11",
-    "modulo": "Cloud Foundations",
+    "modulo": "Fundamentos de Cloud",
     "numero": "Lab 11",
     "titulo": "Introducción a Amazon EC2",
     "descripcion_general": "Este laboratorio explora el cómo lanzar, redimensionar, administrar y monitorear una instancia de Amazon EC2 que ejecuta una página web sencilla.",
