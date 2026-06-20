@@ -1102,7 +1102,7 @@
   "modulo": "Linux",
   "numero": "Lab 253",
   "titulo": "El shell bash (Desafío).",
-  "descripcion_general": "El propósito de este laboratorio es aprender ",
+  "descripcion_general": "El propósito de este laboratorio es aprender como desarrollar scripts y ejecutarlos usando la shell bash.",
   "status": "done",
   "status_texto": "Completado",
   "tags": ["SSH", "Amazon Linux EC2", "Shell Bash"],
@@ -1154,5 +1154,49 @@
       ]
     }
   ]
+},
+{
+"id": "Lab 261",
+  "modulo": "Redes",
+  "numero": "Lab 261",
+  "titulo": "Direcciones IP públicas y privadas.",
+  "descripcion_general": "El propósito de este laboratorio es aprender ",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["IP pública", "IP privada", "Arquitectura de clientes"],
+  "pasos": []
+},
+{
+"id": "Lab 262",
+  "modulo": "Redes",
+  "numero": "Lab 262",
+  "titulo": "Direcciones IP estáticas y dinámicas.",
+  "descripcion_general": "El propósito de este laboratorio es aprender ",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["IP estáticas", "IP dinámicas", "Arquitectura de clientes"],
+  "pasos": []
+},
+{
+"id": "Lab 263",
+  "modulo": "Redes",
+  "numero": "Lab 263",
+  "titulo": "Creación de subredes en una VPC.",
+  "descripcion_general": "El propósito de este laboratorio es aprender ",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["Subredes", "VPC", "Requerimentos del cliente", "IP's"],
+  "pasos": []
+},
+{
+"id": "Lab 264",
+  "modulo": "Redes",
+  "numero": "Lab 264",
+  "titulo": "Recursos de redes para una VPC.",
+  "descripcion_general": "El propósito de este laboratorio es aprender ",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["Subnredes", "VPC", "NACLs", "Tablas de enrutamiento", "Internet gatway", "Security Group"],
+  "pasos": []
 }
 ]
