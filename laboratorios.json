@@ -1164,7 +1164,45 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": ["IP pública", "IP privada", "Arquitectura de clientes"],
-  "pasos": []
+  "pasos": [
+  {
+    "subtitulo":"Problemática presentada",
+    "secciones":[
+     {"texto":"Hemos recibido el siguiente correo: \n Hola, equipo de soporte en la nube: \n Actualmente tenemos una red privada virtual (VPC) con un rango CIDR de 10.0.0.0/16. En esta VPC tenemos dos instancias de Amazon Elastic Compute Cloud (Amazon EC2): instancia A e instancia B. \n Aunque ambas se encuentran en la misma subred y tienen las mismas configuraciones respecto a los recursos de AWS, la instancia A no puede acceder a Internet, mientras que la instancia B sí puede acceder a Internet. \n Creo que el problema podría estar relacionado con las instancias EC2, pero no estoy seguro. \n También tengo una pregunta sobre el uso de un rango público de direcciones IP, como 12.0.0.0/16, para una VPC que me gustaría implementar. ¿Eso podría causar algún problema? \n Adjunto nuestra arquitectura como referencia. \n ¡Gracias! \n Jess \n Administrador de la nube (Cloud Admin)"}, 
+     {"imagen":"assets/lab-261/arq.png"}
+    ]
+  },
+  {
+    "subtitulo":"Paso 1. Revisión de las instancias A y B",
+    "secciones":[
+      {"texto":"Accedemos a la AWS Management console y localizamos nuestras instancias EC2."},
+      {"imagen":"assets/lab-261/02.png"},
+      {"imagen":"assets/lab-261/03.png"},
+      {"texto":"Seleccionamos la instancia A y revisamos sus detalles y el panel de networking."},
+      {"imagen":"assets/lab-261/06.png"},
+      {"texto":"Haremos lo mismo con la instancia B."},
+      {"imagen":"assets/lab-261/05.png"},
+      {"texto":"Ahora podemos observar con mayor claridad el problema, la instancia A no tiene asignada una IP pública como el instancia B, solamente tiene una IP privada. Una IP privada no puede ser consultada desde fuera de una VPC, caso contrario a una IP pública."}
+    ]
+  },
+  {
+    "subtitulo":"Paso 2. Comprobando la conexión a la instancia A usando SSH",
+    "secciones":[
+      {"texto":"Como se ha mencionado con anterioridad, la forma de conectarse a la terminar se encuentra explicada en el laboratorio 225, consultar para más detalles."},
+      {"texto":"Accedemos a la terminar y probaremos el siguiente comando **ssh -i labsuser.pem ec2-user@10.0.10.62**"},
+      {"imagen":"assets/lab-261/07.png"},
+      {"imagen":"assets/lab-261/08.png"},
+      {"texto":"El resultado esperado: no se obtiene una conexión a la instancia A."}
+    ]
+  },
+  {
+    "subtitulo":"Duda técnica del cliente",
+    "secciones":[
+      {"texto":"También tengo una pregunta sobre el uso de un rango público de direcciones IP, como 12.0.0.0/16, para una VPC que me gustaría implementar. ¿Eso podría causar algún problema?"},
+      {"texto":"Dentro de la documentación de AWS nos habla acerca de la RFC 1918 donde mencionan 3 clases de IP que pueden ser usados de forma local sin generar conflictos. \n Clase A: 10.0.0.0 a 10.255.255.255 \n Clase B: 172.16.0.0 a 172.31.255.255 \n Clase C: 192.168.0.0 a 192.168.255.255 \n La IP 12.0.0.0/16 no se encuentra establecida, por lo que esta tiene un propietario externo, es decir, es parte de un segmento del internet público, por lo que no es recomendable utilizarla. \n Ahora bien, si se usa puede generar un conflicto de conexión, ya que, al establecer una VPC existe una regla donde la IP se establece como local en las tablas de enrutamiento. Esto implica que al intentar conectarse con un cualquier IP que inicie en 12.0. será enviada directamente dentro de la VPC sin intentar salir al tráfico de internet y por ello la solicitud será descartada."}
+    ]
+  }
+]
 },
 {
 "id": "Lab 262",
