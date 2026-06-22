@@ -1297,11 +1297,11 @@
       {"texto":"Entonces, comenzamos las configuraciones."},
       {"imagen":"assets/lab-263/03.png"},
       {"texto":"Seleccionamos IPv6 como descativada. Solo una zona de disponibilidad, una subnet pública y sin subnet privada."},
-      {"imagen":"assets/lab-262/05.png"},
-      {"imagen":"assets/lab-262/06.png"},
+      {"imagen":"assets/lab-263/05.png"},
+      {"imagen":"assets/lab-263/06.png"},
       {"texto":"Podemos visualizar su Preview. Y finalizamos dando en crear."},
-      {"imagen":"assets/lab-262/07.png"},
-      {"imagen":"assets/lab-262/08.png"}
+      {"imagen":"assets/lab-263/07.png"},
+      {"imagen":"assets/lab-263/08.png"}
     ]
   }
     ]
@@ -1315,6 +1315,39 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": ["Subnredes", "VPC", "NACLs", "Tablas de enrutamiento", "Internet gatway", "Security Group"],
-  "pasos": []
+  "pasos": [
+    {"imagen":"assets/lab-264/01.png"},
+    {"imagen":"assets/lab-264/02.png"},
+    {"imagen":"assets/lab-264/03.png"},
+    {"imagen":"assets/lab-264/04.png"},
+    {"imagen":"assets/lab-264/05.png"},
+    {"imagen":"assets/lab-264/06.png"},
+    {"imagen":"assets/lab-264/07.png"},
+    {"imagen":"assets/lab-264/08.png"},
+    {"imagen":"assets/lab-264/09.png"},
+    {"imagen":"assets/lab-264/10.png"},
+    {"imagen":"assets/lab-264/11.png"},
+    {"imagen":"assets/lab-264/12.png"},
+    {"imagen":"assets/lab-264/13.png"},
+    {"imagen":"assets/lab-264/14.png"},
+    {"imagen":"assets/lab-264/15.png"},
+    {"imagen":"assets/lab-264/16.png"},
+    {"imagen":"assets/lab-264/17.png"},
+    {"imagen":"assets/lab-264/18.png"},
+    {"imagen":"assets/lab-264/19.png"},
+    {"imagen":"assets/lab-264/21.png"},
+    {"imagen":"assets/lab-264/22.png"},
+    {"imagen":"assets/lab-264/23.png"},
+    {"imagen":"assets/lab-264/24.png"},
+    {"imagen":"assets/lab-264/25.png"},
+    {"imagen":"assets/lab-264/26.png"},
+    {"imagen":"assets/lab-264/27.png"},
+    {"imagen":"assets/lab-264/28.png"},
+    {"imagen":"assets/lab-264/29.png"},
+    {"imagen":"assets/lab-264/30.png"},
+    {"imagen":"assets/lab-264/31.png"},
+    {"imagen":"assets/lab-264/32.png"},
+    {"imagen":"assets/lab-264/33.png"}
+  ]
 }
 ]
