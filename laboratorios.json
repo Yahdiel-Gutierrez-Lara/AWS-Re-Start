@@ -1303,39 +1303,8 @@
       {"imagen":"assets/lab-262/07.png"},
       {"imagen":"assets/lab-262/08.png"}
     ]
-  },
-  {
-    "subtitulo":"Paso 2. Parando la instancia creada para pruebas.",
-    "secciones":[
-      {"texto":"Una vez creada la instancia, tomaremos nota de su IP pública y la detendremos para observar que sucede."},
-      {"imagen":"assets/lab-262/08.png", 
-      "descripcion": "IP pública de test instance antes de detenerla."},
-      {"imagen":"assets/lab-262/07.png"},
-      {"imagen":"assets/lab-262/10.png"},
-      {"imagen":"assets/lab-262/12.png", 
-      "descripcion": "IP pública de test instance l volverla a inicializar."},
-      {"texto":"El resultado esperado: Tal y como mencionaba el cliente, la IP cambió."}
-    ]
-  },
-  {
-    "subtitulo":"Paso 3. Generando una IP estática.",
-    "secciones":[
-      {"texto":"De acuerdo con las necesidades del cliente, requieren una IP que no cambie con el tiempo y es aquí donde AWS puede ofrecer una solución usando las Elastic IP. Una Elastic IP es una dirección IPv4 pública estática que puedes asociar a una instancia EC2. Aunque detengas y vuelvas a iniciar la instancia, la Elastic IP seguirá siendo la misma mientras permanezca asociada."},
-      {"texto":"Para crearla es necesario ir a la sección **Network and Security**  > **Elastic IPs** dentro de la AWS Management Console. Una vez dentro basta con dar clic en el botón **Allocate Elastic IP adress** y mantener todos los parámetros por defecto en esta ocasión. "},
-      {"imagen":"assets/lab-262/extra01.png"},
-      {"imagen":"assets/lab-262/extra02.png"},
-      {"imagen":"assets/lab-262/15.png"},
-      {"texto":"Una vez creada, la seleccionamos y desplegamos el menú de acciones. Damos clic en associate Elastic IP adress."},
-      {"imagen":"assets/lab-262/16.png"},
-      {"texto":"Al ingresar a la opción podemos desplega el menú de instancias y seleccionar nuestra instancia de prueba."},
-      {"imagen":"assets/lab-262/17.png"},
-      {"texto":"Terminado este proceso regresamos a la pestaña de instancias y seleccionamos test instance para verificar que la Elastic IP quedo asignada."},
-      {"imagen":"assets/lab-262/22.png"},
-      {"texto":"Si apagamos y prendemos la instancia podemos comprobar que no cambia la IP."}
-    ]
   }
-
-  ]
+    ]
 },
 {
 "id": "Lab 264",
