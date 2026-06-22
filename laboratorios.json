@@ -1160,7 +1160,7 @@
   "modulo": "Redes",
   "numero": "Lab 261",
   "titulo": "Direcciones IP públicas y privadas.",
-  "descripcion_general": "El propósito de este laboratorio es aprender ",
+  "descripcion_general": "El propósito de este laboratorio es aprender la diferencia entre una IP pública y una IP privada, y como puede afectar el desarrollo de las soliciones en AWS.",
   "status": "done",
   "status_texto": "Completado",
   "tags": ["IP pública", "IP privada", "Arquitectura de clientes"],
