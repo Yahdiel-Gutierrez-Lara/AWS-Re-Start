@@ -1383,5 +1383,60 @@
     ]
     }
   ]
+},
+{
+"id": "Lab 265",
+  "modulo": "Redes",
+  "numero": "Lab 265",
+  "titulo": "Comandos de solución de problemas del protocolo de internet.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
+},
+{
+"id": "Lab 266",
+  "modulo": "Redes",
+  "numero": "Lab 266",
+  "titulo": "Solución de problemas de red.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
+},
+{
+"id": "Lab 267",
+  "modulo": "Redes",
+  "numero": "Lab 267",
+  "titulo": "Creación de una VPC y lanzamiento de un servidor web.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
+},
+{
+"id": "Lab 276",
+  "modulo": "Seguridad",
+  "numero": "Lab 276",
+  "titulo": "Endurecimiento de la red.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
+},
+{
+"id": "Lab 277",
+  "modulo": "Seguridad",
+  "numero": "Lab 277",
+  "titulo": "Endurecimiento de sistemas.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
 }
 ]
