@@ -1389,10 +1389,10 @@
   "modulo": "Redes",
   "numero": "Lab 265",
   "titulo": "Comandos de solución de problemas del protocolo de internet.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es conocer los comandos para soluciones de problemas de acuerdo a la capa a la que pertenece según el modelo OSI.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["Troubleshooting commands"],
   "pasos": [
     {
       "subtitulo": "NOTA IMPORTANTE.",
@@ -1403,19 +1403,48 @@
       ]
     },
     {
-      "subtitulo":"",
+      "subtitulo":"Practicando los comandos para solución de problemas.",
       "secciones":[
-        {"texto":""},
+        {"texto":"En laboratorios anteriores se menciona el modelo OSI, sin embargo, no se reviso a profundidad. El modelo Open Systems Interconnection (OSI) es un modelo conceptual creado por la Organización Internacional para la Estandarización, el cual permite que diversos sistemas de comunicación se conecten usando protocolos estándar. De acuerdo con la capa que se encuentre podemos ejecutar diferentes comandos para soluciones de problemas."},
         {"imagen":"assets/lab-265/01.png",
-        "descripcion":""}
+        "descripcion":"Modelo OSI."}
       ]
     },
     {
-      "subtitulo":"",
+      "subtitulo":"Layer 3 (network): Comandos ping y traceroute.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-265/01.png",
-        "descripcion":""}
+        {"texto":"Comando **ping**. \n Este comando se ejecuta cuando se necesitar comprobar la conectividad de una instancia EC2 lanzada previamente. Ejecutaremos **ping 8.8.8.8 -c 5** (El -c especifica el 'count' (conteo) y el 5 determina el número exacto de solicitudes (paquetes) que se van a enviar.)."},
+        {"imagen":"assets/lab-265/02.png",
+        "descripcion":"Al ejecutarlo podemos usar una IP o un URL, en este caso se uso la IP de google."},
+        {"texto":"Comando **traceroute**. \n Este comando se emplea cuando el cliente experimenta baja latencia, es decir, su conexión esta tomando demasiado tiempo y tiene solicitudes perdidas. Ejecutaremos **traceroute 8.8.8.8**."},
+        {"imagen":"assets/lab-265/03.png",
+        "descripcion":"La pérdida de paquetes, expresada en porcentajes, puede ocurrir en cada salto, y esta pérdida usualmente se debe a un problema con la red de área local (LAN) del usuario o con su ISP."}
+      ]
+    },
+    {
+      "subtitulo":"Layer 4 (transport): Comandos netstat y telnet.",
+      "secciones":[
+        {"texto":"Comando **netstat**. \n Muestra las conexiones TCP actualmente establecidas en las que el host está escuchando. Puedes ejecutar este comando para entender qué puertos están escuchando y cuáles no."},
+        {"texto":"Ejecutamos el comando **netstat -tp** para confirmar las conexiones establecidas."},
+        {"imagen":"assets/lab-265/04.png"},
+        {"texto":"Ejecutamos el comando **netstat -tlp** para visualizar los servicios en escucha pero no resuelve los números de puerto."},
+        {"imagen":"assets/lab-265/05.png"},
+        {"texto":"Comando **telnet**. \n El comando telnet confirma la conexión TCP a un servidor web al realizar una solicitud HTTP si se utiliza el puerto 80 para telnet."},
+        {"imagen":"assets/lab-265/06.png", 
+        "descripcion":"Ejecutamos **sudo yum install telnet -y**."},
+        {"imagen":"assets/lab-265/07.png", 
+        "descripcion":"Ejecutamos **telnet www.google.com 80**."}
+      ]
+    },
+    {
+      "subtitulo":"Layer 7 (application): Comando curl.",
+      "secciones":[
+        {"texto":"Comando **curl**. \n Puede usarse para transferir data entre tú y el servidor. Ejecutaremos **curl -vLo /dev/null https://aws.com**."},
+        {"texto":"Puedes utilizar las siguientes opciones de comando: \n -I: Esta opción proporciona información de la cabecera (header) y especifica que el método de solicitud es HEAD. \n -i: Esta opción especifica que el método de solicitud es GET. \n k: Esta opción le indica al comando que ignore los errores de SSL.\n -v: Esta opción es para el modo detallado (verbose). Muestra lo que la computadora está haciendo o lo que el software está cargando durante el inicio.\n -o /dev/null: Esta opción enviará el HTML y el CSS de la respuesta a un dispositivo nulo (null), descartando la salida visual del cuerpo."},
+        {"imagen":"assets/lab-265/09.png"},
+        {"texto":"Comando **traceroute**. \n Este comando se emplea cuando el cliente experimenta baja latencia, es decir, su conexión esta tomando demasiado tiempo y tiene solicitudes perdidas. Ejecutaremos **traceroute 8.8.8.8**."},
+        {"imagen":"assets/lab-265/10.png",
+        "descripcion":"Resultado de la ejecución."}
       ]
     }
   ]
@@ -1425,10 +1454,10 @@
   "modulo": "Redes",
   "numero": "Lab 266",
   "titulo": "Solución de problemas de red.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es analizar el escenario del cliente, explorar las posibles causas y solucionar el problema de conectividad.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["Resolviendo problemas de conectividad."],
   "pasos": [
     {
       "subtitulo": "NOTA IMPORTANTE.",
@@ -1439,11 +1468,45 @@
       ]
     },
     {
-      "subtitulo":"",
+      "subtitulo":"Problematica planteada.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-266/01.png",
-        "descripcion":""}
+        {"texto":"¡Hola, Soporte de Cloud! \n Cuando creo un servidor Apache a través de la línea de comandos, no puedo hacerle ping. También me da un error cuando introduzco la dirección IP en el navegador. ¿Podrían ayudarme a averiguar qué está bloqueando mi conexión. \n ¡Gracias! \n Ana Contractor"},
+        {"imagen":"assets/lab-266/arq.png",
+        "descripcion":"Arquitectura del cliente."}
+      ]
+    },
+    {
+      "subtitulo":"Revisando las posibles causas.",
+      "secciones":[
+        {"texto":"Instalaremos httpd usando la terminal SSH ejecutando **sudo systemctl status httpd.service**."},
+        {"imagen":"assets/lab-266/01.png"},
+        {"texto":"Para activarlo usaremos el comando **sudo systemctl start httpd.service** y revisaremos su estado con **sudo systemctl status httpd.service**."},
+        {"imagen":"assets/lab-266/02.png",
+        "descripcion":"Revisando si se encuentra activado el httpd."},
+        {"texto":"Si abrimos el navegador e insertamos el IP observaremos que no podemos obtener una conexión."},
+        {"imagen":"assets/lab-266/03.png"},
+        {"texto":"Para comenzar a revisar los componentes de la VPC usaremos la AWS Management console y ubicaremos la sección Subnet."},
+        {"imagen":"assets/lab-266/04.png"},
+        {"imagen":"assets/lab-266/05.png",
+        "descripcion":"Revisando Public Subnet 1."},
+        {"texto":"El siguiente sería revisar las Route tables"},
+        {"imagen":"assets/lab-266/06.png"},
+        {"texto":"Revisando la sección Internet gateway"},
+        {"imagen":"assets/lab-266/07.png"}
+      ]
+    },
+    {
+      "subtitulo":"Solucionando el problema.",
+      "secciones":[
+        {"texto":"Revisando las configuraciones de los security group."},
+        {"imagen":"assets/lab-266/08.png",
+        "descripcion":"Panel security group."},
+        {"texto":"Al revisar más a detalle la sección de Inbound rules podemos observar que solamente se encuentra habilitado el tipo SSH. Editaremos las inbound rules y añadiremos las de tipo HTTP y HTTPS para cualquier fuente IPv4."},
+        {"imagen":"assets/lab-266/09.png"},
+        {"imagen":"assets/lab-266/10.png"},
+        {"texto":"Regresamos al navegador y damos refresh."},
+        {"imagen":"assets/lab-266/11.png",
+        "descripcion":"Servidor web apache cargado."}
       ]
     }
   ]
