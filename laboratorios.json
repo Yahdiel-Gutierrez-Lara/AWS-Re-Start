@@ -1393,7 +1393,32 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+      ]
+    },
+    {
+      "subtitulo":"",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-265/01.png",
+        "descripcion":""}
+      ]
+    },
+    {
+      "subtitulo":"",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-265/01.png",
+        "descripcion":""}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 266",
@@ -1404,7 +1429,24 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo": "NOTA IMPORTANTE.",
+      "secciones": [
+        {
+          "texto": "En este laboratorio se repite el proceso de conexión a la instancia EC2 por medio del programa PuTTY.exe detallado en el laboratorio 225, por lo que será omitido en este y otros laboratorios relacionados con Linux, ya que el proceso siempre es el mismo."
+        }
+      ]
+    },
+    {
+      "subtitulo":"",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-266/01.png",
+        "descripcion":""}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 267",
@@ -1415,7 +1457,16 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-267/01.png",
+        "descripcion":""}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 276",
@@ -1426,7 +1477,16 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-276/01.png",
+        "descripcion":""}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 277",
@@ -1437,6 +1497,15 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-276/01.png",
+        "descripcion":""}
+      ]
+    }
+  ]
 }
 ]
