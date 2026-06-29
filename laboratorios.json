@@ -1519,7 +1519,7 @@
   "descripcion_general": "El propósito de este laboratorio es la creación de una VPC, añadiendo componentes adicionales con el fin de generar una red personalizada para un cliente de Fortune 110. También serán creados los security groups para una instancia EC2. Finalmente configurar la instancia EC2 para ejecutar un servidor web lanzado dentro de la VPC.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["VPC, EC2, Security groups, Route tables, subnets"],
   "pasos": [
     {
       "subtitulo":"Diagrama del cliente",
@@ -1597,16 +1597,61 @@
   "modulo": "Seguridad",
   "numero": "Lab 276",
   "titulo": "Endurecimiento de la red.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es utilizar el servicio Amazon Inspector para detectar las vulnerabilidades de los recursos de AWS, especialmente las funciones de AWS Lambda. Aprenderemos a activarlo, interpretar los reportes de vulnerabilidades y remediar los descubrimientos.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["Amazon Inspector"],
   "pasos": [
     {
-      "subtitulo":"",
+      "subtitulo":"Paso 1. Activar the Amazon inspector",
+      "secciones":[
+        {"texto":"Accedemos a la AWS Management console y con la barra buscadora encontraremos el servicio Inspector."},
+        {"imagen":"assets/lab-276/01.png"},
+        {"texto":"Para activarlo daremos clic en el botón Get Started."},
+        {"imagen":"assets/lab-276/02.png"},
+        {"texto":"Al dar clic nos llevara a otra ventana donde daremos clic en Activate this account."},
+        {"imagen":"assets/lab-276/03.png"},
+        {"texto":"Nos llevaran a una ventana nombrada Summary, daremos refresh hasta que en la sección Environment coverage nos aparezca 100% en Lambda functions."},
+        {"imagen":"assets/lab-276/04.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Revisión de los recursos inspeccionados",
+      "secciones":[
+        {"texto":"Localizaremos la sección Findings para obsservar las vulnerabilidades detectadas."},
+        {"imagen":"assets/lab-276/05.png"},
+        {"texto":"Daremos clic en CVE-2024-47081 y visualizaremos el panel emergente a la derecha."},
+        {"imagen":"assets/lab-276/06.png"},
+        {"texto":"Bajaremos hasta la sección Vulnerability details."},
+        {"imagen":"assets/lab-276/07.png"},
+        {"texto":"Al dar clic al hipervinculo CVE-2024-47081 en azul nos llevara una pestaña donde detallan la vulnerabilidad."},
+        {"imagen":"assets/lab-276/08.png",
+        "descripcion":"National Vulnerability Database NVD"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Remediando las vulnerabilidades encontradas",
       "secciones":[
         {"texto":""},
-        {"imagen":"assets/lab-276/01.png",
+        {"imagen":"assets/lab-276/09.png",
+        "descripcion":""},
+        {"texto":""},
+        {"imagen":"assets/lab-276/10.png",
+        "descripcion":""},
+        {"texto":""},
+        {"imagen":"assets/lab-276/11.png",
+        "descripcion":""},
+        {"texto":""},
+        {"imagen":"assets/lab-276/12.png",
+        "descripcion":""},
+        {"texto":""},
+        {"imagen":"assets/lab-276/14.png",
+        "descripcion":""},
+        {"texto":""},
+        {"imagen":"assets/lab-276/13.png",
+        "descripcion":""},
+        {"texto":""},
+        {"imagen":"assets/lab-276/15.png",
         "descripcion":""}
       ]
     }
