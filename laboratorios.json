@@ -1516,17 +1516,78 @@
   "modulo": "Redes",
   "numero": "Lab 267",
   "titulo": "Creación de una VPC y lanzamiento de un servidor web.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es la creación de una VPC, añadiendo componentes adicionales con el fin de generar una red personalizada para un cliente de Fortune 110. También serán creados los security groups para una instancia EC2. Finalmente configurar la instancia EC2 para ejecutar un servidor web lanzado dentro de la VPC.",
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
   "pasos": [
     {
-      "subtitulo":"",
+      "subtitulo":"Diagrama del cliente",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-267/01.png",
-        "descripcion":""}
+        {"texto":"En este laboratorio se nos presenta la siguiente arquitectura objetivo."},
+        {"imagen":"assets/lab-267/arq.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1.Creando la VPC.",
+      "secciones":[
+        {"texto":"Usando la AWS Management console, accederemos a la panel de VPC y daremos clic en Create VPC. Configurandolo de la siguiente forma: \n Seleccionamos **VPC and more** \n Deseleccionamos la opción **Auto-generate** del Name tag \n En IPv4 CIDR ingresamos 10.0.0.0/16 y en IPv6 CIDR seleccionamos NO IPv6 CIDR block \n Tenancy se queda como Default \n Seleccionamos 1 zona de disponibilidad, 1 subnet pública y 1 subnet privada \n En la sección Customize subnets CIDR blocks y declaramos: \n Public subnet CIDR block in us-west-2a: 10.0.0.0/24 \n Private subnet CIDR block in us-west-2a: 10.0.1.0/24"},
+        {"imagen":"assets/lab-267/01-04.png"},
+        {"texto":"En el panel de Preview nombraremos a la VPC como Lab VPC \n Las subnets serán nombradas: \n Public subnet : Public Subnet 1 \n Private subnet : Private Subnet 1"},
+        {"texto":"De igual forma nombraremos las route tables como: \n Public route table : Public Route Table \n Private route table : Private Route Table"},
+        {"imagen":"assets/lab-267/05.png"},
+        {"texto":"Daremos clic en create VPC y visualizaremos el resultado."},
+        {"imagen":"assets/lab-267/06.png"},
+        {"imagen":"assets/lab-267/07.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Creando subredes adicionales.",
+      "secciones":[
+        {"texto":"Regresando al panel de VPC localizaremos la sección Subnet y daremos clic, una vez dentro, daremos clic en el botón en Create Subnet. Dentro de los datos que nos piden es una VPC ID, seleccionaremos la creada previamente Lab VPC"},
+        {"imagen":"assets/lab-267/08.png"},
+        {"texto":"Nombraremos a esta nueva subnet como Public Subnet 2, sin preferencia en la zona de disponibilidad y con IPv4 subnet CIDR block declarado como 10.0.2.0/24"},
+        {"imagen":"assets/lab-267/09.png"},
+        {"texto":"Repetiremos el proceso de creación, pero ahora nombraremos a esta nueva subnet como Private Subnet 2, sin preferencia en la zona de disponibilidad y con IPv4 subnet CIDR block declarado como 10.0.3.0/24"},
+        {"imagen":"assets/lab-267/10.png"},
+        {"texto":"Visualizamos estás nuevas subnets creadas."},
+        {"imagen":"assets/lab-267/11.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Asociando las redes adicionales a las route tables.",
+      "secciones":[
+        {"texto":"Nuevamente regresaremos al panel principal de VPC y del lado izquierdo ubicaremos la sección Route tables. Seleccionamos Public Route Table y en el panel inferior desplegado localizaremos la sección Subnetss without explicit associations. Daremos clic en Edit subnet associations."},
+        {"imagen":"assets/lab-267/12.png"},
+        {"imagen":"assets/lab-267/13.png"},
+        {"texto":"En el caso de la Public Route Table seleccionamos Public Subnet 1 y Public Subnet 2  y damos clis en Save associations."},
+        {"imagen":"assets/lab-267/14.png"},
+        {"texto":"Al regresar al panel principal, seleccionaremos ahora la Private Route Table y repetiremos el proceso de asociación. Para la Private Route Table seleccionamos Private Subnet 1 y Private Subnet 2  y damos clis en Save associations."},
+        {"imagen":"assets/lab-267/14.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Creando los security group para la VPC.",
+      "secciones":[
+        {"texto":"Al terminar y regresar al panel principal de VPC, localizaremos de lado izquiero la sección Security groups y daremos clic en Create security group"},
+        {"imagen":"assets/lab-267/16.png"},
+        {"texto":"Configurandolo de la siguiente manera: \n Security group name : Web Security Group \n Description : Enable HTTP access \n VPC : seleccionamos Lab VPC \n En Inbound rules habilitamos las de tipoo HTTP, para cualquier IPv4 y en description : Permit web requests \n Daremos clic en crear."},
+        {"imagen":"assets/lab-267/17.png"},
+        {"texto":"Visualizamos el resultado."},
+        {"imagen":"assets/lab-267/18.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 5. Lanzando la instancia EC2 para el web server.",
+      "secciones":[
+        {"texto":"Usando la barra buscadora de la AWS Management Console entramos a la sección EC2 y daremos clic en el botón Launche instance."},
+        {"texto":"Configurandola de la siguiente manera: \n Name : Web Server 1 \n Application and OS Images (Amazon Machine Image) : Amazon Linux 2023 \n Instance Type : t3.micro \n Key pair name : vockey"},
+        {"imagen":"assets/lab-267/19.png"},
+        {"imagen":"assets/lab-267/20.png"},
+        {"texto":"En Network settings: \n VPC : Lab VPC \n Subnet : Public Subnet 2 \n Auto-assing public IP : Enable \n Firewall (Security groups) : Select existing security group \n Common security groups : Web Security group \n Finalmente en los Advance Details  > User Data pegaremos un código proporcionado por la IA."},
+        {"imagen":"assets/lab-267/21.png"},
+        {"texto":"Abriendo una pestaña del navegador privado pegaremos la IP del laboratorio y visualizaremos el resultado."},
+        {"imagen":"assets/lab-267/22.png"}
       ]
     }
   ]
