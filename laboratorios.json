@@ -1658,7 +1658,7 @@
   "descripcion_general": "El propósito de este laboratorio visualizar el alcance del servicio System Manager para administrar los parches para instancias EC2. Además de las alternativas para ejecutarlo en cada una de las instancias.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["System Manager, Patch baselines"],
   "pasos": [
     {
       "subtitulo":"Paso 1. Parchando las instancias de Linux usando las líneas de base por defecto. ",
@@ -1735,5 +1735,38 @@
       ]
     }
   ]
+},
+{
+"id": "Lab 279",
+  "modulo": "Seguridad",
+  "numero": "Lab 279",
+  "titulo": "Introducción a la gestión de identidades.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
+},
+{
+"id": "Lab 280",
+  "modulo": "Seguridad",
+  "numero": "Lab 280",
+  "titulo": "Malware de Firewall.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
+},
+{
+"id": "Lab 281",
+  "modulo": "Seguridad",
+  "numero": "Lab 281",
+  "titulo": "Supervisar una instancia EC2.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [],
+  "pasos": []
 }
 ]
