@@ -1702,52 +1702,36 @@
         {"imagen":"assets/lab-277/19.png"},
         {"texto":"Desplegamos el menú Actions > Modify patch groups"},
         {"imagen":"assets/lab-277/20.png"},
-        {"texto":""},
-        {"imagen":"assets/lab-277/21.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/22.png",
-        "descripcion":""}
+        {"texto":"Dentro de Modify patch groups, en la sección Patch groups introducir: WindowsProd \n Clic en el botón Add, y finalizamos con Close."},
+        {"imagen":"assets/lab-277/21.png"},
+        {"imagen":"assets/lab-277/22.png"}
       ]
     },
     {
       "subtitulo":"Paso 3. Parchando las instancias de Windows.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-277/23.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/24.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/25.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/26.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/27.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/28.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/29.png",
-        "descripcion":""}
+        {"texto":"Usando la barra buscadora de AWS Management Console nos dirigimos al servicio EC2 y visualizaremos nuestras instancias"},
+        {"texto":"Seleccionaremos cada instanicia Windows y modificaremos las etiquetas o Tags en el panel inferior. \n Tags > Manage Tags"},
+        {"imagen":"assets/lab-277/23.png"},
+        {"texto":"Dentro de la sección Manage Tags agregaremos una nueva \n Key : Patch Group \n WindowsProd. \n Clic en Save \n Repetiremos este proceso con cada una de las instancias Windows."},
+        {"imagen":"assets/lab-277/24.png"},
+        {"texto":"Nuevamente ingresaremos al servicio System Manager y la sección Node tools > Patch now, configurando lo siguiente: \n Patching operation:  Scan and install \n Reboot option: Reboot if needed \n Instances to patch: Patch only the target instances I specify \n Target selection: Specify instance tags \n Tag key:  Patch Group \n Tag value: WindowsProd \n Daremos clic en Add \n Finalmente, clic en Patch now"},
+        {"imagen":"assets/lab-277/25.png"},
+        {"texto":"Acontinuacion nos llevara a una pestaña de progreso y visualizaremos una de las instancias dando clic en el hipervinculo resaltado en azul en la columna Resourse id."},
+        {"imagen":"assets/lab-277/26.png"},
+        {"imagen":"assets/lab-277/27.png"},
+        {"texto":"Acontinuacion regresamos a System Manager y localizamos Run Command para visualizar los detalles del proceso anterior."},
+        {"imagen":"assets/lab-277/28.png"},
+        {"imagen":"assets/lab-277/29.png"}
       ]
     },
     {
       "subtitulo":"Paso 4. Verificación del cumplimiento.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-277/30.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/31.png",
-        "descripcion":""},
-        {"texto":""},
-        {"imagen":"assets/lab-277/32.png",
-        "descripcion":""}
+        {"texto":"Podemos visualizar los detalles de los parches ejecutados durante este laboratorio siguiendo la ruta Node Management > Patch Manager > Compliance reporting. \n Para poder navegar en la tabla daremos scroll de izquierda a derecha."},
+        {"imagen":"assets/lab-277/30.png"},
+        {"imagen":"assets/lab-277/31.png"},
+        {"imagen":"assets/lab-277/32.png"}
       ]
     }
   ]
