@@ -1655,7 +1655,7 @@
   "modulo": "Seguridad",
   "numero": "Lab 277",
   "titulo": "Endurecimiento de sistemas.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio visualizar el alcance del servicio System Manager para administrar los parches para instancias EC2. Además de las alternativas para ejecutarlo en cada una de las instancias.",
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
