@@ -1744,8 +1744,68 @@
   "descripcion_general": "El propósito de este laboratorio es",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
-  "pasos": []
+  "tags": ["IAM", "Permisos", "Usuarios"],
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Creando una politica para contraseñas de cuentas.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-279/01.png"},
+        {"imagen":"assets/lab-279/02.png"},
+        {"imagen":"assets/lab-279/03.png"},
+        {"imagen":"assets/lab-279/04.png"},
+        {"imagen":"assets/lab-279/05.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Explorando los usuarios y grupos de usuarios.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-279/06.png"},
+        {"imagen":"assets/lab-279/07.png"},
+        {"imagen":"assets/lab-279/08.png"},
+        {"imagen":"assets/lab-279/09.png"},
+        {"imagen":"assets/lab-279/10.png"},
+        {"imagen":"assets/lab-279/11.png"},
+        {"imagen":"assets/lab-279/12.png"},
+        {"imagen":"assets/lab-279/13.png"},
+        {"imagen":"assets/lab-279/14.png"},
+        {"imagen":"assets/lab-279/15.png"},
+        {"imagen":"assets/lab-279/16.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Añadiendo usuarios a los grupos de usuario .",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-279/17.png"},
+        {"imagen":"assets/lab-279/18.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Iniciando sesión y probando los permisos de usuario.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-279/19.png"},
+        {"imagen":"assets/lab-279/20.png"},
+        {"imagen":"assets/lab-279/21.png"},
+        {"imagen":"assets/lab-279/22.png"},
+        {"imagen":"assets/lab-279/23.png"},
+        {"imagen":"assets/lab-279/24.png"},
+        {"imagen":"assets/lab-279/25.png"},
+        {"imagen":"assets/lab-279/26.png"},
+        {"imagen":"assets/lab-279/27.png"},
+        {"imagen":"assets/lab-279/28.png"},
+        {"imagen":"assets/lab-279/29.png"},
+        {"imagen":"assets/lab-279/30.png"},
+        {"imagen":"assets/lab-279/31.png"},
+        {"imagen":"assets/lab-279/32.png"},
+        {"imagen":"assets/lab-279/33.png"},
+        {"imagen":"assets/lab-279/34.png"},
+        {"imagen":"assets/lab-279/35.png"}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 280",
