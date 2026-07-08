@@ -1816,7 +1816,62 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Confirmando Accesibilidad.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-280/01.png"},
+        {"imagen":"assets/lab-280/02.png"},
+        {"imagen":"assets/lab-280/03.png"},
+        {"imagen":"assets/lab-280/04.png"},
+        {"imagen":"assets/lab-280/05.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Inspeccionando el firewall de las redes de trabajo.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-280/06.png"},
+        {"imagen":"assets/lab-280/07.png"},
+        {"imagen":"assets/lab-280/08.png"},
+        {"imagen":"assets/lab-280/09.png"},
+        {"imagen":"assets/lab-280/10.png"},
+        {"imagen":"assets/lab-280/11.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Creando un firewall rule group.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-280/12.png"},
+        {"imagen":"assets/lab-280/13.png"},
+        {"imagen":"assets/lab-280/14.png"},
+        {"imagen":"assets/lab-280/15.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Asociando la rule group al firewall de la red de trabajo.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-280/16.png"},
+        {"imagen":"assets/lab-280/17.png"},
+        {"imagen":"assets/lab-280/18.png"},
+        {"imagen":"assets/lab-280/19.png"},
+        {"imagen":"assets/lab-279/20.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 5. Validando la solución.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-280/21.png"},
+        {"imagen":"assets/lab-280/22.png"},
+        {"imagen":"assets/lab-280/23.png"},
+        {"imagen":"assets/lab-280/24.png"}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 281",
