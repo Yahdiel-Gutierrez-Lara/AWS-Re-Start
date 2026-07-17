@@ -1874,6 +1874,76 @@
   ]
 },
 {
+"id": "Lab 281",
+  "modulo": "Seguridad",
+  "numero": "Lab 281",
+  "titulo": "Supervisar una instancia EC2.",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["CloudWatch alarm","CloudWatch dashboard","Amazon SNS"],
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Configuración de Amazon SNS.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-281/01.png"},
+        {"imagen":"assets/lab-281/02.png"},
+        {"imagen":"assets/lab-281/03.png"},
+        {"imagen":"assets/lab-281/04.png"},
+        {"imagen":"assets/lab-281/05.png"},
+        {"imagen":"assets/lab-281/06.png"},
+        {"imagen":"assets/lab-281/07.png"},
+        {"imagen":"assets/lab-281/08.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Crear una alarma de CloudWatch.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-281/09.png"},
+        {"imagen":"assets/lab-281/10.png"},
+        {"imagen":"assets/lab-281/11.png"},
+        {"imagen":"assets/lab-281/12.png"},
+        {"imagen":"assets/lab-281/13.png"},
+        {"imagen":"assets/lab-281/14.png"},
+        {"imagen":"assets/lab-281/15.png"},
+        {"imagen":"assets/lab-281/16.png"},
+        {"imagen":"assets/lab-281/17.png"},
+        {"imagen":"assets/lab-281/18.png"},
+        {"imagen":"assets/lab-281/19.png"},
+        {"imagen":"assets/lab-281/20.png"},
+        {"imagen":"assets/lab-281/21.png"},
+        {"imagen":"assets/lab-281/22.png"}
+        
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Probando la alarma de CloudWatch.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-281/23.png"},
+        {"imagen":"assets/lab-281/24.png"},
+        {"imagen":"assets/lab-281/25.png"},
+        {"imagen":"assets/lab-281/26.png"},
+        {"imagen":"assets/lab-281/27.png"},
+        {"imagen":"assets/lab-281/28.png"}
+        
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Creando un CloudWatch dashboard.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-281/29.png"},
+        {"imagen":"assets/lab-281/30.png"},
+        {"imagen":"assets/lab-281/31.png"}
+        
+      ]
+    }
+  ]
+},
+{
 "id": "Lab 268",
   "modulo": "Bases de datos",
   "numero": "Lab 268",
