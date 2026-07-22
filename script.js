@@ -2,6 +2,29 @@ let baseDatosLaboratorios = [];
 let vistaActual = "inicio"; // Estados: inicio, lista-labs, detalle-evidencia
 let moduloSeleccionado = "";
 
+async function cargarMarkdownDesdeJSON() {
+    try {
+        // Lee el archivo JSON
+        const respuesta = await fetch('contenido.json');
+        const datos = await respuesta.json();
+
+        // Muestra el título normal
+        document.getElementById('titulo-web').textContent = datos.titulo;
+
+        // Convierte el texto Markdown del JSON a HTML usando marked.parse()
+        const htmlConvertido = marked.parse(datos.textoMarkdown);
+
+        // Inserta el HTML resultante en el contenedor web
+        document.getElementById('contenido-markdown').innerHTML = htmlConvertido;
+
+    } catch (error) {
+        console.error('Hubo un error al cargar el archivo JSON:', error);
+        document.getElementById('titulo-web').textContent = 'Error al cargar el contenido';
+    }
+}
+
+cargarMarkdownDesdeJSON();
+
 document.addEventListener("DOMContentLoaded", () => {
     // Referencias a los elementos del HTML
     const panelBienvenida = document.getElementById("panel-bienvenida");
