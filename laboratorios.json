@@ -1951,8 +1951,41 @@
   "descripcion_general": "El propósito de este laboratorio es",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
-  "pasos": []
+  "tags": ["CREATE","SHOW","ALTER","DROP"],
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Conectandose a the Command Host.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-268/01.png"},
+        {"imagen":"assets/lab-268/02.png"},
+        {"imagen":"assets/lab-268/03.png"},
+        {"imagen":"assets/lab-268/04.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Crear una base de datos y una tabla.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-268/05.png"},
+        {"imagen":"assets/lab-268/06.png"},
+        {"imagen":"assets/lab-268/07.png"},
+        {"imagen":"assets/lab-268/08.png"},
+        {"imagen":"assets/lab-268/09.png"},
+        {"imagen":"assets/lab-268/10.png"},
+        {"imagen":"assets/lab-268/11.png"}
+        
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Eliminando una base de datos y una tabla.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-268/12.png"},
+        {"imagen":"assets/lab-268/13.png"}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 269",
@@ -1962,8 +1995,41 @@
   "descripcion_general": "El propósito de este laboratorio es",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
-  "pasos": []
+  "tags": ["INSERT INTO", "UPDATE", "SET", "DELETE", "Import data"],
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-269/01.png"},
+        {"imagen":"assets/lab-269/02.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-269/01.png"},
+        {"imagen":"assets/lab-269/02.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-269/01.png"},
+        {"imagen":"assets/lab-269/02.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "secciones":[
+        {"texto":""},
+        {"imagen":"assets/lab-269/01.png"},
+        {"imagen":"assets/lab-269/02.png"}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 270",
