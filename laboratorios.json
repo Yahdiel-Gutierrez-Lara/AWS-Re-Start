@@ -1741,18 +1741,22 @@
   "modulo": "Seguridad",
   "numero": "Lab 279",
   "titulo": "Introducción a la gestión de identidades.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es explorar las capacidades de las politicas IAM, gestión de usuarios y grupos y experimentar los efectos de dichas configuraciones en los servicios.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": ["IAM", "Permisos", "Usuarios"],
+  "tags": ["IAM", "Permisos", "Usuarios y grupos", "Policy"],
   "pasos": [
     {
       "subtitulo":"Paso 1. Creando una politica para contraseñas de cuentas.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Antes de comenzar debemos visualizar la región en la que nos encontramos visualizando la barra de arriba en la sección ** Region **."},
+        {"texto":"Con ayuda de la barra buscadora localizamos el servicio de IAM."},
         {"imagen":"assets/lab-279/01.png"},
+        {"texto":"Al seleccionarlo y pasarnos al panel principal, ubicaremos la sección **Account settings** del lado inferior izquierdo."},
         {"imagen":"assets/lab-279/02.png"},
+        {"texto":"Una vez dentro daremos clic en Edit para establecer nuestra politica."},        
         {"imagen":"assets/lab-279/03.png"},
+        {"texto":"Estableceremos las siguientes condiciones: \n Para Enforce minimum password length, cambiaremos de 8 a 10 caracteres. \n Seleccionaremos todos los check box excepto Password expiration requires administrator reset. \n Habilitamos Enable password expiration y establecemos 90 días. \n Evite la reutilización de contraseñas; mantenga la opción predeterminada de 5 contraseñas. \n Al finalizar daremos clic en Save Changes."},  
         {"imagen":"assets/lab-279/04.png"},
         {"imagen":"assets/lab-279/05.png"}
       ]
@@ -1760,48 +1764,70 @@
     {
       "subtitulo":"Paso 2. Explorando los usuarios y grupos de usuarios.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Para explorar los usuarios y grupos de usuarios selecionaremos Users dentro del panel de navegación."},
         {"imagen":"assets/lab-279/06.png"},
+        {"texto":"Elegiomos user-1. En Summary podemos observar la información general del usuario."},
         {"imagen":"assets/lab-279/07.png"},
+        {"texto":"En el panel inferior daremos clic en Permissions y visualizaremos que el usuario no cuenta con permisos."},
         {"imagen":"assets/lab-279/08.png"},
+        {"texto":"Del mismo modo al dar clic en Groups y visualizaremos que el usuario no es parte de ningun grupo."},
         {"imagen":"assets/lab-279/09.png"},
+        {"texto":"Dentro de Security credentials el usuario tiene asignado nuestra politica previamente establecida."},
         {"imagen":"assets/lab-279/10.png"},
+        {"texto":"Regresando al pane principal, elegiremos ahora la sección **User groups**."},
         {"imagen":"assets/lab-279/11.png"},
+        {"texto":"Seleccionamos el grupo EC2-support."},
         {"imagen":"assets/lab-279/12.png"},
+        {"texto":"Dentro del panel de permisos visualizaremos **AmazonEC2ReadOnlyAccess** y al dar clic sobre el nos permitira ver las politicas establecidas para este grupo."},
         {"imagen":"assets/lab-279/13.png"},
-        {"imagen":"assets/lab-279/14.png"},
-        {"imagen":"assets/lab-279/15.png"},
-        {"imagen":"assets/lab-279/16.png"}
+        {"texto":"Repetiremos este proceso y visualizaremos la politica de cada grupo."},
+        {"imagen":"assets/lab-279/14.png", "Descripción": "Politica para EC2-Support"},
+        {"imagen":"assets/lab-279/15.png", "Descripción": "Politica para S3-Support"},
+        {"imagen":"assets/lab-279/16.png", "Descripción": "Politica para EC2-Admin"}
       ]
     },
     {
       "subtitulo":"Paso 3. Añadiendo usuarios a los grupos de usuario .",
       "secciones":[
-        {"texto":""},
+        {"texto":"Para asignar usuarios a un grupo entraremos al mismo y seleccionaremos el panel de Users y daremos clic en Add User."},
         {"imagen":"assets/lab-279/17.png"},
-        {"imagen":"assets/lab-279/18.png"}
+        {"texto":"En el caso del S3-Support agregaremos solamente al user-1 seleccionandolo y dando clic en Add users."},
+        {"imagen":"assets/lab-279/18.png"},
+        {"texto":"De la misma forma asignaremos al user-2 al grupo EC2-Support y al user-3 al grupo EC2-Admin."}
       ]
     },
     {
       "subtitulo":"Paso 4. Iniciando sesión y probando los permisos de usuario.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Regresaremos al panel principal de IAM y del lado derecho encontraremos la sección Sing-in URL for IAM users in this account y copiaremos el enlace para pegarlo en una ventana modo incognito."},
         {"imagen":"assets/lab-279/19.png"},
+        {"texto":"Introduciremos las credenciales del primer usuario: \n IAM user name: user-1 \n Password: Lab-Password1"},
         {"imagen":"assets/lab-279/20.png"},
+        {"texto":"Al entrar a la consola usaremos la barra buscadora para localizar el servicio S3."},
         {"imagen":"assets/lab-279/21.png"},
         {"imagen":"assets/lab-279/22.png"},
+        {"texto":"Dentro del servicio nos percatamos que el bucket se encuentra en una región diferente a la región de la consola por lo que para poder visualizarlo necesitamos cambiar nuestra región."},
         {"imagen":"assets/lab-279/23.png"},
         {"imagen":"assets/lab-279/24.png"},
+        {"texto":"Si intentamos visualizar las instancias desde este usuario nos daremos cuenta que no contamos con los permisos necesarios."},
         {"imagen":"assets/lab-279/25.png"},
         {"imagen":"assets/lab-279/26.png"},
+        {"texto":"Cerraremos la sesión y probaremos las capacidades del siguiente usuario."},
         {"imagen":"assets/lab-279/27.png"},
+        {"texto":"Introduciremos las credenciales del segundo usuario: \n IAM user name: user-2 \n Password: Lab-Password2"},
+        {"texto":"Dentro del la consola usaremos la barra buscadora para acceder al servicio EC2."},
         {"imagen":"assets/lab-279/28.png"},
         {"imagen":"assets/lab-279/29.png"},
+        {"texto":"Este usuario permite visualizar la instancia Web Server, sin embargo, si intentamos modificarla o detenerla nos daremos cuenta que no contamos con los permisos necesarios. \n Instance state > Stop instance"},
         {"imagen":"assets/lab-279/30.png"},
         {"imagen":"assets/lab-279/31.png"},
+        {"texto":"De igual forma, si intentamos visualizar los buckets del servicio S3 no obtendremos resultado, ya que el usuario tampoco cuenta con los permisos necesarios. \n Cerraremos sesión y probaremos el último usuario."},
         {"imagen":"assets/lab-279/32.png"},
         {"imagen":"assets/lab-279/33.png"},
+        {"texto":"Introduciremos las credenciales del tercer usuario: \n IAM user name: user-3 \n Password: Lab-Password3"},
+        {"texto":"Nos dirigimos al servicio EC2 e intentamos detener la instancia nuevamente."},
         {"imagen":"assets/lab-279/34.png"},
+        {"texto":"En este caso la instancia si se apago dado que este usuario si cuenta con los permisos necesarios."},
         {"imagen":"assets/lab-279/35.png"}
       ]
     }
