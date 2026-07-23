@@ -1,155 +1,4 @@
-let baseDatosLaboratorios = [];
-let vistaActual = "inicio"; // Estados: inicio, lista-labs, detalle-evidencia
-let moduloSeleccionado = "";
-
-async function cargarMarkdownDesdeJSON() {
-    try {
-        // Lee el archivo JSON
-        const respuesta = await fetch('contenido.json');
-        const datos = await respuesta.json();
-
-        // Muestra el título normal
-        document.getElementById('titulo-web').textContent = datos.titulo;
-
-        // Convierte el texto Markdown del JSON a HTML usando marked.parse()
-        const htmlConvertido = marked.parse(datos.textoMarkdown);
-
-        // Inserta el HTML resultante en el contenedor web
-        document.getElementById('contenido-markdown').innerHTML = htmlConvertido;
-
-    } catch (error) {
-        console.error('Hubo un error al cargar el archivo JSON:', error);
-        document.getElementById('titulo-web').textContent = 'Error al cargar el contenido';
-    }
-}
-
-cargarMarkdownDesdeJSON();
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Referencias a los elementos del HTML
-    const panelBienvenida = document.getElementById("panel-bienvenida");
-    const sectionModulos = document.getElementById("modulos");
-    const sectionIndexLabs = document.getElementById("labs-index-view");
-    const sectionEvidence = document.getElementById("evidence-view");
-    const labsListContainer = document.getElementById("labs-list-container");
-    const btnBack = document.getElementById("btn-back");
-
-    // 1. Descargar y cargar los datos desde el archivo JSON
-    fetch("laboratorios.json")
-        .then(response => {
-            if (!response.ok) throw new Error("Error al cargar la base de datos de laboratorios.");
-            return response.json();
-        })
-        .then(data => {
-            baseDatosLaboratorios = data;
-            mapearEventos();
-        })
-        .catch(err => console.error("Error inicializando el portafolio:", err));
-
-    // 2. Mapeo de clicks y navegación interactiva
-    function mapearEventos() {
-        // Clics en las tarjetas de los módulos principales
-        document.querySelectorAll(".module-item").forEach(item => {
-            item.addEventListener("click", (e) => {
-                e.preventDefault();
-                const nombreModulo = item.getAttribute("data-module");
-                mostrarListaLaboratorios(nombreModulo);
-            });
-        });
-
-        // Clics en los enlaces del Menú Lateral (Sidebar) o navegación general
-        document.querySelectorAll(".nav-link").forEach(link => {
-            link.addEventListener("click", (e) => {
-                const href = link.getAttribute("href");
-                if (href === "#inicio") irAInicio();
-                if (href === "#modulos") irAModulos();
-            });
-        });
-
-        // Comportamiento inteligente del botón "Volver"
-        btnBack.addEventListener("click", () => {
-            if (vistaActual === "detalle-evidencia") {
-                mostrarListaLaboratorios(moduloSeleccionado);
-            } else if (vistaActual === "lista-labs") {
-                irAInicio();
-            }
-        });
-    }
-
-    // Navegación: Mostrar Pantalla de Inicio Completa (Módulos + Stats)
-    function irAInicio() {
-        vistaActual = "inicio";
-        btnBack.classList.add("hidden-view");
-        panelBienvenida.classList.remove("hidden-view"); // Muestra estadísticas globales
-        sectionModulos.classList.remove("hidden-view");   // Muestra las categorías
-        sectionIndexLabs.classList.add("hidden-view");
-        sectionEvidence.classList.add("hidden-view");
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Navegación: Desplazar suavemente hasta el bloque de módulos
-    function irAModulos() {
-        irAInicio();
-        setTimeout(() => {
-            sectionModulos.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-    }
-
-    // VISTA 3: Filtrar y pintar el índice de laboratorios de un módulo específico
-    function mostrarListaLaboratorios(modulo) {
-        vistaActual = "lista-labs";
-        moduloSeleccionado = modulo;
-        
-        // Control de visibilidad para simular "página nueva"
-        btnBack.classList.remove("hidden-view");
-        panelBienvenida.classList.add("hidden-view"); // Se ocultan las estadísticas superiores
-        sectionModulos.classList.add("hidden-view");   // Se oculta el listado de módulos
-        sectionEvidence.classList.add("hidden-view");
-        sectionIndexLabs.classList.remove("hidden-view");
-        
-        document.getElementById("labs-index-title").innerText = `Laboratorios de ${modulo}`;
-
-        // Filtrado de la base de datos
-        const labsFiltrados = baseDatosLaboratorios.filter(lab => lab.modulo === modulo);
-        labsListContainer.innerHTML = "";
-        
-        if (labsFiltrados.length === 0) {
-            labsListContainer.innerHTML = `<p style="padding: 20px; color: #8b949e;">Próximamente se añadirán las evidencias para este módulo.</p>`;
-            return;
-        }
-
-        // Renderizar las tarjetas (.lab-card) reutilizando tus estilos CSS existentes
-        labsFiltrados.forEach(lab => {
-            const card = document.createElement("a");
-            card.href = "#";
-            card.classList.add("lab-card");
-            
-            // Asignar dinámicamente la clase de estado (Hecho o WIP)
-            const statusClass = lab.status === "done" ? "badge-done" : "badge-wip";
-
-            card.innerHTML = `
-                <div class="lab-card-top">
-                  <div class="lab-icon"><i class="fa-solid fa-flask"></i></div>
-                  <span class="lab-status ${statusClass}">${lab.status_texto}</span>
-                </div>
-                <div class="lab-num">${lab.numero} · ${lab.modulo}</div>
-                <div class="lab-name">${lab.titulo}</div>
-                <div class="lab-desc">${lab.descripcion_general.substring(0, 120)}...</div>
-            `;
-
-            // Al hacer clic en la tarjeta del lab, avanzamos al despliegue de evidencia
-            card.addEventListener("click", (e) => {
-                e.preventDefault();
-                mostrarDetalleEvidencia(lab);
-            });
-
-            labsListContainer.appendChild(card);
-        });
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // VISTA 4: Desplegar el reporte técnico estructurado en micro-secciones
+// VISTA 4: Desplegar el reporte técnico estructurado en micro-secciones
     function mostrarDetalleEvidencia(lab) {
         vistaActual = "detalle-evidencia";
         
@@ -161,7 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("evidence-module-breadcrumb").innerText = lab.modulo;
         document.getElementById("evidence-title-breadcrumb").innerText = lab.numero;
         document.getElementById("evidence-title").innerText = `${lab.numero}: ${lab.titulo}`;
-        document.getElementById("evidence-desc").innerText = lab.descripcion_general;
+        
+        // Renderizar descripción general con Markdown
+        const descEl = document.getElementById("evidence-desc");
+        descEl.innerHTML = lab.descripcion_general ? marked.parse(lab.descripcion_general) : "";
         
         // Configurar el Badge de Estado principal del lab
         const statusBadge = document.getElementById("evidence-status");
@@ -187,15 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (paso.secciones && paso.secciones.length > 0) {
                     paso.secciones.forEach(sec => {
                         
-                        // Caso A.1: La sección contiene Texto Plano
+                        // Caso A.1: La sección contiene Texto (Interpretado con Markdown)
                         if (sec.texto) {
-                            const p = document.createElement("p");
-                            p.style.color = "#444";
-                            p.style.lineHeight = "1.6";
-                            p.style.marginBottom = "14px";
-                            p.style.fontSize = "1rem";
-                            p.innerText = sec.texto;
-                            pasoBlock.appendChild(p);
+                            const divTexto = document.createElement("div");
+                            divTexto.style.color = "#444";
+                            divTexto.style.lineHeight = "1.6";
+                            divTexto.style.marginBottom = "14px";
+                            divTexto.style.fontSize = "1rem";
+                            divTexto.innerHTML = marked.parse(sec.texto); // <-- AQUÍ SE ACTIVA MARKED
+                            pasoBlock.appendChild(divTexto);
                         }
 
                         // Caso A.2: La sección contiene una Captura de Evidencia con Pie de Foto
@@ -219,12 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 // EVALUACIÓN B: El paso usa el formato plano antiguo (Mantiene compatibilidad con JSONs viejos)
                 else {
                     if (paso.texto) {
-                        const p = document.createElement("p");
-                        p.style.color = "#444";
-                        p.style.lineHeight = "1.6";
-                        p.style.marginBottom = "14px";
-                        p.innerText = paso.texto;
-                        pasoBlock.appendChild(p);
+                        const divTexto = document.createElement("div");
+                        divTexto.style.color = "#444";
+                        divTexto.style.lineHeight = "1.6";
+                        divTexto.style.marginBottom = "14px";
+                        divTexto.innerHTML = marked.parse(paso.texto); // <-- AQUÍ SE ACTIVA MARKED
+                        pasoBlock.appendChild(divTexto);
                     }
                     if (paso.imagen) {
                         const imgDiv = document.createElement("div");
@@ -261,4 +113,3 @@ document.addEventListener("DOMContentLoaded", () => {
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-});
