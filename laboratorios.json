@@ -1838,30 +1838,35 @@
   "modulo": "Seguridad",
   "numero": "Lab 280",
   "titulo": "Malware de Firewall.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es actualizar las protecciones de red, creación de reglas de protección y comprobar que los accesos a sitios maliciosos hayan sido bloqueados correctamente.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["Network Firewall", "Firewall rules group", "wget"],
   "pasos": [
     {
       "subtitulo":"Paso 1. Confirmando Accesibilidad.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-280/01.png"},
+        {"texto":"Dentro del entorno de laboratorio localizaremos la sección AWS details, copiaremos el URL correspondiente al TestInstance y lo pegaremos en un navegador privado."},
         {"imagen":"assets/lab-280/02.png"},
+        {"texto":"Una vez en la terminal ejecutaremos el comando pwd para verificar nuestro directorio actual."},
         {"imagen":"assets/lab-280/03.png"},
+        {"texto":"Usando el comando wget para descargar archivos de internet emulando archivos maliciosos. \n Ejecutamos el comando ** wget http://malware.wicar.org/data/js_crypto_miner.html ** y en comando ** wget http://malware.wicar.org/data/java_jre17_exec.html **."},
         {"imagen":"assets/lab-280/04.png"},
+        {"texto":"Comprobaremos si los archivos fueron descargados con el comando ** ls **"},
         {"imagen":"assets/lab-280/05.png"}
       ]
     },
     {
       "subtitulo":"Paso 2. Inspeccionando el firewall de las redes de trabajo.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Usando la consola de AWS accedemos al servicio VPC, una vez dentro del panel principal ubicamos la sección Network Firewall > Firewalls."},
         {"imagen":"assets/lab-280/06.png"},
         {"imagen":"assets/lab-280/07.png"},
+        {"texto":"Ahora bien, en Firewalls selecionamos LabFirewall y en el panel inferior Overview daremos clic en LabFirewallPolicy."},
         {"imagen":"assets/lab-280/08.png"},
+        {"texto":"Daremos clic en Edit dentro de la sección Stateless default actions."},
         {"imagen":"assets/lab-280/09.png"},
+        {"texto":"Seleccionamos las opciones: \n Fragmented Packets: Use the same actions for all packets \n Rule action: Forward to stateful rule groups. \n Y daremos clic en Save."},
         {"imagen":"assets/lab-280/10.png"},
         {"imagen":"assets/lab-280/11.png"}
       ]
@@ -1869,31 +1874,39 @@
     {
       "subtitulo":"Paso 3. Creando un firewall rule group.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Regresando al panel principal de VPC ubicaremos la sección NETWORK FIREWALL > Network Firewall Rule Groups. \n Una vez dentro damos clic en el botóbn Create rule group"},
         {"imagen":"assets/lab-280/12.png"},
+        {"texto":"Para las configuraciones de las sección Rule Group type \n Rule group type: Stateful rule group. \n Rule group format: Suricata compatible rule string. \n Rule evaluation order: Action order. Clic en Next."},
         {"imagen":"assets/lab-280/13.png"},
+        {"texto":"En la siguiente sección, Rule group details, configuramos las siguientes opciones: \n Name: Enter StatefulRuleGroup \n Capacity: Enter 100 \n Choose Next."},
         {"imagen":"assets/lab-280/14.png"},
+        {"texto":"Dentro de la sección Suricata compatible rule string pegaremos los siguientes comandos:"},
+        {"imagen":"assets/lab-280/extra 01.png"},
         {"imagen":"assets/lab-280/15.png"}
       ]
     },
     {
       "subtitulo":"Paso 4. Asociando la rule group al firewall de la red de trabajo.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Nuevamente regresamos al panel principal de VPC y ubicaremos la sección NETWORK > Firewalls y seleccionamos LabFirewall. Debajo, en la sección Associated firewall policy, seleccionamos LabFirewallPolicy. \n Dentro de Stateful rule groups seleccionamos la lista desplegable, y daremos clic en Add unmanaged stateful rule groups."},
         {"imagen":"assets/lab-280/16.png"},
+        {"texto":"Dentro de la sección seleccionamos StatefulRuleGroup y daremos clic en Add stateful rule group."},
         {"imagen":"assets/lab-280/17.png"},
+        {"texto":"Verificamosla la actualización de esta politica para Firewall."},
         {"imagen":"assets/lab-280/18.png"},
-        {"imagen":"assets/lab-280/19.png"},
-        {"imagen":"assets/lab-279/20.png"}
+        {"imagen":"assets/lab-280/19.png"}
       ]
     },
     {
       "subtitulo":"Paso 5. Validando la solución.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Usando la consola AWS entraremos al servicio EC2 y en la sección Instances seleccionamos la instancia TestInstance y daremos clic en el botón Connect."},
         {"imagen":"assets/lab-280/21.png"},
+        {"texto":"Entramos al panel SSM Session Manager y daremos clic en Connect."},
         {"imagen":"assets/lab-280/22.png"},
+        {"texto":"Probamos el comando ** wget http://malware.wicar.org/data/js_crypto_miner.html ** y el comando ** wget http://malware.wicar.org/data/java_jre17_exec.html **."},
         {"imagen":"assets/lab-280/23.png"},
+        {"texto":"Removemos los archivos anteriormente descargados con el comando ** rm java_jre17_exec.html js_crypto_miner.html ** y comprobamos con el comando ** ls **."},
         {"imagen":"assets/lab-280/24.png"}
       ]
     }
