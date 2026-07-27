@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Mapeo de clicks y navegación interactiva
     function mapearEventos() {
-        // Clics en las tarjetas de los módulos principales
+        // Clics en las tarjetas de los módulos principales de la vista de inicio
         document.querySelectorAll(".module-item").forEach(item => {
             item.addEventListener("click", (e) => {
                 e.preventDefault();
@@ -57,12 +57,23 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Clics en los enlaces del Menú Lateral (Sidebar) o navegación general
+        // Clics en los enlaces del Menú Lateral (Sidebar)
         document.querySelectorAll(".nav-link").forEach(link => {
             link.addEventListener("click", (e) => {
                 const href = link.getAttribute("href");
-                if (href === "#inicio") irAInicio();
-                if (href === "#modulos") irAModulos();
+                
+                if (href === "#inicio") {
+                    e.preventDefault();
+                    irAInicio();
+                } else if (href === "#modulos") {
+                    e.preventDefault();
+                    irAModulos();
+                } else if (href && href.startsWith("#modulo-")) {
+                    // Si el enlace lateral apunta directamente a un módulo (ej. #modulo-AWS o similar)
+                    e.preventDefault();
+                    const nombreModulo = link.getAttribute("data-module") || href.replace("#modulo-", "");
+                    mostrarListaLaboratorios(nombreModulo);
+                }
             });
         });
 
