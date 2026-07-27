@@ -1969,7 +1969,7 @@
     {
       "subtitulo":"Paso 3. Probando la alarma de CloudWatch.",
       "secciones":[
-        {"texto":""},
+        {"texto":"HOLA"},
         {"imagen":"assets/lab-281/23.png"},
         {"imagen":"assets/lab-281/24.png"},
         {"imagen":"assets/lab-281/25.png"},
