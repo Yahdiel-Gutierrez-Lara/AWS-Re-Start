@@ -233,7 +233,7 @@
       },
       {"subtitulo":"Paso 1. Ejecutando comandos familiares.",
       "secciones":[
-        {"texto":"Como primera actividad ejecutaremos los comandos: \n **whoami** que corresponde al nombre del usuario actual. \n **hostname -s** para obtener la IP pública de la instancia. \n **uptime -p** para conocer el tiempo de actividad que lleva la instancia."},
+        {"texto":"Como primera actividad ejecutaremos los comandos: <br> **whoami** que corresponde al nombre del usuario actual. <br> **hostname -s** para obtener la IP pública de la instancia. <br> **uptime -p** para conocer el tiempo de actividad que lleva la instancia."},
         {
             "imagen": "assets/lab-227/01.png",
             "descripcion": "Comandos básicos."
@@ -243,12 +243,12 @@
             "imagen": "assets/lab-227/02.png",
             "descripcion": "Informacion sobre los usuarios loggeados."
           },
-        {"texto":"Para conocer la fecha y hora de otras zonas horarias podemos usar: \n **TZ=America/New_York date** \n **TZ=America/Los_Angeles date**."},
+        {"texto":"Para conocer la fecha y hora de otras zonas horarias podemos usar: <br> **TZ=America/New_York date** <br> **TZ=America/Los_Angeles date**."},
         {
           "imagen": "assets/lab-227/03.png",
           "descripcion": "Informacion otras zonas horarias"},
 
-       {"texto":"También tenemos acceso a otros tipos de calendarios como el Juliano o el gregoriano en diferentes formatos usando los comandos: \n **cal -j** Calendarios juliano \n **cal -s** \n **cal -m**."},
+       {"texto":"También tenemos acceso a otros tipos de calendarios como el Juliano o el gregoriano en diferentes formatos usando los comandos: <br> **cal -j** Calendarios juliano <br> **cal -s** <br> **cal -m**."},
         {
           "imagen": "assets/lab-227/04.png"},
         {
@@ -427,7 +427,7 @@
         {"texto":"En el laboratorio se nos presenta el siguiente diagrama de jerarquia entre carpetas y archivos."},
         {
           "imagen": "assets/lab-233/02.png"},
-        {"texto":"En primer lugar, ejecutamos el comando **pwd** para verificar que nos encontramos en la carpeta de inicio del  usuario ec2-user **/home/ec2/user**. Una vez dentro de esta carpeta, entonces haremos los siguientes pasos: \n Creamos la carpeta CompanyA **mkdir CompanyA** \n Accedemos a esta carpeta **cd Companya** \n Creamos las carpetas Finance, HR y Management **mkdir Finance HR Management** \n Verificamos su creación con el comando **ls**" },
+        {"texto":"En primer lugar, ejecutamos el comando **pwd** para verificar que nos encontramos en la carpeta de inicio del  usuario ec2-user **/home/ec2/user**. Una vez dentro de esta carpeta, entonces haremos los siguientes pasos: <br> Creamos la carpeta CompanyA **mkdir CompanyA** <br> Accedemos a esta carpeta **cd Companya** <br> Creamos las carpetas Finance, HR y Management **mkdir Finance HR Management** <br> Verificamos su creación con el comando **ls**" },
         {
           "imagen": "assets/lab-233/01.png"},
 
@@ -656,13 +656,13 @@
           "texto": "En primer lugar ejecutamos el comando **sudo crontab -e** para generar el archivo. Enseguida escribiremos los siguientes comandos dentro del mismo."
         },
         {
-          "texto": "SHELL=/bin/bash \n PATH=/usr/bin:/bin:/usr/local/bin \n MAILTO=root \n 0 * * * * ls -la $(find .) | sed -e 's/..csv/#####.csv/g' > /home/ec2-user/companyA/SharedFolders/filteredAudit.csv"
+          "texto": "SHELL=/bin/bash <br> PATH=/usr/bin:/bin:/usr/local/bin <br> MAILTO=root <br> 0 * * * * ls -la $(find .) | sed -e 's/..csv/#####.csv/g' > /home/ec2-user/companyA/SharedFolders/filteredAudit.csv"
         },
         {
           "imagen": "assets/lab-239/04.png"
         },
         {
-          "texto": "Básicamente se lleva acabo el siguiente proceso: \n Busca archivos dentro del directorio actual. \n Genera un listado detallado de los archivos encontrados. \n Reemplaza las extensiones .csv por #####.csv en la salida para ocultar o anonimizar los nombres. \n Guarda el resultado en el archivo filteredAudit.csv."
+          "texto": "Básicamente se lleva acabo el siguiente proceso: <br> Busca archivos dentro del directorio actual. <br> Genera un listado detallado de los archivos encontrados. <br> Reemplaza las extensiones .csv por #####.csv en la salida para ocultar o anonimizar los nombres. <br> Guarda el resultado en el archivo filteredAudit.csv."
         },
         {
           "texto": "Validamos ejecutando **sudo crontab -l** y comprobar que la configuración coincide exactamente con la esperada."
@@ -861,7 +861,7 @@
     },
     {"subtitulo": "Paso 4. Configuración de la AWS CLI para conectarse a nuestra cuenta AWS.", 
     "secciones":[
-      {"texto":"Escribimos el comando **aws configure** y rellenamos lo siguiente: \n **AWS Access Key ID**, permanece en blanco y damos enter. \n **AWS Secret Access Key**, permanece en blanco y damos enter. \n **Default region name**, escribimos **us-west-2* y damos enter. \n **Default output format**, escribimos **json** y damos enter."},
+      {"texto":"Escribimos el comando **aws configure** y rellenamos lo siguiente: <br> **AWS Access Key ID**, permanece en blanco y damos enter. <br> **AWS Secret Access Key**, permanece en blanco y damos enter. <br> **Default region name**, escribimos **us-west-2* y damos enter. <br> **Default output format**, escribimos **json** y damos enter."},
       {
         "imagen": "assets/lab-243/16.png"
       },
@@ -1017,7 +1017,7 @@
     {
       "subtitulo":"Reto adicional",
       "secciones":[
-       {"texto":"Usar el comando sed para reemplazar un texto dentro de un archivo por otro. \n El uso se veria de la siguiente forma: \n sed 's/word being replaced/replacement word/' file name** \n Usar el comando sed para reemplazar ',' por '.' dentro de los archivos test.csv y cities.csv."},
+       {"texto":"Usar el comando sed para reemplazar un texto dentro de un archivo por otro. <br> El uso se veria de la siguiente forma: <br> sed 's/word being replaced/replacement word/' file name** <br> Usar el comando sed para reemplazar ',' por '.' dentro de los archivos test.csv y cities.csv."},
         {
           "imagen": "assets/lab-247/08.png",
           "descripción": "**sed 's/,/./'** es el comando escrito para la salida de la imagen anterior."
@@ -1047,12 +1047,12 @@
     {
       "subtitulo":"Paso 1. Crear un alias para una ooperación de respaldo (backup).",
       "secciones":[
-        {"texto":"Un alias nos permite reemplazar un comando largo, complo difícil de recordar para agilizar el trabajo. En este caso, se utilizara para realizar respaldos por medio del comando **tar**. \n Definimos el alias nombrandolo como backup con el comando **alias backup='tar -cvzf '**."},
+        {"texto":"Un alias nos permite reemplazar un comando largo, complo difícil de recordar para agilizar el trabajo. En este caso, se utilizara para realizar respaldos por medio del comando **tar**. <br> Definimos el alias nombrandolo como backup con el comando **alias backup='tar -cvzf '**."},
         {
           "imagen": "assets/lab-249/01.png",
           "descripción": "Definiendo el alias."
         },
-        {"texto":"Recordar que: \n **-c** es para crear. \n **-v** perimite visualizar el proceso en pantalla. \n **-z** es para comprimir el archivo. \n **-f** corresponde a nombrar el archivo creado. \n Para crear el respaldo de la carpeta companyA ejecutamos **backup backup_companyA.tar.gz CompanyA**."},
+        {"texto":"Recordar que: <br> **-c** es para crear. <br> **-v** perimite visualizar el proceso en pantalla. <br> **-z** es para comprimir el archivo. <br> **-f** corresponde a nombrar el archivo creado. <br> Para crear el respaldo de la carpeta companyA ejecutamos **backup backup_companyA.tar.gz CompanyA**."},
         {
           "imagen": "assets/lab-249/02.png",
           "descripción": "Creación del respaldo."
@@ -1067,8 +1067,8 @@
     {
       "subtitulo": "Paso 2. Explora y actualiza la variable de entorno PATH.",
       "secciones":[
-        {"texto":"La variable de entorno PATH es una lista de directorios que le indica al sistema operativo dónde buscar archivos ejecutables cuando escribes un comando. \n El siguiente paso es una demostración de su uso."},
-        {"texto":"Si queremos navegar a la carpeta bin dentro la carpeta personal (home) de CompanyA usamos el comando **cd /home/ec2-user/CompanyA/bin**. \n Dentro podemos ejecutar el archivo hello.sh **./hello.sh**."},
+        {"texto":"La variable de entorno PATH es una lista de directorios que le indica al sistema operativo dónde buscar archivos ejecutables cuando escribes un comando. <br> El siguiente paso es una demostración de su uso."},
+        {"texto":"Si queremos navegar a la carpeta bin dentro la carpeta personal (home) de CompanyA usamos el comando **cd /home/ec2-user/CompanyA/bin**. <br> Dentro podemos ejecutar el archivo hello.sh **./hello.sh**."},
         {
           "imagen": "assets/lab-249/04.png",
           "descripción": "hello.sh output."
@@ -1119,14 +1119,14 @@
       "subtitulo": "Ejercicio de scripting en shell bash.",
       "secciones": [
         {
-          "texto": "Genera un script que cumpla con lo siguiente: \n Crea 25 archivos vacíos (0 KB). (Pista: Usa el comando touch). \n Los nombres de los archivos deben ser <tuNombre><número>, <tuNombre><número+1>, <tuNombre><número+2>, y así sucesivamente. \n Diseña el script de manera que cada vez que lo ejecutes, cree el siguiente lote de 25 archivos con números ascendentes, comenzando desde el último o máximo número que ya exista. \n No escribas estos números de forma fija (hard code). Debes generarlos utilizando automatización."
+          "texto": "Genera un script que cumpla con lo siguiente: <br> Crea 25 archivos vacíos (0 KB). (Pista: Usa el comando touch). <br> Los nombres de los archivos deben ser <tuNombre><número>, <tuNombre><número+1>, <tuNombre><número+2>, y así sucesivamente. <br> Diseña el script de manera que cada vez que lo ejecutes, cree el siguiente lote de 25 archivos con números ascendentes, comenzando desde el último o máximo número que ya exista. <br> No escribas estos números de forma fija (hard code). Debes generarlos utilizando automatización."
         },
         {
           "imagen": "assets/lab-253/extra01.png",
           "descripción": "Código final para el desafío."
         },
         {
-          "texto": "¿Cómo funciona? \n En primer lugar **ultimo='$HOME/.ultimo_numero_touch.txt'** es una variable que consulta un archivo oculto en el directorio personal del usuario en donde se almacenara el último valor de archivos generados. Originalmente se planteo el uso de una variable dentro del código y no una consulta a un archivo externo, sin embargo, esto no resulta pues el script reinicia este valor cada que se ejecuta. \n El condicional if es para verificar que se encuentre creado el archivo y tenga un valor dentro, en caso contrario, el valor será considerado como 0. \n El ciclo principal es un for que va de 1 a 25 y donde se crean los archivos en lotes de 25 mediante el comando **touch**. \n Finalmente aprovechamos el comando **echo** para que el valor final **numero** de está ejecución sea escrito dentro de la variable **último**."
+          "texto": "¿Cómo funciona? <br> En primer lugar **ultimo='$HOME/.ultimo_numero_touch.txt'** es una variable que consulta un archivo oculto en el directorio personal del usuario en donde se almacenara el último valor de archivos generados. Originalmente se planteo el uso de una variable dentro del código y no una consulta a un archivo externo, sin embargo, esto no resulta pues el script reinicia este valor cada que se ejecuta. <br> El condicional if es para verificar que se encuentre creado el archivo y tenga un valor dentro, en caso contrario, el valor será considerado como 0. <br> El ciclo principal es un for que va de 1 a 25 y donde se crean los archivos en lotes de 25 mediante el comando **touch**. <br> Finalmente aprovechamos el comando **echo** para que el valor final **numero** de está ejecución sea escrito dentro de la variable **último**."
         },
         {
           "imagen": "assets/lab-253/06.png",
@@ -1168,7 +1168,7 @@
   {
     "subtitulo":"Problemática presentada",
     "secciones":[
-     {"texto":"Hemos recibido el siguiente correo: \n Hola, equipo de soporte en la nube: \n Actualmente tenemos una red privada virtual (VPC) con un rango CIDR de 10.0.0.0/16. En esta VPC tenemos dos instancias de Amazon Elastic Compute Cloud (Amazon EC2): instancia A e instancia B. \n Aunque ambas se encuentran en la misma subred y tienen las mismas configuraciones respecto a los recursos de AWS, la instancia A no puede acceder a Internet, mientras que la instancia B sí puede acceder a Internet. \n Creo que el problema podría estar relacionado con las instancias EC2, pero no estoy seguro. \n También tengo una pregunta sobre el uso de un rango público de direcciones IP, como 12.0.0.0/16, para una VPC que me gustaría implementar. ¿Eso podría causar algún problema? \n Adjunto nuestra arquitectura como referencia. \n ¡Gracias! \n Jess \n Administrador de la nube (Cloud Admin)"}, 
+     {"texto":"Hemos recibido el siguiente correo: <br> Hola, equipo de soporte en la nube: <br> Actualmente tenemos una red privada virtual (VPC) con un rango CIDR de 10.0.0.0/16. En esta VPC tenemos dos instancias de Amazon Elastic Compute Cloud (Amazon EC2): instancia A e instancia B. <br> Aunque ambas se encuentran en la misma subred y tienen las mismas configuraciones respecto a los recursos de AWS, la instancia A no puede acceder a Internet, mientras que la instancia B sí puede acceder a Internet. <br> Creo que el problema podría estar relacionado con las instancias EC2, pero no estoy seguro. <br> También tengo una pregunta sobre el uso de un rango público de direcciones IP, como 12.0.0.0/16, para una VPC que me gustaría implementar. ¿Eso podría causar algún problema? <br> Adjunto nuestra arquitectura como referencia. <br> ¡Gracias! <br> Jess <br> Administrador de la nube (Cloud Admin)"}, 
      {"imagen":"assets/lab-261/arq.png"}
     ]
   },
@@ -1199,7 +1199,7 @@
     "subtitulo":"Duda técnica del cliente",
     "secciones":[
       {"texto":"También tengo una pregunta sobre el uso de un rango público de direcciones IP, como 12.0.0.0/16, para una VPC que me gustaría implementar. ¿Eso podría causar algún problema?"},
-      {"texto":"Dentro de la documentación de AWS nos habla acerca de la RFC 1918 donde mencionan 3 clases de IP que pueden ser usados de forma local sin generar conflictos. \n Clase A: 10.0.0.0 a 10.255.255.255 \n Clase B: 172.16.0.0 a 172.31.255.255 \n Clase C: 192.168.0.0 a 192.168.255.255 \n La IP 12.0.0.0/16 no se encuentra establecida, por lo que esta tiene un propietario externo, es decir, es parte de un segmento del internet público, por lo que no es recomendable utilizarla. \n Ahora bien, si se usa puede generar un conflicto de conexión, ya que, al establecer una VPC existe una regla donde la IP se establece como local en las tablas de enrutamiento. Esto implica que al intentar conectarse con un cualquier IP que inicie en 12.0. será enviada directamente dentro de la VPC sin intentar salir al tráfico de internet y por ello la solicitud será descartada."}
+      {"texto":"Dentro de la documentación de AWS nos habla acerca de la RFC 1918 donde mencionan 3 clases de IP que pueden ser usados de forma local sin generar conflictos. <br> Clase A: 10.0.0.0 a 10.255.255.255 <br> Clase B: 172.16.0.0 a 172.31.255.255 <br> Clase C: 192.168.0.0 a 192.168.255.255 <br> La IP 12.0.0.0/16 no se encuentra establecida, por lo que esta tiene un propietario externo, es decir, es parte de un segmento del internet público, por lo que no es recomendable utilizarla. <br> Ahora bien, si se usa puede generar un conflicto de conexión, ya que, al establecer una VPC existe una regla donde la IP se establece como local en las tablas de enrutamiento. Esto implica que al intentar conectarse con un cualquier IP que inicie en 12.0. será enviada directamente dentro de la VPC sin intentar salir al tráfico de internet y por ello la solicitud será descartada."}
     ]
   }
 ]
@@ -1217,7 +1217,7 @@
   {
     "subtitulo":"Problemática presentada",
     "secciones":[
-     {"texto":"Hemos recibido el siguiente correo: \n Hola, equipo de soporte en la nube: \n Estamos teniendo problemas con una de nuestras instancias EC2. La dirección IP cambia cada vez que iniciamos y detenemos esta instancia llamada Public Instance. \n Esto provoca que todo deje de funcionar, ya que necesita una dirección IP estática. No estamos seguros de por qué la IP de esta instancia cambia a una dirección aleatoria cada vez. \n ¿Podrían investigar este problema? \n Adjunto nuestra arquitectura. Por favor, háganme saber si tienen alguna pregunta. \n ¡Gracias! \n Bob, Cloud Admin (Administrador de la Nube)"}, 
+     {"texto":"Hemos recibido el siguiente correo: <br> Hola, equipo de soporte en la nube: <br> Estamos teniendo problemas con una de nuestras instancias EC2. La dirección IP cambia cada vez que iniciamos y detenemos esta instancia llamada Public Instance. <br> Esto provoca que todo deje de funcionar, ya que necesita una dirección IP estática. No estamos seguros de por qué la IP de esta instancia cambia a una dirección aleatoria cada vez. <br> ¿Podrían investigar este problema? <br> Adjunto nuestra arquitectura. Por favor, háganme saber si tienen alguna pregunta. <br> ¡Gracias! <br> Bob, Cloud Admin (Administrador de la Nube)"}, 
      {"imagen":"assets/lab-262/arq.png"}
     ]
   },
@@ -1230,7 +1230,7 @@
       {"imagen":"assets/lab-262/02.png"},
       {"texto":"El tipo de instancia será t3.micro."},
       {"imagen":"assets/lab-262/03.png"},
-      {"texto":"En Networking settings selecionamos: \n VPC - required: LAB VPC \n Subnet: Public Subnet 1 \n Auto-assing public IP: Enable."},
+      {"texto":"En Networking settings selecionamos: <br> VPC - required: LAB VPC <br> Subnet: Public Subnet 1 <br> Auto-assing public IP: Enable."},
       {"imagen":"assets/lab-262/04.png"},
       {"texto":"En Firewall seleccionamos **Select existing security group** y localizaremos el **Lunix Instance SG**."},
       {"imagen":"assets/lab-262/05.png"},
@@ -1283,7 +1283,7 @@
 {
     "subtitulo":"Problemática presentada",
     "secciones":[
-     {"texto":"Hemos recibido el siguiente correo: \n Hola, equipo de soporte en la nube: \n Soy nuevo en AWS y necesito ayuda para configurar una VPC. ¿Podrían ayudarme durante el proceso de configuración? \n Me gustaría crear únicamente la parte de la VPC y que tenga una estructura similar a la que se muestra en la imagen adjunta. \n También quisiera asegurarme de tener disponibles alrededor de 15,000 direcciones IP privadas dentro de esta VPC. Además, me gustaría que el bloque CIDR IPv4 de la VPC fuera de la forma 192.x.x.x. No recuerdo cuál es el rango privado correspondiente. ¿Podrían confirmármelo? También me gustaría asignar al menos 50 direcciones IP para la subred pública. \n ¡Gracias! \n Paulo Santos, Propietario de Startup (Startup Owner)"}
+     {"texto":"Hemos recibido el siguiente correo: <br> Hola, equipo de soporte en la nube: <br> Soy nuevo en AWS y necesito ayuda para configurar una VPC. ¿Podrían ayudarme durante el proceso de configuración? <br> Me gustaría crear únicamente la parte de la VPC y que tenga una estructura similar a la que se muestra en la imagen adjunta. <br> También quisiera asegurarme de tener disponibles alrededor de 15,000 direcciones IP privadas dentro de esta VPC. Además, me gustaría que el bloque CIDR IPv4 de la VPC fuera de la forma 192.x.x.x. No recuerdo cuál es el rango privado correspondiente. ¿Podrían confirmármelo? También me gustaría asignar al menos 50 direcciones IP para la subred pública. <br> ¡Gracias! <br> Paulo Santos, Propietario de Startup (Startup Owner)"}
     ]
   },
   {
@@ -1293,7 +1293,7 @@
       {"imagen":"assets/lab-263/01.png"},
       {"texto":"Seleccionamos **Create VPC** y la nombramos First VPC."},
       {"imagen":"assets/lab-263/02.png"},
-      {"texto":"De acuerdo con los requisitos del cliente debemos cumplir 3 condiciones: \n 1. La VPC debe alojar al menos 15,000 IP privada. \n 2. Una subred pública con al menos 50 IPs. \n Debe estar en el rango de 192.x.x.x. Por ello, usando una calculadora de IPs determinamos que el tamaño de la red CIDR debe ser de /16 para cubrir los 15,000 IPs, lo que significa que la IP para la VPC debe ser 192.168.0.0/16. Para la subred que cumpla con los 50 IPs se determino que su CIDR sería de /26."},
+      {"texto":"De acuerdo con los requisitos del cliente debemos cumplir 3 condiciones: <br> 1. La VPC debe alojar al menos 15,000 IP privada. <br> 2. Una subred pública con al menos 50 IPs. <br> Debe estar en el rango de 192.x.x.x. Por ello, usando una calculadora de IPs determinamos que el tamaño de la red CIDR debe ser de /16 para cubrir los 15,000 IPs, lo que significa que la IP para la VPC debe ser 192.168.0.0/16. Para la subred que cumpla con los 50 IPs se determino que su CIDR sería de /26."},
       {"texto":"Entonces, comenzamos las configuraciones."},
       {"imagen":"assets/lab-263/03.png"},
       {"texto":"Seleccionamos IPv6 como descativada. Solo una zona de disponibilidad, una subnet pública y sin subnet privada."},
@@ -1319,7 +1319,7 @@
     {
     "subtitulo":"Problemática presentada",
     "secciones":[
-     {"texto":"Hemos recibido el siguiente correo: \n Hola, equipo de soporte en la nube: \n Me comuniqué previamente con ustedes para solicitar ayuda con la configuración de mi VPC. Pensé que sabía cómo asociar todos los recursos para establecer una conexión a internet, pero ni siquiera puedo hacer ping fuera de la VPC. ¡Todo lo que necesito hacer es un ping! ¿Podrían por favor ayudarme a configurar mi VPC de manera que tenga conectividad de red y pueda hacer ping? La arquitectura se encuentra abajo. \n ¡Gracias! \n Brock, dueño de startup."},
+     {"texto":"Hemos recibido el siguiente correo: <br> Hola, equipo de soporte en la nube: <br> Me comuniqué previamente con ustedes para solicitar ayuda con la configuración de mi VPC. Pensé que sabía cómo asociar todos los recursos para establecer una conexión a internet, pero ni siquiera puedo hacer ping fuera de la VPC. ¡Todo lo que necesito hacer es un ping! ¿Podrían por favor ayudarme a configurar mi VPC de manera que tenga conectividad de red y pueda hacer ping? La arquitectura se encuentra abajo. <br> ¡Gracias! <br> Brock, dueño de startup."},
      {"imagen":"assets/lab-264/arq.png"}
     ]
     },
@@ -1344,12 +1344,12 @@
     {"imagen":"assets/lab-264/10.png"},
     {"texto":"Deberemos enlazarlo a nuestra VPC creada."},
     {"imagen":"assets/lab-264/11.png"},
-    {"texto":"Regresando al panel de Route Tables debemos realizar dos acciones \n 1. Añadirle la ruta a las tablas de enrutamiento. \n 2. Asociar la subred a las tablas de enrutamiento."},
+    {"texto":"Regresando al panel de Route Tables debemos realizar dos acciones <br> 1. Añadirle la ruta a las tablas de enrutamiento. <br> 2. Asociar la subred a las tablas de enrutamiento."},
     {"texto":"Seleccionamos Public route table, Routes > Edit Routes."},
     {"imagen":"assets/lab-264/12.png"},
     {"imagen":"assets/lab-264/13.png"},
     {"imagen":"assets/lab-264/14.png"},
-    {"texto":"Regresando al panel de Route Tables debemos realizar dos acciones \n 1. Añadirle la ruta a las tablas de enrutamiento. \n 2. Asociar la subred a las tablas de enrutamiento."},
+    {"texto":"Regresando al panel de Route Tables debemos realizar dos acciones <br> 1. Añadirle la ruta a las tablas de enrutamiento. <br> 2. Asociar la subred a las tablas de enrutamiento."},
     {"texto":"Al terminar y volver al panel Route tables seleccionamos nuevamente Public route table, Subnet associations > Edit subnet associations."},
     {"imagen":"assets/lab-264/15.png"},
     {"imagen":"assets/lab-264/16.png"},
@@ -1413,10 +1413,10 @@
     {
       "subtitulo":"Layer 3 (network): Comandos ping y traceroute.",
       "secciones":[
-        {"texto":"Comando **ping**. \n Este comando se ejecuta cuando se necesitar comprobar la conectividad de una instancia EC2 lanzada previamente. Ejecutaremos **ping 8.8.8.8 -c 5** (El -c especifica el 'count' (conteo) y el 5 determina el número exacto de solicitudes (paquetes) que se van a enviar.)."},
+        {"texto":"Comando **ping**. <br> Este comando se ejecuta cuando se necesitar comprobar la conectividad de una instancia EC2 lanzada previamente. Ejecutaremos **ping 8.8.8.8 -c 5** (El -c especifica el 'count' (conteo) y el 5 determina el número exacto de solicitudes (paquetes) que se van a enviar.)."},
         {"imagen":"assets/lab-265/02.png",
         "descripcion":"Al ejecutarlo podemos usar una IP o un URL, en este caso se uso la IP de google."},
-        {"texto":"Comando **traceroute**. \n Este comando se emplea cuando el cliente experimenta baja latencia, es decir, su conexión esta tomando demasiado tiempo y tiene solicitudes perdidas. Ejecutaremos **traceroute 8.8.8.8**."},
+        {"texto":"Comando **traceroute**. <br> Este comando se emplea cuando el cliente experimenta baja latencia, es decir, su conexión esta tomando demasiado tiempo y tiene solicitudes perdidas. Ejecutaremos **traceroute 8.8.8.8**."},
         {"imagen":"assets/lab-265/03.png",
         "descripcion":"La pérdida de paquetes, expresada en porcentajes, puede ocurrir en cada salto, y esta pérdida usualmente se debe a un problema con la red de área local (LAN) del usuario o con su ISP."}
       ]
@@ -1424,12 +1424,12 @@
     {
       "subtitulo":"Layer 4 (transport): Comandos netstat y telnet.",
       "secciones":[
-        {"texto":"Comando **netstat**. \n Muestra las conexiones TCP actualmente establecidas en las que el host está escuchando. Puedes ejecutar este comando para entender qué puertos están escuchando y cuáles no."},
+        {"texto":"Comando **netstat**. <br> Muestra las conexiones TCP actualmente establecidas en las que el host está escuchando. Puedes ejecutar este comando para entender qué puertos están escuchando y cuáles no."},
         {"texto":"Ejecutamos el comando **netstat -tp** para confirmar las conexiones establecidas."},
         {"imagen":"assets/lab-265/04.png"},
         {"texto":"Ejecutamos el comando **netstat -tlp** para visualizar los servicios en escucha pero no resuelve los números de puerto."},
         {"imagen":"assets/lab-265/05.png"},
-        {"texto":"Comando **telnet**. \n El comando telnet confirma la conexión TCP a un servidor web al realizar una solicitud HTTP si se utiliza el puerto 80 para telnet."},
+        {"texto":"Comando **telnet**. <br> El comando telnet confirma la conexión TCP a un servidor web al realizar una solicitud HTTP si se utiliza el puerto 80 para telnet."},
         {"imagen":"assets/lab-265/06.png", 
         "descripcion":"Ejecutamos **sudo yum install telnet -y**."},
         {"imagen":"assets/lab-265/07.png", 
@@ -1439,10 +1439,10 @@
     {
       "subtitulo":"Layer 7 (application): Comando curl.",
       "secciones":[
-        {"texto":"Comando **curl**. \n Puede usarse para transferir data entre tú y el servidor. Ejecutaremos **curl -vLo /dev/null https://aws.com**."},
-        {"texto":"Puedes utilizar las siguientes opciones de comando: \n -I: Esta opción proporciona información de la cabecera (header) y especifica que el método de solicitud es HEAD. \n -i: Esta opción especifica que el método de solicitud es GET. \n k: Esta opción le indica al comando que ignore los errores de SSL.\n -v: Esta opción es para el modo detallado (verbose). Muestra lo que la computadora está haciendo o lo que el software está cargando durante el inicio.\n -o /dev/null: Esta opción enviará el HTML y el CSS de la respuesta a un dispositivo nulo (null), descartando la salida visual del cuerpo."},
+        {"texto":"Comando **curl**. <br> Puede usarse para transferir data entre tú y el servidor. Ejecutaremos **curl -vLo /dev/null https://aws.com**."},
+        {"texto":"Puedes utilizar las siguientes opciones de comando: <br> -I: Esta opción proporciona información de la cabecera (header) y especifica que el método de solicitud es HEAD. <br> -i: Esta opción especifica que el método de solicitud es GET. <br> k: Esta opción le indica al comando que ignore los errores de SSL.<br> -v: Esta opción es para el modo detallado (verbose). Muestra lo que la computadora está haciendo o lo que el software está cargando durante el inicio.<br> -o /dev/null: Esta opción enviará el HTML y el CSS de la respuesta a un dispositivo nulo (null), descartando la salida visual del cuerpo."},
         {"imagen":"assets/lab-265/09.png"},
-        {"texto":"Comando **traceroute**. \n Este comando se emplea cuando el cliente experimenta baja latencia, es decir, su conexión esta tomando demasiado tiempo y tiene solicitudes perdidas. Ejecutaremos **traceroute 8.8.8.8**."},
+        {"texto":"Comando **traceroute**. <br> Este comando se emplea cuando el cliente experimenta baja latencia, es decir, su conexión esta tomando demasiado tiempo y tiene solicitudes perdidas. Ejecutaremos **traceroute 8.8.8.8**."},
         {"imagen":"assets/lab-265/10.png",
         "descripcion":"Resultado de la ejecución."}
       ]
@@ -1470,7 +1470,7 @@
     {
       "subtitulo":"Problematica planteada.",
       "secciones":[
-        {"texto":"¡Hola, Soporte de Cloud! \n Cuando creo un servidor Apache a través de la línea de comandos, no puedo hacerle ping. También me da un error cuando introduzco la dirección IP en el navegador. ¿Podrían ayudarme a averiguar qué está bloqueando mi conexión. \n ¡Gracias! \n Ana Contractor"},
+        {"texto":"¡Hola, Soporte de Cloud! <br> Cuando creo un servidor Apache a través de la línea de comandos, no puedo hacerle ping. También me da un error cuando introduzco la dirección IP en el navegador. ¿Podrían ayudarme a averiguar qué está bloqueando mi conexión. <br> ¡Gracias! <br> Ana Contractor"},
         {"imagen":"assets/lab-266/arq.png",
         "descripcion":"Arquitectura del cliente."}
       ]
@@ -1531,10 +1531,10 @@
     {
       "subtitulo":"Paso 1.Creando la VPC.",
       "secciones":[
-        {"texto":"Usando la AWS Management console, accederemos a la panel de VPC y daremos clic en Create VPC. Configurandolo de la siguiente forma: \n Seleccionamos **VPC and more** \n Deseleccionamos la opción **Auto-generate** del Name tag \n En IPv4 CIDR ingresamos 10.0.0.0/16 y en IPv6 CIDR seleccionamos NO IPv6 CIDR block \n Tenancy se queda como Default \n Seleccionamos 1 zona de disponibilidad, 1 subnet pública y 1 subnet privada \n En la sección Customize subnets CIDR blocks y declaramos: \n Public subnet CIDR block in us-west-2a: 10.0.0.0/24 \n Private subnet CIDR block in us-west-2a: 10.0.1.0/24"},
+        {"texto":"Usando la AWS Management console, accederemos a la panel de VPC y daremos clic en Create VPC. Configurandolo de la siguiente forma: <br> Seleccionamos **VPC and more** <br> Deseleccionamos la opción **Auto-generate** del Name tag <br> En IPv4 CIDR ingresamos 10.0.0.0/16 y en IPv6 CIDR seleccionamos NO IPv6 CIDR block <br> Tenancy se queda como Default <br> Seleccionamos 1 zona de disponibilidad, 1 subnet pública y 1 subnet privada <br> En la sección Customize subnets CIDR blocks y declaramos: <br> Public subnet CIDR block in us-west-2a: 10.0.0.0/24 <br> Private subnet CIDR block in us-west-2a: 10.0.1.0/24"},
         {"imagen":"assets/lab-267/01-04.png"},
-        {"texto":"En el panel de Preview nombraremos a la VPC como Lab VPC \n Las subnets serán nombradas: \n Public subnet : Public Subnet 1 \n Private subnet : Private Subnet 1"},
-        {"texto":"De igual forma nombraremos las route tables como: \n Public route table : Public Route Table \n Private route table : Private Route Table"},
+        {"texto":"En el panel de Preview nombraremos a la VPC como Lab VPC <br> Las subnets serán nombradas: <br> Public subnet : Public Subnet 1 <br> Private subnet : Private Subnet 1"},
+        {"texto":"De igual forma nombraremos las route tables como: <br> Public route table : Public Route Table <br> Private route table : Private Route Table"},
         {"imagen":"assets/lab-267/05.png"},
         {"texto":"Daremos clic en create VPC y visualizaremos el resultado."},
         {"imagen":"assets/lab-267/06.png"},
@@ -1571,7 +1571,7 @@
       "secciones":[
         {"texto":"Al terminar y regresar al panel principal de VPC, localizaremos de lado izquiero la sección Security groups y daremos clic en Create security group"},
         {"imagen":"assets/lab-267/16.png"},
-        {"texto":"Configurandolo de la siguiente manera: \n Security group name : Web Security Group \n Description : Enable HTTP access \n VPC : seleccionamos Lab VPC \n En Inbound rules habilitamos las de tipoo HTTP, para cualquier IPv4 y en description : Permit web requests \n Daremos clic en crear."},
+        {"texto":"Configurandolo de la siguiente manera: <br> Security group name : Web Security Group <br> Description : Enable HTTP access <br> VPC : seleccionamos Lab VPC <br> En Inbound rules habilitamos las de tipoo HTTP, para cualquier IPv4 y en description : Permit web requests <br> Daremos clic en crear."},
         {"imagen":"assets/lab-267/17.png"},
         {"texto":"Visualizamos el resultado."},
         {"imagen":"assets/lab-267/18.png"}
@@ -1581,10 +1581,10 @@
       "subtitulo":"Paso 5. Lanzando la instancia EC2 para el web server.",
       "secciones":[
         {"texto":"Usando la barra buscadora de la AWS Management Console entramos a la sección EC2 y daremos clic en el botón Launche instance."},
-        {"texto":"Configurandola de la siguiente manera: \n Name : Web Server 1 \n Application and OS Images (Amazon Machine Image) : Amazon Linux 2023 \n Instance Type : t3.micro \n Key pair name : vockey"},
+        {"texto":"Configurandola de la siguiente manera: <br> Name : Web Server 1 <br> Application and OS Images (Amazon Machine Image) : Amazon Linux 2023 <br> Instance Type : t3.micro <br> Key pair name : vockey"},
         {"imagen":"assets/lab-267/19.png"},
         {"imagen":"assets/lab-267/20.png"},
-        {"texto":"En Network settings: \n VPC : Lab VPC \n Subnet : Public Subnet 2 \n Auto-assing public IP : Enable \n Firewall (Security groups) : Select existing security group \n Common security groups : Web Security group \n Finalmente en los Advance Details  > User Data pegaremos un código proporcionado por la IA."},
+        {"texto":"En Network settings: <br> VPC : Lab VPC <br> Subnet : Public Subnet 2 <br> Auto-assing public IP : Enable <br> Firewall (Security groups) : Select existing security group <br> Common security groups : Web Security group <br> Finalmente en los Advance Details  > User Data pegaremos un código proporcionado por la IA."},
         {"imagen":"assets/lab-267/21.png"},
         {"texto":"Abriendo una pestaña del navegador privado pegaremos la IP del laboratorio y visualizaremos el resultado."},
         {"imagen":"assets/lab-267/22.png"}
@@ -1676,7 +1676,7 @@
         {"imagen":"assets/lab-277/07.png"},
         {"texto":"Clic en **Start with an overview**."},
         {"imagen":"assets/lab-277/08.png"},
-        {"texto":"Seleccionamos Patch now para parchear las instancias de Linux instances con AWS-AmazonLinux2DefaultPatchBaseline. \n En la sección Basic configuration, usaremos las siguientes configuraciones: \n Patching operation:  Scan and install \n Reboot option: Reboot if needed \n Instances to patch: Patch only the target instances I specify \n Target selection: Specify instance tags \n Tag key:  Patch Group \n Tag value: LinuxProd \n Daremos clic en Add \n Finalmente, clic en Patch now"},
+        {"texto":"Seleccionamos Patch now para parchear las instancias de Linux instances con AWS-AmazonLinux2DefaultPatchBaseline. <br> En la sección Basic configuration, usaremos las siguientes configuraciones: <br> Patching operation:  Scan and install <br> Reboot option: Reboot if needed <br> Instances to patch: Patch only the target instances I specify <br> Target selection: Specify instance tags <br> Tag key:  Patch Group <br> Tag value: LinuxProd <br> Daremos clic en Add <br> Finalmente, clic en Patch now"},
         {"imagen":"assets/lab-277/09.png"},
         {"imagen":"assets/lab-277/10.png"},
         {"imagen":"assets/lab-277/11.png"},
@@ -1691,18 +1691,18 @@
       "secciones":[
         {"texto":"Regresamos a la sección Patch Manager, seleccionamos Patch baselines > Create patch baseline"},
         {"imagen":"assets/lab-277/14.png"},
-        {"texto":"Para los detalles de Patch baseline, usaremos la siguiente configuración: \n Name: WindowsServerSecurityUpdates \n Description - optional : Windows security baseline patch \n Operating system : Selecionar Windows. \n Mantener la check box para Default patch baseline deseleccionada."},
+        {"texto":"Para los detalles de Patch baseline, usaremos la siguiente configuración: <br> Name: WindowsServerSecurityUpdates <br> Description - optional : Windows security baseline patch <br> Operating system : Selecionar Windows. <br> Mantener la check box para Default patch baseline deseleccionada."},
         {"imagen":"assets/lab-277/15.png"},
-        {"texto":"En la sección Approval rules for operating systems, configuraremos la siguientes opciones: \n Products: WindowsServer2019. También, deselecionaremos All.\n Severity: Seleccionamos Critical \n Classification: seleccionamos SecurityUpdates. \n Auto-approval: Indicar 3 days. \n Compliance reporting - optional: Critical."},
+        {"texto":"En la sección Approval rules for operating systems, configuraremos la siguientes opciones: <br> Products: WindowsServer2019. También, deselecionaremos All.<br> Severity: Seleccionamos Critical <br> Classification: seleccionamos SecurityUpdates. <br> Auto-approval: Indicar 3 days. <br> Compliance reporting - optional: Critical."},
         {"imagen":"assets/lab-277/16.png"},
-        {"texto":"Seleccionamos Add rule para añadir una segunda regla de patch baseline, y configuramos las siguientes opciones: \n Products: WindowsServer2019. También, deselecionaremos All. \n Severity: Important. \n Classification: SecurityUpdates \n Auto-approval: Indicar 3 days. \n Compliance reporting - optional: High. \n Para finalizar, daremos clic en Create patch baseline."},
+        {"texto":"Seleccionamos Add rule para añadir una segunda regla de patch baseline, y configuramos las siguientes opciones: <br> Products: WindowsServer2019. También, deselecionaremos All. <br> Severity: Important. <br> Classification: SecurityUpdates <br> Auto-approval: Indicar 3 days. <br> Compliance reporting - optional: High. <br> Para finalizar, daremos clic en Create patch baseline."},
         {"imagen":"assets/lab-277/17.png"},
         {"texto":"Al regresar al panel prinicipal, entramos nuevamente a Patch Baselines y dentro del Filter patch baselines escribiremos **WindowsServerSecurityUpdates** y lo seleccionamos."},
         {"imagen":"assets/lab-277/18.png"},
         {"imagen":"assets/lab-277/19.png"},
         {"texto":"Desplegamos el menú Actions > Modify patch groups"},
         {"imagen":"assets/lab-277/20.png"},
-        {"texto":"Dentro de Modify patch groups, en la sección Patch groups introducir: WindowsProd \n Clic en el botón Add, y finalizamos con Close."},
+        {"texto":"Dentro de Modify patch groups, en la sección Patch groups introducir: WindowsProd <br> Clic en el botón Add, y finalizamos con Close."},
         {"imagen":"assets/lab-277/21.png"},
         {"imagen":"assets/lab-277/22.png"}
       ]
@@ -1711,11 +1711,11 @@
       "subtitulo":"Paso 3. Parchando las instancias de Windows.",
       "secciones":[
         {"texto":"Usando la barra buscadora de AWS Management Console nos dirigimos al servicio EC2 y visualizaremos nuestras instancias"},
-        {"texto":"Seleccionaremos cada instanicia Windows y modificaremos las etiquetas o Tags en el panel inferior. \n Tags > Manage Tags"},
+        {"texto":"Seleccionaremos cada instanicia Windows y modificaremos las etiquetas o Tags en el panel inferior. <br> Tags > Manage Tags"},
         {"imagen":"assets/lab-277/23.png"},
-        {"texto":"Dentro de la sección Manage Tags agregaremos una nueva \n Key : Patch Group \n WindowsProd. \n Clic en Save \n Repetiremos este proceso con cada una de las instancias Windows."},
+        {"texto":"Dentro de la sección Manage Tags agregaremos una nueva <br> Key : Patch Group <br> WindowsProd. <br> Clic en Save <br> Repetiremos este proceso con cada una de las instancias Windows."},
         {"imagen":"assets/lab-277/24.png"},
-        {"texto":"Nuevamente ingresaremos al servicio System Manager y la sección Node tools > Patch now, configurando lo siguiente: \n Patching operation:  Scan and install \n Reboot option: Reboot if needed \n Instances to patch: Patch only the target instances I specify \n Target selection: Specify instance tags \n Tag key:  Patch Group \n Tag value: WindowsProd \n Daremos clic en Add \n Finalmente, clic en Patch now"},
+        {"texto":"Nuevamente ingresaremos al servicio System Manager y la sección Node tools > Patch now, configurando lo siguiente: <br> Patching operation:  Scan and install <br> Reboot option: Reboot if needed <br> Instances to patch: Patch only the target instances I specify <br> Target selection: Specify instance tags <br> Tag key:  Patch Group <br> Tag value: WindowsProd <br> Daremos clic en Add <br> Finalmente, clic en Patch now"},
         {"imagen":"assets/lab-277/25.png"},
         {"texto":"Acontinuacion nos llevara a una pestaña de progreso y visualizaremos una de las instancias dando clic en el hipervinculo resaltado en azul en la columna Resourse id."},
         {"imagen":"assets/lab-277/26.png"},
@@ -1728,7 +1728,7 @@
     {
       "subtitulo":"Paso 4. Verificación del cumplimiento.",
       "secciones":[
-        {"texto":"Podemos visualizar los detalles de los parches ejecutados durante este laboratorio siguiendo la ruta Node Management > Patch Manager > Compliance reporting. \n Para poder navegar en la tabla daremos scroll de izquierda a derecha."},
+        {"texto":"Podemos visualizar los detalles de los parches ejecutados durante este laboratorio siguiendo la ruta Node Management > Patch Manager > Compliance reporting. <br> Para poder navegar en la tabla daremos scroll de izquierda a derecha."},
         {"imagen":"assets/lab-277/30.png"},
         {"imagen":"assets/lab-277/31.png"},
         {"imagen":"assets/lab-277/32.png"}
@@ -1756,7 +1756,7 @@
         {"imagen":"assets/lab-279/02.png"},
         {"texto":"Una vez dentro daremos clic en Edit para establecer nuestra politica."},        
         {"imagen":"assets/lab-279/03.png"},
-        {"texto":"Estableceremos las siguientes condiciones: \n Para Enforce minimum password length, cambiaremos de 8 a 10 caracteres. \n Seleccionaremos todos los check box excepto Password expiration requires administrator reset. \n Habilitamos Enable password expiration y establecemos 90 días. \n Evite la reutilización de contraseñas; mantenga la opción predeterminada de 5 contraseñas. \n Al finalizar daremos clic en Save Changes."},  
+        {"texto":"Estableceremos las siguientes condiciones: <br> Para Enforce minimum password length, cambiaremos de 8 a 10 caracteres. <br> Seleccionaremos todos los check box excepto Password expiration requires administrator reset. <br> Habilitamos Enable password expiration y establecemos 90 días. <br> Evite la reutilización de contraseñas; mantenga la opción predeterminada de 5 contraseñas. <br> Al finalizar daremos clic en Save Changes."},  
         {"imagen":"assets/lab-279/04.png"},
         {"imagen":"assets/lab-279/05.png"}
       ]
@@ -1801,7 +1801,7 @@
       "secciones":[
         {"texto":"Regresaremos al panel principal de IAM y del lado derecho encontraremos la sección Sing-in URL for IAM users in this account y copiaremos el enlace para pegarlo en una ventana modo incognito."},
         {"imagen":"assets/lab-279/19.png"},
-        {"texto":"Introduciremos las credenciales del primer usuario: \n IAM user name: user-1 \n Password: Lab-Password1"},
+        {"texto":"Introduciremos las credenciales del primer usuario: <br> IAM user name: user-1 <br> Password: Lab-Password1"},
         {"imagen":"assets/lab-279/20.png"},
         {"texto":"Al entrar a la consola usaremos la barra buscadora para localizar el servicio S3."},
         {"imagen":"assets/lab-279/21.png"},
@@ -1814,17 +1814,17 @@
         {"imagen":"assets/lab-279/26.png"},
         {"texto":"Cerraremos la sesión y probaremos las capacidades del siguiente usuario."},
         {"imagen":"assets/lab-279/27.png"},
-        {"texto":"Introduciremos las credenciales del segundo usuario: \n IAM user name: user-2 \n Password: Lab-Password2"},
+        {"texto":"Introduciremos las credenciales del segundo usuario: <br> IAM user name: user-2 <br> Password: Lab-Password2"},
         {"texto":"Dentro del la consola usaremos la barra buscadora para acceder al servicio EC2."},
         {"imagen":"assets/lab-279/28.png"},
         {"imagen":"assets/lab-279/29.png"},
-        {"texto":"Este usuario permite visualizar la instancia Web Server, sin embargo, si intentamos modificarla o detenerla nos daremos cuenta que no contamos con los permisos necesarios. \n Instance state > Stop instance"},
+        {"texto":"Este usuario permite visualizar la instancia Web Server, sin embargo, si intentamos modificarla o detenerla nos daremos cuenta que no contamos con los permisos necesarios. <br> Instance state > Stop instance"},
         {"imagen":"assets/lab-279/30.png"},
         {"imagen":"assets/lab-279/31.png"},
-        {"texto":"De igual forma, si intentamos visualizar los buckets del servicio S3 no obtendremos resultado, ya que el usuario tampoco cuenta con los permisos necesarios. \n Cerraremos sesión y probaremos el último usuario."},
+        {"texto":"De igual forma, si intentamos visualizar los buckets del servicio S3 no obtendremos resultado, ya que el usuario tampoco cuenta con los permisos necesarios. <br> Cerraremos sesión y probaremos el último usuario."},
         {"imagen":"assets/lab-279/32.png"},
         {"imagen":"assets/lab-279/33.png"},
-        {"texto":"Introduciremos las credenciales del tercer usuario: \n IAM user name: user-3 \n Password: Lab-Password3"},
+        {"texto":"Introduciremos las credenciales del tercer usuario: <br> *IAM user name: user-3 <br> *Password: Lab-Password3"},
         {"texto":"Nos dirigimos al servicio EC2 e intentamos detener la instancia nuevamente."},
         {"imagen":"assets/lab-279/34.png"},
         {"texto":"En este caso la instancia si se apago dado que este usuario si cuenta con los permisos necesarios."},
@@ -1850,7 +1850,7 @@
         {"imagen":"assets/lab-280/02.png"},
         {"texto":"Una vez en la terminal ejecutaremos el comando pwd para verificar nuestro directorio actual."},
         {"imagen":"assets/lab-280/03.png"},
-        {"texto":"Usando el comando wget para descargar archivos de internet emulando archivos maliciosos. \n Ejecutamos el comando **wget http://malware.wicar.org/data/js_crypto_miner.html** y en comando **wget http://malware.wicar.org/data/java_jre17_exec.html**."},
+        {"texto":"Usando el comando wget para descargar archivos de internet emulando archivos maliciosos. <br> Ejecutamos el comando **wget http://malware.wicar.org/data/js_crypto_miner.html** y en comando **wget http://malware.wicar.org/data/java_jre17_exec.html**."},
         {"imagen":"assets/lab-280/04.png"},
         {"texto":"Comprobaremos si los archivos fueron descargados con el comando **ls**"},
         {"imagen":"assets/lab-280/05.png"}
@@ -1866,7 +1866,7 @@
         {"imagen":"assets/lab-280/08.png"},
         {"texto":"Daremos clic en Edit dentro de la sección Stateless default actions."},
         {"imagen":"assets/lab-280/09.png"},
-        {"texto":"Seleccionamos las opciones: \n Fragmented Packets: Use the same actions for all packets \n Rule action: Forward to stateful rule groups. \n Y daremos clic en Save."},
+        {"texto":"Seleccionamos las opciones: <br> *Fragmented Packets: Use the same actions for all packets <br> *Rule action: Forward to stateful rule groups. <br> Y daremos clic en Save."},
         {"imagen":"assets/lab-280/10.png"},
         {"imagen":"assets/lab-280/11.png"}
       ]
@@ -1874,11 +1874,11 @@
     {
       "subtitulo":"Paso 3. Creando un firewall rule group.",
       "secciones":[
-        {"texto":"Regresando al panel principal de VPC ubicaremos la sección **NETWORK FIREWALL** > **Network Firewall Rule Groups**. \n Una vez dentro damos clic en el botóbn **Create rule group**"},
+        {"texto":"Regresando al panel principal de VPC ubicaremos la sección **NETWORK FIREWALL** > **Network Firewall Rule Groups**. <br> Una vez dentro damos clic en el botóbn **Create rule group**"},
         {"imagen":"assets/lab-280/12.png"},
-        {"texto":"Para las configuraciones de las sección **Rule Group type** \n Rule group type: Stateful rule group. \n Rule group format: Suricata compatible rule string. \n Rule evaluation order: Action order. Clic en Next."},
+        {"texto":"Para las configuraciones de las sección **Rule Group type** <br> *Rule group type: Stateful rule group. <br> *Rule group format: Suricata compatible rule string. <br> *Rule evaluation order: Action order. <br> *Clic en Next."},
         {"imagen":"assets/lab-280/13.png"},
-        {"texto":"En la siguiente sección, Rule group details, configuramos las siguientes opciones: \n Name: Enter StatefulRuleGroup \n Capacity: Enter 100 \n Choose Next."},
+        {"texto":"En la siguiente sección, Rule group details, configuramos las siguientes opciones: <br> Name: Enter StatefulRuleGroup <br> Capacity: Enter 100 <br> Choose Next."},
         {"imagen":"assets/lab-280/14.png"},
         {"texto":"Dentro de la sección Suricata compatible rule string pegaremos los siguientes comandos:"},
         {"imagen":"assets/lab-280/extra 01.png"},
@@ -1888,7 +1888,7 @@
     {
       "subtitulo":"Paso 4. Asociando la rule group al firewall de la red de trabajo.",
       "secciones":[
-        {"texto":"Nuevamente regresamos al panel principal de VPC y ubicaremos la sección **NETWORK** > **Firewalls** y seleccionamos **LabFirewall**. Debajo, en la sección **Associated firewall policy**, seleccionamos **LabFirewallPolicy**. \n Dentro de **Stateful rule groups** seleccionamos la lista desplegable, y daremos clic en **Add unmanaged stateful rule groups**."},
+        {"texto":"Nuevamente regresamos al panel principal de VPC y ubicaremos la sección **NETWORK** > **Firewalls** y seleccionamos **LabFirewall**. Debajo, en la sección **Associated firewall policy**, seleccionamos **LabFirewallPolicy**. <br> Dentro de **Stateful rule groups** seleccionamos la lista desplegable, y daremos clic en **Add unmanaged stateful rule groups**."},
         {"imagen":"assets/lab-280/16.png"},
         {"texto":"Dentro de la sección seleccionamos **StatefulRuleGroup** y daremos clic en **Add stateful rule group**."},
         {"imagen":"assets/lab-280/17.png"},
@@ -1929,11 +1929,11 @@
         {"imagen":"assets/lab-281/01.png"},
         {"texto":"Una vez dentro del panel principal, crearemos un nuevo topic usando el botón **Create topic**."},
         {"imagen":"assets/lab-281/02.png"},
-        {"texto":"En esta sección configuraremos lo siguiente: \n Type: Choose Standard. \n Name: Enter MyCwAlarm \n Finalizamos dando clic en create topic."},
+        {"texto":"En esta sección configuraremos lo siguiente: <br> *Type: Choose Standard. <br> *Name: Enter MyCwAlarm <br> *Finalizamos dando clic en create topic."},
         {"imagen":"assets/lab-281/03.png"},
-        {"texto":"Una vez creado, entramos al panel principal de MyCwAlarm y seleccionamos Subscriptions para crear una."},
+        {"texto":"Una vez creado, entramos al panel principal de **MyCwAlarm** y seleccionamos Subscriptions para crear una."},
         {"imagen":"assets/lab-281/04.png"},
-        {"texto":"La configuraremos de la siguiente manera: \n Topic ARN: Mantendremos la opción por defecto selecionada. \n Protocol: De la lista selecionamos Email. \n Endpoint: Ingresaremos un correo al que tengamos acceso. \n Finalizamos dando clic en Create subscription."},
+        {"texto":"La configuraremos de la siguiente manera: <br> *Topic ARN: Mantendremos la opción por defecto selecionada. <br> *Protocol: De la lista selecionamos Email. <br> *Endpoint: Ingresaremos un correo al que tengamos acceso. <br> *Finalizamos dando clic en Create subscription."},
         {"imagen":"assets/lab-281/05.png"},
         {"texto":"Al finalizar se nos desplegara la ventana de detalles para la suscripción, observaremos el estatus como pendiente. Para confirmarla debemos entrar a nuestro correo y dar clic en el enlace, al regresar a la consola podemos observar que el estatus cambio a confirmado."},
         {"imagen":"assets/lab-281/06.png"},
@@ -1944,7 +1944,7 @@
     {
       "subtitulo":"Paso 2. Crear una alarma de CloudWatch.",
       "secciones":[
-        {"texto":"El siguiente paso consta de crerar una alarma para cuando nuestra instancia exceda el 60% de su CPU Utilization, para ello entraremos al panel principal del servicio de CLoudWatch. \n **Metric** > **All Metrics**"},
+        {"texto":"El siguiente paso consta de crerar una alarma para cuando nuestra instancia exceda el 60% de su CPU Utilization, para ello entraremos al panel principal del servicio de CLoudWatch. <br> **Metric** > **All Metrics**"},
         {"imagen":"assets/lab-281/09.png"},
         {"texto":"Daremos clic en el panel inferior **EC2** > **Per-Instance Metrics**"},
         {"imagen":"assets/lab-281/10.png"},
@@ -1957,10 +1957,10 @@
         {"imagen":"assets/lab-281/15.png"},
         {"texto":"Escogemos **CPUUtilization** y daremos clic en Select Metric."},
         {"imagen":"assets/lab-281/17.png"},
-        {"texto":"En la sección **Specify metric and conditions** configuraremos lo siguiente: <br> **METRIC:** <br> * Metric name: CPUUtilization <br> * InstanceId: Mantener la opción por defecto. <br> * Statistic: Average <br> * Period: De la lista, seleccionar 1 minute. <br> **CONDITIONS:** <br> * Threshold type: Seleccionar Static. <br> * Whenever CPUUtilization is...: Seleccionar Greater > threshold. <br> * than... Define the threshold value: ingresar 60"},
+        {"texto":"En la sección **Specify metric and conditions** configuraremos lo siguiente: <br> **METRIC:** <br> *Metric name: CPUUtilization <br> *InstanceId: Mantener la opción por defecto. <br> *Statistic: Average <br> *Period: De la lista, seleccionar 1 minute. <br> **CONDITIONS:** <br> *Threshold type: Seleccionar Static. <br> *Whenever CPUUtilization is...: Seleccionar Greater > threshold. <br> *than... Define the threshold value: ingresar 60"},
         {"imagen":"assets/lab-281/18.png"},
         {"imagen":"assets/lab-281/19.png"},
-        {"texto": "Seguimos con las configuraciones:  <br> **NOTIFICATION:** <br> * Alarm state trigger: Seleccionar In alarm. <br> * Select an SNS topic: Elegir Select an existing SNS topic. <br> * Send a notification to...: Dentro del cuadro de texto escribir MyCwAlarm. <br> **NAME AND DESCRIPTION:** <br> * Alarm name: LabCPUUtilizationAlarm <br> * Alarm description - optional: CloudWatch alarm for Stress Test EC2 instance CPUUtilization"},
+        {"texto": "Seguimos con las configuraciones:  <br> **NOTIFICATION:** <br> *Alarm state trigger: Seleccionar In alarm. <br> *Select an SNS topic: Elegir Select an existing SNS topic. <br> *Send a notification to...: Dentro del cuadro de texto escribir MyCwAlarm. <br> **NAME AND DESCRIPTION:** <br> *Alarm name: LabCPUUtilizationAlarm <br> *Alarm description - optional: CloudWatch alarm for Stress Test EC2 instance CPUUtilization"},
         {"imagen":"assets/lab-281/21.png"},
         {"imagen":"assets/lab-281/22.png"}
         
