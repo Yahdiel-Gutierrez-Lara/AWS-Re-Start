@@ -1969,12 +1969,16 @@
     {
       "subtitulo":"Paso 3. Probando la alarma de CloudWatch.",
       "secciones":[
-        {"texto":"HOLA"},
+        {"texto":"Para probar la alarma d CloudWatch necesitamos acceder a la EC2 Stress test y ejecutar el comando que permitira sobrecargar momentaneamente la CPU de la misma. Para ello, dentro del entorno del laboratorio localizaremos la sección de **Details** y copiaremos el URL de la terminal de esta instancia. "},
         {"imagen":"assets/lab-281/23.png"},
+        {"texto":"Una vez dentro, ejecutaremos el comando **sudo stress --cpu 10 -v --timeout 400s**"}, 
         {"imagen":"assets/lab-281/24.png"},
+        {"texto":"Desde otra pestaña usaremos el URL nuevamente y ejecutaremos el comando **top** para observar el estado actual de la instancia."}, 
         {"imagen":"assets/lab-281/25.png"},
+        {"texto":"Regresando a la consola AWS, entraremos en **Alarms** > **LabCPUUtilization** para monitorear el gráfico creado con anterioridad."}, 
         {"imagen":"assets/lab-281/26.png"},
         {"imagen":"assets/lab-281/27.png"},
+        {"texto":"Finalmente, verificaremos desde nuestro correo si la alarma fue enviada correctamente."}, 
         {"imagen":"assets/lab-281/28.png"}
         
       ]
@@ -1982,9 +1986,11 @@
     {
       "subtitulo":"Paso 4. Creando un CloudWatch dashboard.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Para finalizar el laboratorio, exploraremos como crear un panel que nos permita monitorear diferentes recursos en una misma vista. <br> Seleccionamos la sección de **dasboards** y daremos clic en **create dashboard**."},
         {"imagen":"assets/lab-281/29.png"},
+        {"texto":"Configuraremos lo siguiente: <br> **Dashboard name** : **LabEC2Dashboard** y dar clic en **Create dashboard**. <br> *Seleccionar Line. <br> *Seleccionar Metrics. <br> *Seleccionar **EC2**, y después **Per-Instance Metrics**. <br> Marcar el check box con **Stress Test** para el nombre de la instancia y **CPUUtilization** para el nombre de la metrica. <br> Elegir **Create widget**. <br> Dar clic en Save dashboard."},
         {"imagen":"assets/lab-281/30.png"},
+        {"texto":"Al finalizar podemos verificar la creación de nuestro dashboard correctamente."},
         {"imagen":"assets/lab-281/31.png"}
         
       ]
