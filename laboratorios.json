@@ -1960,7 +1960,7 @@
         {"texto":"En la sección **Specify metric and conditions** configuraremos lo siguiente: \n **METRIC:** \n Metric name: CPUUtilization \n InstanceId: Mantener la opción por defecto. \n Statistic: Average \n Period: De la lista, seleccionar 1 minute. \n **CONDITIONS:** \n Threshold type: Seleccionar Static. \n Whenever CPUUtilization is...: Seleccionar Greater > threshold. \n than... Define the threshold value: ingresar 60"},
         {"imagen":"assets/lab-281/18.png"},
         {"imagen":"assets/lab-281/19.png"},
-        {"textoMarkdown": "Seguimos con las configuraciones: \n\n* **NOTIFICATION:**\n  * Alarm state trigger: Seleccionar `In alarm`.\n  * Select an SNS topic: Elegir `Select an existing SNS topic`.\n  * Send a notification to...: Dentro del cuadro de texto escribir `MyCwAlarm`.\n* **NAME AND DESCRIPTION:**\n  * Alarm name: `LabCPUUtilizationAlarm`\n  * Alarm description - optional: CloudWatch alarm for Stress Test EC2 instance CPUUtilization"},
+        {"texto": "Seguimos con las configuraciones: \n\n* **NOTIFICATION:**\n  * Alarm state trigger: Seleccionar `In alarm`.\n  * Select an SNS topic: Elegir `Select an existing SNS topic`.\n  * Send a notification to...: Dentro del cuadro de texto escribir `MyCwAlarm`.\n* **NAME AND DESCRIPTION:**\n  * Alarm name: `LabCPUUtilizationAlarm`\n  * Alarm description - optional: CloudWatch alarm for Stress Test EC2 instance CPUUtilization"},
         {"imagen":"assets/lab-281/21.png"},
         {"imagen":"assets/lab-281/22.png"}
         
