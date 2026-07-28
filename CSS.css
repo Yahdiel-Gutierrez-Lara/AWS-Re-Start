@@ -23,6 +23,15 @@
     }
 
     /* ── Sidebar ── */
+
+    .sidebar { /* O el selector que uses para tu barra lateral */
+    height: 100vh;          /* Ocupa toda la altura de la ventana */
+    position: sticky;       /* O fixed, para que se mantenga fija al hacer scroll en la página principal */
+    top: 0;
+    overflow-y: auto;       /* Habilita la barra de desplazamiento vertical solo cuando sea necesario */
+    overflow-x: hidden;     /* Evita scroll horizontal no deseado */
+}
+
     #sidebar {
       width: 260px;
       min-height: 100vh;
