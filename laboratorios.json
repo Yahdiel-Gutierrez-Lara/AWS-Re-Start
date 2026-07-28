@@ -1749,7 +1749,7 @@
     {
       "subtitulo":"Paso 1. Creando una politica para contraseñas de cuentas.",
       "secciones":[
-        {"texto":"Antes de comenzar debemos visualizar la región en la que nos encontramos visualizando la barra de arriba en la sección ** Region **."},
+        {"texto":"Antes de comenzar debemos visualizar la región en la que nos encontramos visualizando la barra de arriba en la sección **Region**."},
         {"texto":"Con ayuda de la barra buscadora localizamos el servicio de IAM."},
         {"imagen":"assets/lab-279/01.png"},
         {"texto":"Al seleccionarlo y pasarnos al panel principal, ubicaremos la sección **Account settings** del lado inferior izquierdo."},
@@ -1787,7 +1787,7 @@
       ]
     },
     {
-      "subtitulo":"Paso 3. Añadiendo usuarios a los grupos de usuario .",
+      "subtitulo":"Paso 3. Añadiendo usuarios a los grupos de usuario.",
       "secciones":[
         {"texto":"Para asignar usuarios a un grupo entraremos al mismo y seleccionaremos el panel de Users y daremos clic en Add User."},
         {"imagen":"assets/lab-279/17.png"},
@@ -1850,9 +1850,9 @@
         {"imagen":"assets/lab-280/02.png"},
         {"texto":"Una vez en la terminal ejecutaremos el comando pwd para verificar nuestro directorio actual."},
         {"imagen":"assets/lab-280/03.png"},
-        {"texto":"Usando el comando wget para descargar archivos de internet emulando archivos maliciosos. \n Ejecutamos el comando ** wget http://malware.wicar.org/data/js_crypto_miner.html ** y en comando ** wget http://malware.wicar.org/data/java_jre17_exec.html **."},
+        {"texto":"Usando el comando wget para descargar archivos de internet emulando archivos maliciosos. \n Ejecutamos el comando **wget http://malware.wicar.org/data/js_crypto_miner.html** y en comando **wget http://malware.wicar.org/data/java_jre17_exec.html**."},
         {"imagen":"assets/lab-280/04.png"},
-        {"texto":"Comprobaremos si los archivos fueron descargados con el comando ** ls **"},
+        {"texto":"Comprobaremos si los archivos fueron descargados con el comando **ls**"},
         {"imagen":"assets/lab-280/05.png"}
       ]
     },
@@ -1874,9 +1874,9 @@
     {
       "subtitulo":"Paso 3. Creando un firewall rule group.",
       "secciones":[
-        {"texto":"Regresando al panel principal de VPC ubicaremos la sección NETWORK FIREWALL > Network Firewall Rule Groups. \n Una vez dentro damos clic en el botóbn Create rule group"},
+        {"texto":"Regresando al panel principal de VPC ubicaremos la sección **NETWORK FIREWALL** > **Network Firewall Rule Groups**. \n Una vez dentro damos clic en el botóbn **Create rule group**"},
         {"imagen":"assets/lab-280/12.png"},
-        {"texto":"Para las configuraciones de las sección Rule Group type \n Rule group type: Stateful rule group. \n Rule group format: Suricata compatible rule string. \n Rule evaluation order: Action order. Clic en Next."},
+        {"texto":"Para las configuraciones de las sección **Rule Group type** \n Rule group type: Stateful rule group. \n Rule group format: Suricata compatible rule string. \n Rule evaluation order: Action order. Clic en Next."},
         {"imagen":"assets/lab-280/13.png"},
         {"texto":"En la siguiente sección, Rule group details, configuramos las siguientes opciones: \n Name: Enter StatefulRuleGroup \n Capacity: Enter 100 \n Choose Next."},
         {"imagen":"assets/lab-280/14.png"},
@@ -1888,9 +1888,9 @@
     {
       "subtitulo":"Paso 4. Asociando la rule group al firewall de la red de trabajo.",
       "secciones":[
-        {"texto":"Nuevamente regresamos al panel principal de VPC y ubicaremos la sección NETWORK > Firewalls y seleccionamos LabFirewall. Debajo, en la sección Associated firewall policy, seleccionamos LabFirewallPolicy. \n Dentro de Stateful rule groups seleccionamos la lista desplegable, y daremos clic en Add unmanaged stateful rule groups."},
+        {"texto":"Nuevamente regresamos al panel principal de VPC y ubicaremos la sección **NETWORK** > **Firewalls** y seleccionamos **LabFirewall**. Debajo, en la sección **Associated firewall policy**, seleccionamos **LabFirewallPolicy**. \n Dentro de **Stateful rule groups** seleccionamos la lista desplegable, y daremos clic en **Add unmanaged stateful rule groups**."},
         {"imagen":"assets/lab-280/16.png"},
-        {"texto":"Dentro de la sección seleccionamos StatefulRuleGroup y daremos clic en Add stateful rule group."},
+        {"texto":"Dentro de la sección seleccionamos **StatefulRuleGroup** y daremos clic en **Add stateful rule group**."},
         {"imagen":"assets/lab-280/17.png"},
         {"texto":"Verificamosla la actualización de esta politica para Firewall."},
         {"imagen":"assets/lab-280/18.png"},
@@ -1904,9 +1904,9 @@
         {"imagen":"assets/lab-280/21.png"},
         {"texto":"Entramos al panel SSM Session Manager y daremos clic en Connect."},
         {"imagen":"assets/lab-280/22.png"},
-        {"texto":"Probamos el comando ** wget http://malware.wicar.org/data/js_crypto_miner.html ** y el comando ** wget http://malware.wicar.org/data/java_jre17_exec.html **."},
+        {"texto":"Probamos el comando **wget http://malware.wicar.org/data/js_crypto_miner.html ** y el comando ** wget http://malware.wicar.org/data/java_jre17_exec.html**."},
         {"imagen":"assets/lab-280/23.png"},
-        {"texto":"Removemos los archivos anteriormente descargados con el comando ** rm java_jre17_exec.html js_crypto_miner.html ** y comprobamos con el comando ** ls **."},
+        {"texto":"Removemos los archivos anteriormente descargados con el comando **rm java_jre17_exec.html js_crypto_miner.html** y comprobamos con el comando **ls**."},
         {"imagen":"assets/lab-280/24.png"}
       ]
     }
@@ -1927,7 +1927,7 @@
       "secciones":[
         {"texto":"Dentro de las consola y con la barra buscadora, ubicaremos el servicio SNS."},
         {"imagen":"assets/lab-281/01.png"},
-        {"texto":"Una vez dentro del panel principal, crearemos un nuevo topic usando el botón ** Create topic **."},
+        {"texto":"Una vez dentro del panel principal, crearemos un nuevo topic usando el botón **Create topic**."},
         {"imagen":"assets/lab-281/02.png"},
         {"texto":"En esta sección configuraremos lo siguiente: \n Type: Choose Standard. \n Name: Enter MyCwAlarm \n Finalizamos dando clic en create topic."},
         {"imagen":"assets/lab-281/03.png"},
@@ -1944,20 +1944,20 @@
     {
       "subtitulo":"Paso 2. Crear una alarma de CloudWatch.",
       "secciones":[
-        {"texto":"El siguiente paso consta de crerar una alarma para cuando nuestra instancia exceda el 60% de su CPU Utilization, para ello entraremos al panel principal del servicio de CLoudWatch. \n Metric > All Metrics"},
+        {"texto":"El siguiente paso consta de crerar una alarma para cuando nuestra instancia exceda el 60% de su CPU Utilization, para ello entraremos al panel principal del servicio de CLoudWatch. \n **Metric** > **All Metrics**"},
         {"imagen":"assets/lab-281/09.png"},
-        {"texto":"Daremos clic en el panel inferior EC2 > Per-Instance Metrics"},
+        {"texto":"Daremos clic en el panel inferior **EC2** > **Per-Instance Metrics**"},
         {"imagen":"assets/lab-281/10.png"},
         {"imagen":"assets/lab-281/12.png"},
         {"texto":"Ubicaremos la opición CPUUtilization para observar su porcentaje actual."},
         {"imagen":"assets/lab-281/13.png"},
         {"texto":"Regresaremos al panel principal de CloudWatch y daremos clic en Alarms para crear una nueva alarma."},
         {"imagen":"assets/lab-281/14.png"},
-        {"texto":"Escogemos Select Metric > EC2 > Per-Instance Metrics."},
+        {"texto":"Escogemos **Select Metric** > **EC2** > **Per-Instance Metrics**."},
         {"imagen":"assets/lab-281/15.png"},
-        {"texto":"Escogemos CPUUtilization y daremos clic en Select Metric."},
+        {"texto":"Escogemos **CPUUtilization** y daremos clic en Select Metric."},
         {"imagen":"assets/lab-281/17.png"},
-        {"texto":"En la sección Specify metric and conditions configuraremos lo siguiente: \n METRIC: \n Metric name: CPUUtilization \n InstanceId: Mantener la opción por defecto. \n Statistic: Average \n Period: De la lista, seleccionar 1 minute. \n CONDITIONS: Threshold type: Seleccionar Static. \n Whenever CPUUtilization is...: Seleccionar Greater > threshold. \n than... Define the threshold value: ingresar 60"},
+        {"texto":"En la sección **Specify metric and conditions** configuraremos lo siguiente: \n **METRIC:** \n Metric name: CPUUtilization \n InstanceId: Mantener la opción por defecto. \n Statistic: Average \n Period: De la lista, seleccionar 1 minute. \n **CONDITIONS:** \n Threshold type: Seleccionar Static. \n Whenever CPUUtilization is...: Seleccionar Greater > threshold. \n than... Define the threshold value: ingresar 60"},
         {"imagen":"assets/lab-281/18.png"},
         {"imagen":"assets/lab-281/19.png"},
         {"texto":"Seguimos con las configuraciones: \n NOTIFICATION: \n Alarm state trigger: Seleccionar In alarm. \n Select an SNS topic: Elegir Select an existing SNS topic. \n Send a notification to...: Dentro del cuadro de texto escribir MyCwAlarm. \n NAME AND DESCRIPTION: \n Alarm name: LabCPUUtilizationAlarm\n Alarm description - optional: CloudWatch alarm for Stress Test EC2 instance CPUUtilization"},
