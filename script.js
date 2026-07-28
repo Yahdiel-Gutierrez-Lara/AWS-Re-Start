@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".nav-link").forEach(link => {
             link.addEventListener("click", (e) => {
                 const href = link.getAttribute("href");
+                const nombreModulo = link.getAttribute("data-module");
                 
                 if (href === "#inicio") {
                     e.preventDefault();
@@ -68,10 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else if (href === "#modulos") {
                     e.preventDefault();
                     irAModulos();
-                } else if (href && href.startsWith("#modulo-")) {
-                    // Si el enlace lateral apunta directamente a un módulo (ej. #modulo-AWS o similar)
+                } else if (nombreModulo) {
+                    // Si el botón tiene un data-module definido, abre ese módulo automáticamente
                     e.preventDefault();
-                    const nombreModulo = link.getAttribute("data-module") || href.replace("#modulo-", "");
                     mostrarListaLaboratorios(nombreModulo);
                 }
             });
