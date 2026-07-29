@@ -2054,41 +2054,56 @@
   "modulo": "Bases de datos",
   "numero": "Lab 269",
   "titulo": "Insertar, actualizar y eliminar datos en una base de datos.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es validar las configuraciones de la base de datos corriendo los comandos INSERT, UPDATE y DELETE.",
   "status": "done",
   "status_texto": "Completado",
   "tags": ["INSERT INTO", "UPDATE", "SET", "DELETE", "Import data"],
   "pasos": [
     {
-      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "subtitulo":"Recordatorio:.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-269/01.png"},
-        {"imagen":"assets/lab-269/02.png"}
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
       ]
     },
     {
-      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "subtitulo":"Paso 1. Insertando datos dentro de una tabla.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-269/01.png"},
-        {"imagen":"assets/lab-269/02.png"}
+        {"texto":"Verificamos las tablas existentes dentro de la base de datos."},
+        {"imagen":"assets/lab-269/03.png"},
+        {"texto":"También es necesario verificar si la tabla **country** existe usando **SELECT * FROM world.country;**. <br> Para insertar filas dentro de la tabla usaremos <br> **INSERT INTO world.country VALUES ('IRL','Ireland','Europe','British Islands',70273.00,1921,3775100,76.8,75921.00,73132.00,'Ireland/Éire','Republic',1447,'IE');** <br> **INSERT INTO world.country VALUES ('IRL','Ireland','Europe','British Islands',70273.00,1921,3775100,76.8,75921.00,73132.00,'Ireland/Éire','Republic',1447,'IE');** <br> Los valores usados dentro del comando VALUES deben estar establecidos en orden de acuerdo al esquema de la tabla."},
+        {"imagen":"assets/lab-269/04.png"},
+        {"texto":"Verificaremos la que se haya insertado correctamente las filas con el comando **SELECT * FROM world.country WHERE Code IN ('IRL', 'AUS');**."},
+        {"imagen":"assets/lab-269/05.png"}
       ]
     },
     {
-      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "subtitulo":"Paso 2. Actualizando las filas de una tabla.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-269/01.png"},
-        {"imagen":"assets/lab-269/02.png"}
+        {"texto":"Para actualizar el valor de la columna **Population** a 0 en ambas filas usaremos el comando **UPDATE world.country SET Population = 0;**. <br> Verificaremos este cambio usando **SELECT * FROM world.country;**."},
+        {"imagen":"assets/lab-269/06.png"},
+        {"texto":"Para actualizar el valor de la columna **Population** y **SurfaceArea** usaremos el comando **UPDATE world.country SET Population = 100, SurfaceArea = 100;**. <br> Verificaremos este cambio usando **SELECT * FROM world.country;**."},
+        {"imagen":"assets/lab-269/07.png"},
+        {"imagen":"assets/lab-269/08.png"}
       ]
     },
     {
-      "subtitulo":"Paso 1. Eliminando una base de datos y una tabla.",
+      "subtitulo":"Paso 3. Eliminando filas de una tabla.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-269/01.png"},
-        {"imagen":"assets/lab-269/02.png"}
+        {"texto":"Eliminaremos todas las filas de la tabla **country** usaremos: <br> **SET FOREIGN_KEY_CHECKS = 0;** <br> **DELETE FROM world.country;** <br> Y verificamos con **SELECT * FROM world.country;** Es importante destacar que al no usar el condicional **WHERE** se ven afectadas todas las filas."},
+        {"imagen":"assets/lab-269/09.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Importando datos usando un archivo SQL.",
+      "secciones":[
+        {"texto":"Saldremos del servicio MariaDB usando **QUIT;**."},
+        {"imagen":"assets/lab-269/10.png"},
+        {"texto":"Verificaremos que el archivo world.sql este descargado usando **ls /home/ec2-user/world.sql** <br> Cargaremos el archivo usando **mysql -u root --password='re:St@rt!9' < /home/ec2-user/world.sql** y así las tablas quedaran importadas dentro de la base de datos. <br> Finalizaremos ingresando de nuevo a la base de datos **world**"},
+        {"texto":"Para apuntar a la base de datos usamos **USE world;** y observaremos las tablas dentro **SHOW TABLES;**"},
+        {"imagen":"assets/lab-269/11.png"},
+        {"texto":"Para asegurarnos de la carga correcta de las fila usamos **SELECT * FROM country;**."},
+        {"imagen":"assets/lab-269/12.png"},
+        {"imagen":"assets/lab-269/13.png"}
       ]
     }
   ]
@@ -2102,7 +2117,14 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"Recordatorio:.",
+      "secciones":[
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 271",
@@ -2113,7 +2135,14 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"Recordatorio:.",
+      "secciones":[
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 272",
@@ -2124,7 +2153,14 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"Recordatorio:.",
+      "secciones":[
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 273",
@@ -2135,7 +2171,14 @@
   "status": "done",
   "status_texto": "Completado",
   "tags": [],
-  "pasos": []
+  "pasos": [
+    {
+      "subtitulo":"Recordatorio:.",
+      "secciones":[
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 160",
