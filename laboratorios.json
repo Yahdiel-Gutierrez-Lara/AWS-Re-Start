@@ -2002,7 +2002,7 @@
   "modulo": "Bases de datos",
   "numero": "Lab 268",
   "titulo": "Operaciones de tabla de base.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es examinar las diferentes alternativas para modificar bases de datos alojadas en una instancia EC2 de un cliente.",
   "status": "done",
   "status_texto": "Completado",
   "tags": ["CREATE","SHOW","ALTER","DROP"],
@@ -2010,23 +2010,30 @@
     {
       "subtitulo":"Paso 1. Conectandose a the Command Host.",
       "secciones":[
-        {"texto":""},
-        {"imagen":"assets/lab-268/01.png"},
+        {"texto":"Este proceso se repetira durante los próximos laboratorios. <br> 1. Acceder a la consola AWS y al servicio EC2. <br> Seleccionar la intancia y dar clic en **Connect**. <br> 3. Seleccionar el panel de **SSM Sesion Manager**. <br> 5. Finalizar dando clic en el botoón **Connect**"},
         {"imagen":"assets/lab-268/02.png"},
+        {"imagen":"assets/lab-268/01.png"},
+        {"texto":"Una vez dentro de la terminal ejecutaremos el siguiente comando. <br> sudo su <br> cd /home/ec2-user/ <br> Estos dos comandos nos permitiran acceder a todas las herramientas y recursos requeridos."},
         {"imagen":"assets/lab-268/03.png"},
+        {"texto":"Enseguida nos conectaremos a la base de datos ejecutando el siguiente comando. <br> mysql -u root --password='re:St@rt!9'"},
         {"imagen":"assets/lab-268/04.png"}
       ]
     },
     {
       "subtitulo":"Paso 2. Crear una base de datos y una tabla.",
       "secciones":[
-        {"texto":""},
+        {"texto":"Al ejecutar el query **SHOW DATABASES;** podremos observar todas las bases de datos creeadas. Añadiremos una nombrada como **world** ejecutando **CREATE DATABASE world;** y confirmaremos su creación usando nuevamente el primer query."},
         {"imagen":"assets/lab-268/05.png"},
         {"imagen":"assets/lab-268/06.png"},
+        {"texto":"A continuación usaremos crearemos una tabla dentro de la base de datos **world**, nombrada como **country** usando el query **CREATE TABLE world.country...**. En la siguiente imagen podemos visualizar todas las propiedades y nombres de cada columna."},
         {"imagen":"assets/lab-268/07.png"},
+        {"texto":"Usando el comando **USE** podemos seleccionar la base de datos con la que deseamos trabajar, por ejemplo **USE world;**. Una vez dentro de la BD, visualizamos las tablas usando **SHOW TABLES;**"},
         {"imagen":"assets/lab-268/08.png"},
+        {"texto":"Si queremos visualizar las columnas de cierta tabla, por ejemplo, la tabla country, entonces usaremos **SHOW COLUMNS FROM world.country;**"},
         {"imagen":"assets/lab-268/09.png"},
+        {"texto":"Detectamos que la columna **Continent** fue mal escrita como **Conitinent**, para corregirlo podemos usar el comando **ALTER TABLE** que permite alterar la estructura de una tabla. <br> Ejecutamos **ALTER TABLE world.country RENAME COLUMN Conitinent TO Continent;** y visualizamos nuevamente la tabla."},
         {"imagen":"assets/lab-268/10.png"},
+        {"texto":"Se nos plantea el desafio de crear una tabla de nombre **city** con dos columnas nombradas **Name** y **Region**. Para ello usaremos el comando visto anteriormente **CREATE TABLE world.city (`Name` CHAR(52), `Region` CHAR(26));** y la visualizaremos al finalizar."},
         {"imagen":"assets/lab-268/11.png"}
         
       ]
@@ -2034,8 +2041,9 @@
     {
       "subtitulo":"Paso 3. Eliminando una base de datos y una tabla.",
       "secciones":[
-        {"texto":""},
+        {"texto":"El último comando a explorar es el comando **DROP TABLE** el cual permite eliminar tablas dentro de una BD. <br> Ejecutaremos **DROP TABLE world.city;**."},
         {"imagen":"assets/lab-268/12.png"},
+        {"texto":"El siguiente reto conciste en eliminar la tabla **country**. <br> Ejecutando **DROP TABLE world.country;** y visualizar el resultado."},
         {"imagen":"assets/lab-268/13.png"}
       ]
     }
