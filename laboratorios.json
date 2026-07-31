@@ -2060,7 +2060,7 @@
   "tags": ["INSERT INTO", "UPDATE", "SET", "DELETE", "Import data"],
   "pasos": [
     {
-      "subtitulo":"Recordatorio:.",
+      "subtitulo":"Recordatorio:",
       "secciones":[
         {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
       ]
@@ -2119,7 +2119,7 @@
   "tags": ["SELECT", "COUNT", "Operators to query"],
   "pasos": [
     {
-      "subtitulo":"Recordatorio:.",
+      "subtitulo":"Recordatorio:",
       "secciones":[
         {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."},
         {"imagen":"assets/lab-270/01.png"},
@@ -2159,15 +2159,35 @@
   "modulo": "Bases de datos",
   "numero": "Lab 271",
   "titulo": "Realización de una búsqueda condicional.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es aprender a ejecutar filtrados dentro de las base de datos.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["SELECT","WHERE","BETWEEN", "LIKE","AS", "LOWER"],
   "pasos": [
     {
-      "subtitulo":"Recordatorio:.",
+      "subtitulo":"Recordatorio:",
       "secciones":[
-        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."},
+        {"imagen":"assets/lab-271/01.png"},
+        {"imagen":"assets/lab-271/02.png"},
+        {"imagen":"assets/lab-271/03.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1.Consultas a la base de datos world",
+      "secciones":[
+        {"texto":"Para reducir el número de registros usamos condicionales como **WHERE** y **AND**, por ejemplo,**SELECT Name, Capital, Region, SurfaceArea, Population FROM world.country WHERE Population >= 50000000 AND Population <= 100000000;**"},
+        {"imagen":"assets/lab-271/04.png"},
+        {"texto":"Otra alternativa para delimitar los registros resultado de una consulta es el uso del comando **BETWEEN**, por ejemplo, **SELECT Name, Capital, Region, SurfaceArea, Population FROM world.country WHERE Population BETWEEN 50000000 AND 100000000;**"},
+        {"imagen":"assets/lab-271/05.png"},
+        {"texto":"Cuando necesitamos realizar busquedas dentro de los registros de acuerdo con un string pattern podemos optar por el uso de **LIKE**. En la siguiente consulta se usan los signos % al inicio y al final para indicar que cualquier string que contenga EUROPE debe ser considerado. <br> **SELECT sum(Population) from world.country WHERE Region LIKE '%Europe%';**"},
+        {"imagen":"assets/lab-271/06.png"},
+        {"texto":"La siguiente consulta incluye el uso de la función **SUM()** que permite sumar todos los registros dentro de una columna. **SELECT sum(population) as 'Europe Population Total' from world.country WHERE region LIKE '%Europe%';** Notese que se nombre la columna resultado usando **AS**."},
+        {"imagen":"assets/lab-271/07.png"},
+        {"texto":"Puedes usar el comando **LOWER** si requieres una busqueda con sensibilidad a las máyusculas y minisculas. **SELECT Name, Capital, Region, SurfaceArea, Population from world.country WHERE LOWER(Region) LIKE '%central%';**"},
+        {"imagen":"assets/lab-271/08.png"},
+        {"texto":"Challenge <br> Escribe una consulta que regrese el resultado de la suma de Surface area y la suma de population de la región North America."},
+        {"imagen":"assets/lab-271/10.png", "Descipción": "Resultado del desafio"}
       ]
     }
   ]
@@ -2177,15 +2197,35 @@
   "modulo": "Bases de datos",
   "numero": "Lab 272",
   "titulo": "Trabajar con funciones.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es aprender el uso de funciones especificas dentro del lenguaje SQL.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["SUM","MIN","MAX","AVG","SUBSTRING_INDEX","LENGTH","TRIM","DISTINCT"],
   "pasos": [
     {
-      "subtitulo":"Recordatorio:.",
+      "subtitulo":"Recordatorio:",
       "secciones":[
-        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."},
+        {"imagen":"assets/lab-272/01.png"},
+        {"imagen":"assets/lab-272/02.png"},
+        {"imagen":"assets/lab-272/03.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1.",
+      "secciones":[
+        {"texto":"La siguiente consulta demuestra cómo utilizar las funciones de agregación SUM(), MIN(), MAX() y AVG() para resumir los datos. <br> **SELECT sum(Population), avg(Population), max(Population), min(Population), count(Population) FROM world.country;** <br> SUM() suma todos los valores de la población. <br> AVG() calcula el promedio de todos los valores de la población. <br> MAX() encuentra la fila con el valor de población más alto. <br> MIN() encuentra la fila con el valor de población más bajo. <br> COUNT() cuenta el número de filas que contienen un valor de población."},
+        {"imagen":"assets/lab-272/04.png"},
+        {"texto":"La siguiente consulta utiliza SUBSTRING_FUNCTION() para dividir una cadena de texto en el lugar donde aparece un espacio. <br> **SELECT Region, substring_index(Region,' ', 1) FROM world.country;**"},
+        {"imagen":"assets/lab-272/05.png"},
+        {"texto":"En ocasiones, es posible que necesites buscar filas utilizando un fragmento de una cadena de texto. La siguiente consulta incluye SUBSTRING_FUNCTION() como parte de una condición en la cláusula WHERE para filtrar los registros <br> **SELECT Name, Region from world.country WHERE substring_index(Region, ' ', 1) = 'Southern';**"},
+        {"imagen":"assets/lab-272/06.png"},
+        {"texto":"Puedes utilizar las funciones LENGTH() y TRIM() para determinar cuántos caracteres contiene una cadena de texto. <br> **SELECT Region FROM world.country WHERE LENGTH(TRIM(Region)) < 10;** <br> **LENGTH()** devuelve el número de caracteres que quedan después de eliminar esos espacios."},
+        {"imagen":"assets/lab-272/07.png"},
+        {"texto":"**SELECT DISTINCT(Region) FROM world.country WHERE LENGTH(TRIM(Region)) < 10;** <br> TRIM() elimina los espacios en blanco al inicio y al final de la cadena. <br> La función DISTINCT() se utiliza para filtrar y eliminar los valores duplicados de los resultados de una consulta."},
+        {"imagen":"assets/lab-272/08.png"},
+        {"texto":"Escribe una consulta que devuelva las filas donde la columna region tenga el valor Micronesian/Caribbean. <br> La salida debe dividir el contenido de la columna region en dos columnas separadas: <br> *Region Name 1: Micronesian <br> *Region Name 2: Caribbean"},
+        {"imagen":"assets/lab-272/10.png"}
       ]
     }
   ]
