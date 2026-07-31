@@ -2235,15 +2235,32 @@
   "modulo": "Bases de datos",
   "numero": "Lab 273",
   "titulo": "Organización de datos.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es demostrar como usar las funciones comunes para ordenar las bases de datos.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["GROUP BY","OVER","RANK"],
   "pasos": [
     {
-      "subtitulo":"Recordatorio:.",
+      "subtitulo":"Recordatorio:",
       "secciones":[
-        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."},
+        {"imagen":"assets/lab-273/01.png"},
+        {"imagen":"assets/lab-273/02.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1. Consultando la base de datos world.",
+      "secciones":[
+        {"texto":"<br> Esta consulta muestra los países de la región **Australia and New Zealand**, junto con su población, ordenándolos de mayor a menor población. **SELECT Region, Name, Population FROM world.country WHERE Region = 'Australia and New Zealand' ORDER By Population desc;**"},
+        {"imagen":"assets/lab-273/03.png"},
+        {"texto":"Esta consulta calcula la **población total** de la región **Australia and New Zealand** utilizando la función **SUM()** y agrupa el resultado por región. <br> **SELECT Region, SUM(Population) FROM world.country WHERE Region = 'Australia and New Zealand' GROUP By Region ORDER By SUM(Population) desc;**"},
+        {"imagen":"assets/lab-273/04.png"},
+        {"texto":" Esta consulta calcula un **total acumulado (Running Total)** de la población dentro de la región **Australia and New Zealand**, sumando progresivamente la población de los países conforme se ordenan de menor a mayor población. <br> **SELECT Region, Name, Population, SUM(Population) OVER(partition by Region ORDER BY Population) as 'Running Total' FROM world.country WHERE Region = 'Australia and New Zealand';**"},
+        {"imagen":"assets/lab-273/05.png"},
+        {"texto":" Además del **total acumulado**, esta consulta asigna un **rango (Rank)** a cada país según su población dentro de la región **Australia and New Zealand**, comenzando por el país con menor población. <br> **SELECT Region, Name, Population, SUM(Population) OVER(partition by Region ORDER BY Population) as 'Running Total', RANK() over(partition by region ORDER BY population) as 'Ranked' FROM world.country WHERE region = 'Australia and New Zealand';**"},
+        {"imagen":"assets/lab-273/06.png"},
+        {"texto":"Challenge <br> Escribe una consulta que clasifique (rank) los países de cada región según su población, desde el país con la mayor población hasta el de la menor población. <br> **SELECT Region, Name, Population, RANK() OVER(partition by Region ORDER BY Population desc) as 'Ranked' FROM world.country order by Region, Ranked;**"},
+        {"imagen":"assets/lab-273/07.png"}
       ]
     }
   ]
