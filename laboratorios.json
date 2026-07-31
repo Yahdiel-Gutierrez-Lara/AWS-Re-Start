@@ -2113,15 +2113,43 @@
   "modulo": "Bases de datos",
   "numero": "Lab 270",
   "titulo": "Selección de datos de una base de datos.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es aprender el uso general del comando SELECT para poder relizar consultas dentro de una base de datos.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
+  "tags": ["SELECT", "COUNT", "Operators to query"],
   "pasos": [
     {
       "subtitulo":"Recordatorio:.",
       "secciones":[
-        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."}
+        {"texto":"En el laboratorio 268 se explico como conectarse a la base de datos alojada en la instancia, por lo que dentro de esta documentación se omitira la explicación."},
+        {"imagen":"assets/lab-270/01.png"},
+        {"imagen":"assets/lab-270/02.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 1. Consultando la base de datos world.",
+      "secciones":[
+        {"texto":"Si queremos listar todos los registros dentro de la tabla country ejecutamos el siguiente comando **SELECT * FROM world.country;**"},
+        {"imagen":"assets/lab-270/03.png"},
+        {"texto":"Para consultar el número de registros dentro de una tabla podemos usar la función **COUNT()**, la cual contara el número de filas que tienen un valor dentro de una columna especificada. Si necesitamos contar todas las filas dentro de una tabla usaremos el comando **SELECT COUNT(*) FROM world.country;**"},
+        {"imagen":"assets/lab-270/04.png"},
+        {"texto":"Si queremos visualizar todas las columnas de una tabla usaremos **SHOW COLUMNS FROM world.country;**"},
+        {"imagen":"assets/lab-270/05.png"},
+        {"texto":"En el caso de necesitar consultar columnas especificas necesitamos conocer sus nombres, por ejemplo, Name, Capital, Region, SurfaceArea, y Population de la tabla country. Ejecutamos la consulta **SELECT Name, Capital, Region, SurfaceArea, Population FROM world.country;**"},
+        {"imagen":"assets/lab-270/06.png"},
+        {"texto":"En algunos casos los nombres de las columnas resultan complejos o no se entienden con facilidad, para poder asignarles un nombre diferente podemos hacer uso del comando **AS** Ejecutamos la consulta **SELECT Name, Capital, Region, SurfaceArea AS 'Surface Area', Population FROM world.country;**"},
+        {"imagen":"assets/lab-270/07.png"},
+        {"texto":"Una forma más fácil de trabajar es ordenando los datos. Si quieres ordenar la salida basada en una columna puede usar la función **ORDER BY** Ejecutamos: SELECT Name, Capital, Region, SurfaceArea AS 'Surface Area', Population FROM world.country ORDER BY Population;"},
+        {"imagen":"assets/lab-270/08.png"},
+        {"texto":"Si queremos ordenar los datos de manera descendente, usamos **DESC**, **SELECT Name, Capital, Region, SurfaceArea AS 'Surface Area', Population FROM world.country ORDER BY Population DESC;**"},
+        {"imagen":"assets/lab-270/09.png"},
+        {"texto":"Podemos agregar condiciones a las consultas usando el comando **WHERE** Si queremos conocer las filas con un población mayor a 50,000,000 **SELECT Name, Capital, Region, SurfaceArea AS 'Surface Area', Population FROM world.country WHERE Population > 50000000 ORDER BY Population DESC;**"},
+        {"imagen":"assets/lab-270/10.png"},
+        {"texto":"Un condicional más complejo como delimitar el tamaño de la población requiere el uso de el operador **AND** **SELECT Name, Capital, Region, SurfaceArea AS 'Surface Area', Population FROM world.country WHERE Population > 50000000 AND Population < 100000000 ORDER BY Population DESC;**"},
+        {"imagen":"assets/lab-270/13.png"},
+        {"texto":"Challenge <br> ¿Qué país de Southern Europe tiene una población mayor a 50,000,000?"},
+        {"imagen":"assets/lab-270/14.png", "Descipción": "Mi resultado"},
+        {"imagen":"assets/lab-270/15.png", "Descipción": "Resultado del laboratorio"}
       ]
     }
   ]
