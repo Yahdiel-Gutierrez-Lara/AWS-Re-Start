@@ -2300,7 +2300,7 @@
         {"imagen":"assets/lab-160/08.png"}
       ]
     },
-    {
+     {
       "subtitulo":"Paso 3. Crear una instancia AMAZON RDS.",
       "secciones":[
         {"texto":"Accedemos al servicio **Aurora and RDS**, ubicamos el botón de **Create database** > Full configuration."},
@@ -2339,11 +2339,30 @@
   "modulo": "Bases de datos",
   "numero": "Lab 162",
   "titulo": "Cree y accede a un servidor RDS.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es configurar una instancia RDS y realizar consultas atráves de la terminal SSH.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
-  "pasos": []
+  "tags": ["RDS","Interact SSH"],
+  "pasos": [
+   {
+      "subtitulo":"Paso 1. Crear una instancia AMAZON RDS.",
+      "secciones":[
+        {"texto":"Accedemos al servicio **Aurora and RDS**, ubicamos el botón de **Create database** > Full configuration."},
+        {"texto":"Configuramos lo siguiente: <br> *Engine options > Engine type > MySQL <br> *Templates > Dev/Test <br> *Availability and durability > Avoid creating a standby instance <br> Engine version se queda con la opción por defecto."},
+        {"imagen":"assets/lab-162/01.png"},
+        {"imagen":"assets/lab-162/02.png"},
+        {"texto":"Dentro de la sección **Instance configuration** <br> Seleccionamos **Select Burstable classes (includes t classes).** <br> Seleccionar db.t3.medium."},
+        {"imagen":"assets/lab-162/03.png"},
+        {"texto":"Dentro de la sección **Storage** <br> Storage type: General Purpose SSD (gp2) <br> Allocated storage: 100"},
+        {"imagen":"assets/lab-162/04.png"},
+        {"texto":"En la sección **Connectivity**, configuramos: <br> *Compute resource, selecionar Don't connect to an EC2 compute resource. <br> *Virtual Private Cloud (VPC): Lab VPC <br> *VPC security group (firewall), seleccionar Choose existing. <br> *Existing VPC security groups, remover default, y seleccionar Web security group."},
+        {"imagen":"assets/lab-162/06.png"},
+        {"imagen":"assets/lab-162/05.png"},
+        {"texto":"Dentro de **Additional configuration** , deseleccionar **Enable Enhanced monitoring** <br> Dentro de **Performance Insights** deseleccionar **Enable Performance Insights**."},
+        {"imagen":"assets/lab-162/07.png"}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 274",
