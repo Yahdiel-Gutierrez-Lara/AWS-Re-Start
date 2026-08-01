@@ -2361,6 +2361,55 @@
         {"texto":"Dentro de **Additional configuration** , deseleccionar **Enable Enhanced monitoring** <br> Dentro de **Performance Insights** deseleccionar **Enable Performance Insights**."},
         {"imagen":"assets/lab-162/07.png"}
       ]
+    },
+    {
+      "subtitulo":"Paso 2. Conectarse a la instancia.",
+      "secciones":[
+        {"texto":"Para conectarse a la terminal de linux usamos le mismo procedimiento que en el laboratorio 225, sin embargo, la información necesaria (IP) la encontraremos en el laboratorio actual dentro de la sección Details > Show"},
+        {"imagen":"assets/lab-162/09.png"},
+        {"imagen":"assets/lab-162/10.png"},
+        {"imagen":"assets/lab-162/11.png"},
+        {"texto":"Es necesario instalar la última versión de MariaDB usando el comando **sudo yum install mariadb105**"},
+        {"texto":"Una vez instalada ejecutaremos lo siguientes comandos para poder acceder al servicio:"},
+        {"imagen":"assets/lab-162/07.png"},
+        {"imagen":"assets/lab-162/21.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Consultas a la base de datos.",
+      "secciones":[
+        {"texto":"Crear una tabla dentro de RESTART que contenga las siguientes columnas: <br> Student ID (Number), <br> Student Name, <br> Restart City, <br> Graduation Date (Date Time)"},
+        {"imagen":"assets/lab-162/22.png"},
+        {"texto":"Insertar 10 filas dentro de la tabla"},
+        {"imagen":"assets/lab-162/23.png"},
+        {"texto":"Mostrar todos los registros de la tabla anterior"},
+        {"imagen":"assets/lab-162/24.png"},
+        {"texto":"Crear una tabla CLOUD_PRACTITIONER que contenga las siguientes columnas: <br> Student ID (Number), <br> certification date (Date Time)"},
+        {"imagen":"assets/lab-162/25.png"},
+        {"texto":"Insertar 5 filas dentro de la tabla"},
+        {"imagen":"assets/lab-162/26.png"},
+        {"texto":"Mostrar todos los registros de la tabla anterior"},
+        {"imagen":"assets/lab-162/27.png"},
+        {"texto":"Realizar un inner join entre las 2 tablas creadas anteriormente y desplegar las columnas: student ID, Student Name, Certification Date"},
+        {"imagen":"assets/lab-162/29.png"}
+      ]
+    },
+    {
+      "subtitulo":"Errores en el proceso.",
+      "secciones":[
+        {"texto":"Versión incorrecta"},
+        {"imagen":"assets/lab-162/13.png"},
+        {"imagen":"assets/lab-162/14.png"},
+        {"texto":"No se elimino la opción por defecto dentro de los security groups al crear la instancia RDS."},
+        {"imagen":"assets/lab-162/18.png"},
+        {"texto":"Error 2059, no se lograba la atenticación de la contraseña"},
+        {"imagen":"assets/lab-162/error 03.png"},
+        {"texto":"Error 2003, no se lograba la conexión con la instancia, por lo que se tuvo que revisar la conectividad dentro de la instancia"},
+        {"imagen":"assets/lab-162/error 01.png"},
+        {"imagen":"assets/lab-162/error 02.png"},
+        {"texto":"Luego de verificar que estuviese público se intento nuevamente la conexión."},
+        {"imagen":"assets/lab-162/19.png"}
+      ]
     }
   ]
 },
