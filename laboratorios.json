@@ -2270,11 +2270,69 @@
   "modulo": "Bases de datos",
   "numero": "Lab 160",
   "titulo": "Cree su servidor de base de datos e interactúe con su base de datos usando una aplicación.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es lanzar una instancia de AMAZON RDS con alta disponibilidad, configurar la conexión a un web server y ejecutar una aplicación que permita interacturar con la base de datos.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
-  "pasos": []
+  "tags": ["AMAZON RDS"],
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Crear un grupo de seguridad para la instancia RDS.",
+      "secciones":[
+        {"texto":"Comenzaremos ingresando al servicio **VPC** desde la consola AWS, ubicando la sección **Security groups** y dando clic en **Create security group**."},
+        {"imagen":"assets/lab-160/01.png"},
+        {"texto":"Configura lo siguiente: <br> *Nombre del grupo de seguridad: DB Security Group <br> *Descripción: Permit access from Web Security Group <br> *VPC: Selecciona **Lab VPC** en el menú desplegable."},
+        {"imagen":"assets/lab-160/02.png"},
+        {"texto":"En la sección **Inbound rules**, daremos clic en **Add rule** y configuramos lo siguiente: <br> *Type: MySQL/Aurora (3306) <br> *Source type: Custom <br> *Source: Escribimos **sg** en el campo de búsqueda y, posteriormente, seleccionamos Web Security Group."},
+        {"imagen":"assets/lab-160/03.png"},
+        {"imagen":"assets/lab-160/04.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Crear una subnet group para la BD.",
+      "secciones":[
+        {"texto":"Accederemos al servicio **Aurora and RDS** por medio de la consola AWS, ubicando **Subnet Groups** y daremos clic en **Create subnet group**."},
+        {"imagen":"assets/lab-273/05.png"},
+        {"texto":"Configura lo siguiente: <br> *Name: DB Subnet Group <br> *Description: DB Subnet Group <br> VPC: Lab VPC."},
+        {"imagen":"assets/lab-160/06.png"},
+        {"texto":"En la sección **Add subnets** para **Availability Zones** seleccionamos las dos primeras opciones en en listado."},
+        {"imagen":"assets/lab-160/07.png"},
+        {"texto":"Para subnets, seleccionamos las siguientes: <br> 10.0.1.0/24 (Private Subnet 1) <br> 10.0.3.0/24 (Private Subnet 2) <br> Daremos clic en crear"},
+        {"imagen":"assets/lab-160/08.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Crear una instancia AMAZON RDS.",
+      "secciones":[
+        {"texto":"Accedemos al servicio **Aurora and RDS**, ubicamos el botón de **Create database** > Full configuration."},
+        {"imagen":"assets/lab-273/09.png"},
+        {"texto":"Configuramos lo siguiente: <br> *Engine options > Engine type > MySQL <br> *Templates > Dev/Test <br> *Availability and durability > Multi-AZ DB instance deployment (2 instances) <br> Engine version se queda con la opción por defecto."},
+        {"imagen":"assets/lab-160/10.png"},
+        {"imagen":"assets/lab-160/11.png"},
+        {"imagen":"assets/lab-160/12.png"},
+        {"texto":"En la sección de **Settings** configuramos: <br> DB instance identifier: lab-db <br> Master username: main"},
+        {"imagen":"assets/lab-160/13.png"},
+        {"texto":"Dentro de la sección **Credential Settings** > **Credentials management** seleccionamos **Self managed** y configuramos: <br> Deseleccionar Auto generate a password. <br> Master password: lab-password <br> Confirm master password: lab-password <br> Para Additional credential settings, asegurarse que Password authentication este activado."},
+        {"imagen":"assets/lab-160/14.png"},
+        {"imagen":"assets/lab-160/15.png"},
+        {"texto":"Dentro de la sección **Instance configuration** <br> Seleccionamos **Select Burstable classes (includes t classes).** <br> Seleccionar db.t3.medium."},
+        {"imagen":"assets/lab-160/16.png"},
+        {"texto":"Dentro de la sección **Storage** <br> Storage type: General Purpose SSD (gp3) <br> Allocated storage: 20"},
+        {"imagen":"assets/lab-160/17.png"},
+        {"texto":"En la sección **Connectivity**, configuramos: <br> *Compute resource, selecionar Don't connect to an EC2 compute resource. <br> *Virtual Private Cloud (VPC): Lab VPC <br> *DB subnet group: DB Subnet Group <br> Public access, seleccionar No. <br> *VPC security group (firewall), seleccionar Choose existing. <br> *Existing VPC security groups, remover default, y seleccionar DB Security Group."},
+        {"imagen":"assets/lab-160/18.png"},
+        {"imagen":"assets/lab-160/19.png"},
+        {"imagen":"assets/lab-160/20.png"},
+        {"texto":"Dentro de **Monitoring**, deseleccionar **Enable Enhanced monitoring** <br> Dentro de **Performance Insights** deseleccionar **Enable Performance Insights**."},
+        {"imagen":"assets/lab-160/21.png"},
+        {"texto":"En la sección **Additional configuration** configuramos: <br> Initial database name: lab <br> Dentro de **Backup**, deseleccionar **Enable automated backups**."},
+        {"imagen":"assets/lab-160/22.png"},
+        {"imagen":"assets/lab-160/23.png"},
+        {"texto":"Finalizamos dando clic en **create database** y al salir del página de creación daremos clic en **lab-db**, esperando un momento un par de minutos a su creación."},
+        {"imagen":"assets/lab-160/24.png"},
+        {"imagen":"assets/lab-160/24.png"}
+      ]
+    }
+  ]
 },
 {
 "id": "Lab 162",
