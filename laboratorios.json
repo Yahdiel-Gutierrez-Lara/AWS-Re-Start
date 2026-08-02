@@ -2418,10 +2418,86 @@
   "modulo": "Bases de datos",
   "numero": "Lab 274",
   "titulo": "Introducción a Amazon Aurora.",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es aprender como configurar una instancia de Amazon Aurora, conectarla con una instancia EC2 y realizar consultas a la instancia Aurora.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [],
-  "pasos": []
+  "tags": ["Aurora","EC2"],
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Crear una instancia Aurora.",
+      "secciones":[
+        {"texto":"Accedemos al servicio **Aurora and RDS**, ubicamos la sección **Databases** y el botón de **Create database** > Full configuration."},
+        {"imagen":"assets/lab-274/01.png"},
+        {"texto":"Configuramos lo siguiente: <br> *Engine options > Engine type > **Aurora (MySQL Compatible)** <br> *Templates > Dev/Test <br>  Engine version seleccionar una versión especificamente **default for major version 8.0**."},
+        {"imagen":"assets/lab-274/02.png"},
+        {"imagen":"assets/lab-274/05.png"},
+        {"texto":"Dentro de la sección **Settings** configuraremos lo siguiente: <br> *DB cluster identifier, ingresar **aurora**. <br> *Master username, ingresar **admin**. <br> *Master password, ingresar **admin123**.<br> *Confirm password, ingresar **admin123**."},
+        {"imagen":"assets/lab-274/06.png"},
+        {"texto":"Dentro de la sección **Instance configuration** <br> Seleccionamos **Select Burstable classes (includes t classes).** <br> Seleccionar db.t3.medium."},
+        {"imagen":"assets/lab-274/04.png"},
+        {"texto":"En la sección **Availability & durability** > **Multi-AZ deployment**, seleccionamos **Don't create an Aurora Replica**"},
+        {"imagen":"assets/lab-274/07.png"},
+        {"texto":"En la sección **Connectivity**, configuramos: <br> *Compute resource, selecionar Don't connect to an EC2 compute resource. <br> *Para **Subnet group**, elegir **dbsubnetgroup**. <br> ***Public access**, seleccionar **No**. <br> *Virtual Private Cloud (VPC): Lab VPC <br> *VPC security group (firewall), seleccionar Choose existing. <br> *Existing VPC security groups, remover default, y seleccionar DBSecurityGroup."},
+        {"imagen":"assets/lab-274/08.png"},
+        {"imagen":"assets/lab-274/09.png"},
+        {"texto":"Dentro de **Monitoring ** , deseleccionar **Enable Enhanced monitoring**."},
+        {"imagen":"assets/lab-274/10.png"},
+        {"texto":"Dentro de **Additional configuration** , para **Initial database name**, ingresar **world**."},
+        {"texto":"Dentro de **Encryption** , seleccionar **AWS owned KMS key (SSE-RDS)**."},
+        {"imagen":"assets/lab-274/12.png"},
+        {"texto":"En la sección **Maintenance ** , deseleccionar **Enable auto minor version upgrade**."},
+        {"imagen":"assets/lab-274/13.png"},
+        {"texto":"Finalizamos dando clic en **Create database** y esperando que se encuentre disponible."},
+        {"imagen":"assets/lab-274/15.png"},
+        {"imagen":"assets/lab-274/16.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Conectarse a la instancia Command Host.",
+      "secciones":[
+        {"texto":"Usando la consola de AWS ingresamos al servicio EC2 y visualizamos nuestras instancias. Seleccionamos la instancia **Command Host** y daremos clic en **Connect**."},
+        {"imagen":"assets/lab-274/17.png"},
+        {"texto":"En el panel inferior seleccionamor **SSM Session Manager** y daremos clic en **Connect**."},
+        {"imagen":"assets/lab-274/18.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Conectarse a la instancia Command Host.",
+      "secciones":[
+        {"texto":"Usando la consola de AWS ingresamos al servicio EC2 y visualizamos nuestras instancias. Seleccionamos la instancia **Command Host** y daremos clic en **Connect**."},
+        {"imagen":"assets/lab-274/17.png"},
+        {"texto":"En el panel inferior seleccionamor **SSM Session Manager** y daremos clic en **Connect**."},
+        {"imagen":"assets/lab-274/18.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Configurando la instancia linux EC2 para conectar a AURORA.",
+      "secciones":[
+        {"texto":"Ejecutaremos el comando **sudo yum install mariadb -y** para instalar el gestor de base de datos MariaDB."},
+        {"imagen":"assets/lab-274/19.png"},
+        {"texto":"Usando una pestaña diferente a la actual ingresaremos nuevamente a la consola de AWS e ingresaremos al servicio Aurora and RDS, una vez ahí seleccionamos Databases. <br> Seleccionamos aurora."},
+        {"imagen":"assets/lab-274/20.png"},
+        {"texto":"Daremos clic en el panel **Connectivity & security** > sección **Endpoints** y copiaremos el **Endpoint name**."},
+        {"imagen":"assets/lab-274/21.png"},
+        {"imagen":"assets/lab-274/22.png"},
+        {"texto":"Para completar la conexión ingresaremos el comando **mysql -u admin --password='admin123' -h <endpoint_goes_here>** sustituyendo <endpoint_goes_here> por el url copiado anteriormente."},
+        {"imagen":"assets/lab-274/28.png"},
+        {"imagen":"assets/lab-274/23.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Creando una tabla e insertando y consultando registros.",
+      "secciones":[
+        {"texto":"Primero visualizaremos todas las bases de datos **SHOW DATABASES;**"},
+        {"imagen":"assets/lab-274/24.png"},
+        {"texto":"Accedemos a world **USE world;** y creamos la tabla country y comprobamos sucreación usando **SHOW TABLES;**."},
+        {"imagen":"assets/lab-274/25.png"},
+        {"texto":"Insertaremos registros usando el comando **INSERT INTO** y **VALUES**."},
+        {"imagen":"assets/lab-274/26.png"},
+        {"texto":"Finalmente, realizamos la siguiente consulta **SELECT * FROM country WHERE GNP > 35000 and Population > 10000000;**"},
+        {"imagen":"assets/lab-274/27.png"}
+      ]
+    }
+  ]
 }
 ]
