@@ -2572,7 +2572,102 @@
         {"imagen":"assets/lab-275/14.png"}
       ]
     }
-
   ]
-}
+},
+{
+"id": "Lab 169",
+  "modulo": "Herramientas de automatización",
+  "numero": "Lab 169",
+  "titulo": "Introducción a Amazon DynamoDB.",
+  "descripcion_general": "El propósito de este laboratorio es aprender como configurar una instancia de Amazon DynamoDB, crear tablas, consultarlas y eliminarlas.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["DynamoDB"],
+  "pasos": [
+    {}]
+  },
+  {
+  "id": "Lab 170",
+  "modulo": "Servidores",
+  "numero": "Lab 170",
+  "titulo": "",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [""],
+  "pasos": [
+    {}]
+  },
+  {
+  "id": "Lab 171",
+  "modulo": "Servidores",
+  "numero": "Lab 170",
+  "titulo": "",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [""],
+  "pasos": [
+    {}]
+  },
+  {
+  "id": "Lab 172",
+  "modulo": "Servidores",
+  "numero": "Lab 170",
+  "titulo": "",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [""],
+  "pasos": [
+    {}]
+  },
+  {
+  "id": "Lab 173",
+  "modulo": "Servidores",
+  "numero": "Lab 170",
+  "titulo": "",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [""],
+  "pasos": [
+    {}]
+  },
+  {
+  "id": "Lab 174",
+  "modulo": "Escalado y resolución de nombres",
+  "numero": "Lab 174",
+  "titulo": "",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [""],
+  "pasos": [
+    {}]
+  },
+  {
+  "id": "Lab 175",
+  "modulo": "Escalado y resolución de nombres",
+  "numero": "Lab 174",
+  "titulo": "",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [""],
+  "pasos": [
+    {}]
+  },
+  {
+  "id": "Lab 176",
+  "modulo": "Escalado y resolución de nombres",
+  "numero": "Lab 174",
+  "titulo": "",
+  "descripcion_general": "El propósito de este laboratorio es",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": [""],
+  "pasos": [
+    {}]
+  }
 ]
