@@ -2499,5 +2499,80 @@
       ]
     }
   ]
+},
+{
+"id": "Lab 275",
+  "modulo": "Bases de datos",
+  "numero": "Lab 275",
+  "titulo": "Introducción a Amazon DynamoDB.",
+  "descripcion_general": "El propósito de este laboratorio es aprender como configurar una instancia de Amazon DynamoDB, crear tablas, consultarlas y eliminarlas.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["DynamoDB"],
+  "pasos": [
+    {
+      "subtitulo":"Paso 1. Crear una nueva tabla.",
+      "secciones":[
+        {"texto":"Usando la consola de AWS ingresamos al servicio DynamoDB y seleccionamos la sección de Tables para poder crear nuestra tabla."},
+        {"imagen":"assets/lab-275/01.png"},
+        {"texto":"Al entrar a la sección Tables, daremos clic en Create table."},
+        {"imagen":"assets/lab-275/02.png"},
+        {"texto":"Configuraremos lo siguiente: <br> Table name: Music <br> Partition key: **Artist** y mantendremos el tipo **String** seleccionado. <br> Sort key - optional: **Song** mantendremos el tipo **String** seleccionado."},
+        {"imagen":"assets/lab-275/03.png"},
+        {"texto":"Esperamos a que la tabla se encuentre activa para continuar."},
+        {"imagen":"assets/lab-275/04.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Añadiendo datos.",
+      "secciones":[
+        {"texto":"Seleccionamos la tabla Music y daremos clic en **Actions** > **Create Item**"},
+        {"imagen":"assets/lab-275/051.png"},
+        {"texto":"Una vez dentro de la sección ingresaremos: <br> Artist: Pink Floyd <br> Song: Money."},
+        {"texto":"Para crear un additional attributes daremos clic en el botón **additional attributes**, en la lista desplegable seleccionamos **String**. <br> Agregaremos: <br> FIELD: Album <br> VALUE: The Dark Side of the Moon."},
+        {"imagen":"assets/lab-275/05.png"},
+        {"imagen":"assets/lab-275/06.png"},
+        {"texto":"Repetiremos el proceso para agregar otro item con nuevos atributos:"},
+        {"imagen":"assets/lab-275/07.png"},
+        {"imagen":"assets/lab-275/08.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Modificar un item existente.",
+      "secciones":[
+        {"texto":"Seleccionamos **Explore Items** > **Table: Music** > **Edit item**"},
+        {"imagen":"assets/lab-275/09.png"},
+        {"texto":"Seleccionamos **Psy**"},
+        {"imagen":"assets/lab-275/10.png"},
+        {"texto":"Actualizamos Year de 2011 a 2012"},
+        {"imagen":"assets/lab-275/11.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Consultando la tabla.",
+      "secciones":[
+        {"texto":"Seleccionamos la tabla Music **Scan or query items** > **Query** "},
+        {"imagen":"assets/lab-275/12.png"},
+        {"texto":"En el campo **Specific attributes to project** añadimos **Artist** y **Song**, agregamos los siguientes detalles: <br> Artist (Partition key): Psy <br> Song (Sort key): Gangnam Style <br> Clic en Run"},
+        {"imagen":"assets/lab-275/13.png"},
+        {"imagen":"assets/lab-275/14.png"},
+        {"texto":"Ahora seleccionamos **Scan** y añadimos **Specific attributes to project** añadimos **Artist** y **Song**, ingresamos los siguientes detalles: <br> Attribute name: Year <br> Type: Number. <br> Value: 1971 <br> Clic en Run"},
+        {"imagen":"assets/lab-275/15.png"},
+        {"imagen":"assets/lab-275/16.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 5. Eliminando la tabla.",
+      "secciones":[
+        {"texto":"Dentro de la tabla Music daremos clic en Actions y seleccionamos Delete Table."},
+        {"imagen":"assets/lab-275/17.png"},
+        {"texto":"Confirmamos la acción."},
+        {"imagen":"assets/lab-275/18.png"},
+        {"texto":"Tabla eliminada."},
+        {"imagen":"assets/lab-275/14.png"}
+      ]
+    }
+
+  ]
 }
 ]
