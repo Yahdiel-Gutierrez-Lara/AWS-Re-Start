@@ -2578,25 +2578,188 @@
 "id": "Lab 169",
   "modulo": "Herramientas de automatización",
   "numero": "Lab 169",
-  "titulo": "Introducción a Amazon DynamoDB.",
-  "descripcion_general": "El propósito de este laboratorio es aprender como configurar una instancia de Amazon DynamoDB, crear tablas, consultarlas y eliminarlas.",
+  "titulo": "Uso de AWS Systems Manager.",
+  "descripcion_general": "El propósito de este laboratorio conocer las capacidades que tiene el servicio AWS System Manager para verificar configuraciones y permisos, correr tareas en multiples servidores, actualizar ajustes y configuraciones de aplicaciones, etc.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": ["DynamoDB"],
+  "tags": ["System Manager"],
   "pasos": [
-    {}]
+    {
+      "subtitulo":"Paso 1. Generar listas de inventario para instancias administradas.",
+      "secciones":[
+        {"texto":"Accedemos al servicio através de la consola AWS, **Systems Manager** > **Node Tools** > **Fleet Manager**."},
+        {"imagen":"assets/lab-169/01.png"},
+        {"imagen":"assets/lab-169/02.png"},
+        {"texto":"Dentro de Fleet Manager seleccionamos, **Account management** > **Set up inventory**"},
+        {"imagen":"assets/lab-169/03.png"},
+        {"texto":"Creamos una associations que contenga toda la información acerca del software y ajustes de nuestras instancias administradas siguiendo los pasos: <br> En la sección **Provide inventory details**, Para **Name**, ingresamos **Inventory-Association** <br> En la sección **Targets** seleccionamos: <br> *Specify targets by: Manually selecting instances. <br> *Seleccionamos la fila correspondiente a la Managed Instance."},
+        {"imagen":"assets/lab-169/04.png"},
+        {"imagen":"assets/lab-169/05.png"},
+        {"texto":"En el panel de Fleet Manager podemos ver la instancia a la que aplicamos el inventario."},
+        {"imagen":"assets/lab-169/06.png"},
+        {"texto":"Si damos clic en **Node ID** de nuestra instancia nos redigiran al **Node Overview** donde podremos visualizar un listado de todas las aplicaciones inventariadas dentro de el panel **Inventory**"},
+        {"imagen":"assets/lab-169/07.png"},
+        {"imagen":"assets/lab-169/08.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 2. Instalando una aplicación personalizada usando Run Command",
+      "secciones":[
+        {"texto":"Accedemos a la sección **Run Command** y daremos clic en el botón **Run Command**"},
+        {"imagen":"assets/lab-169/09.png"},
+        {"imagen":"assets/lab-169/10.png"},
+        {"texto":"Una vez dentro, en la barra de **Command Document** escribiremos **owner** > **owned by me**"},
+        {"imagen":"assets/lab-169/11.png"},
+        {"imagen":"assets/lab-169/12.png"},
+        {"texto":"Seleccionamos el documento, y aparecera la siguiente información: <br> Description Install Dashboard App <br> Document version: 1 (Default). <br> Mantendremos la versión del documento."},
+        {"imagen":"assets/lab-169/13.png"},
+        {"texto":"En **Targets** seleccionamos **Choose instances manually** y en **Instances** seleccionamos **Managed instance**."},
+        {"imagen":"assets/lab-169/14.png"},
+        {"texto":"Deseleccionamos **Enable an S3 bucket** dentro de .**Output options**. Y finalizaremos dando clic en Run."},
+        {"imagen":"assets/lab-169/15.png"},
+        {"imagen":"assets/lab-169/15.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 3. Usando Parameter Store para gestionar la configuración de la aplicación.",
+      "secciones":[
+        {"texto":"Accedemos a la sección **Application Management** > **Parameter Store**. <br> Clic en **Create parameter**."},
+        {"imagen":"assets/lab-169/18.png"},
+        {"texto":"Configuramos lo siguiente: <br> Name: /dashboard/show-beta-features <br> Description: Display beta features <br> Tier: mantener default option. <br> Type: mantener default option. <br> Value: True."},
+        {"imagen":"assets/lab-169/21.png"},
+        {"imagen":"assets/lab-169/20.png"},
+        {"imagen":"assets/lab-169/22.png"},
+        {"texto":"Finalizamos con clic en **Create parameter**"},
+        {"imagen":"assets/lab-169/23.png"}
+      ]
+    },
+    {
+      "subtitulo":"Paso 4. Usando Session Manager para acceder a la instancia",
+      "secciones":[
+        {"texto":"Accedemos a la sección **Node tools** > **Session Manager**"},
+        {"imagen":"assets/lab-169/24.png"},
+        {"texto":"Clic en **Start session**"},
+        {"imagen":"assets/lab-169/25.png"},
+        {"texto":"Seleccionamos **Managed Instance** y Clic en **Start session**"},
+        {"imagen":"assets/lab-169/26.png"},
+        {"texto":"Ejecutamos el siguiente comando **ls /var/www/html**"},
+        {"imagen":"assets/lab-169/27.png"},
+        {"texto":"Finalizamos con un comando que nos permite ver los detalles de la instancia en formato JSON."},
+        {"imagen":"assets/lab-169/28.png"}
+      ]
+    }
+  ]
   },
   {
   "id": "Lab 170",
   "modulo": "Servidores",
   "numero": "Lab 170",
   "titulo": "",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "descripcion_general": "El propósito de este laboratorio es prácticar el uso del AWS CLI desde una EC2 instance para crear una S3, crear un usario de IAM que tenga acceso a la S3, cargar archivos de S3 para un host de una página web simple y crear un batch file que pueda actualizar la web estatica cuando se realicen cambios desde archivos locales.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [""],
+  "tags": ["AWS CLI", "AMAZON S3", "EC2"],
   "pasos": [
-    {}]
+    {
+      "subtitulo":"Paso 1. Generar listas de inventario para instancias administradas.",
+      "secciones":[
+      {"texto":"Copiaremos el URL de la sección details dentro del laboratorio."},
+      {"imagen":"assets/lab-170/01.png"},
+      {"texto":"Ejecutaremos el siguiente comando para cambiar de usuario y el directorio home **sudo su -l ec2-user**"},
+      {"imagen":"assets/lab-170/02.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 2. Configurar la AWS CLI.",
+      "secciones":[
+      {"texto":"Ejecutaremos el comando **aws configure** para actualizar el software de la AWS CLI con credenciales."},
+      {"imagen":"assets/lab-170/03.png"},
+      {"texto":"Configuraremos lo siguiente: <br> AWS Access Key ID: copiar y pegar el valor de **AccessKey** desde el entorno del laboratorio. <br> AWS Secret Access Key:: copiar y pegar el valor de **SecretKey:** desde el entorno del laboratorio. <br> Default region name: us-west-2 <br> Default output format: json"},
+      {"imagen":"assets/lab-170/04.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 3. Creando un bucket S3 usando AWS CLI.",
+      "secciones":[
+      {"texto":"Para crear un bucket desde la CLI usaremos el comando s3api, el cual requiere especificar aspectos como: <br> Name <br> Specify --region us-west-2 <br> Añadir --create-bucket-configuration LocationConstraint=us-west-2 <br> Finalmente, ejecutamos: **aws s3api create-bucket --bucket yayobucket-yahdiel-20260803 --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2**"},
+      {"imagen":"assets/lab-170/05.png"},
+      {"texto":"En la salida esperamos algo similar a: <br> {'Location': 'http://twhitlock256.s3.amazonaws.com/'}"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 4. Creando un nuevo usuario IAM que tenga Full Access a AMAZON S3.",
+      "secciones":[
+      {"texto":"Usando CLI agregamos un nuevo usuario ejecutando **aws iam create-user --user-name awsS3user** <br> Crearemos un login profile usando **aws iam create-login-profile --user-name awsS3user --password Training123!**"},
+      {"imagen":"assets/lab-170/07.png"},
+      {"imagen":"assets/lab-170/08.png"},
+      {"texto":"Para determinar el nombre de la politica que permite full access usaremos el comando **aws iam list-policies --query 'Policies[?contains(PolicyName,'S3')]'** Ubicando el **PolicyName**"},
+      {"imagen":"assets/lab-170/09.png"},
+      {"texto":"Una vez ubicado, ejecutaremos el comando **aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --user-name awsS3user** y con esto garantizamos que el user **awsS3user** tenga full access."},
+      {"imagen":"assets/lab-170/10.png"},
+      {"texto":"El siguiente paso es comprobarlo, para ello saldremos de la sesión actual, no sin antes copiar el **Account ID** de **VocLabsUser...**"},
+      {"imagen":"assets/lab-170/11.png"},
+      {"texto":"Accedemos a la consola AWS nuevamente, usando el Account ID y las credenciales del usuario que creamos."},
+      {"imagen":"assets/lab-170/12.png"},
+      {"imagen":"assets/lab-170/13.png"},
+      {"texto":"Una vez dentro nos dirigimos al servicio S3 para comprobar que tenemos acceso."},
+      {"imagen":"assets/lab-170/14.png"},
+      {"imagen":"assets/lab-170/15.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 5. Ajustando los permisos del bucket S3.",
+      "secciones":[
+      {"texto":"Daremos clic en el nombre del bucket para acceder a sus configuraciones. <br> Ubicaremos el panel de **permissions** y la sección **Block public access (bucket settings)** para dar clic en **Edit** y descativar **Block all public access**."},
+      {"imagen":"assets/lab-170/16.png"},
+      {"imagen":"assets/lab-170/17.png"},
+      {"imagen":"assets/lab-170/18.png"},
+      {"texto":"Enseguida localizaremos la sección **Object Ownership** y daremos clic en **Edit**. <br> Seleccionamos **ACLs enabled** <br> Seleccionamos **I acknowledge that ACLs will be restored.** <br> Clic en Save changes."},
+      {"imagen":"assets/lab-170/19.png"},
+      {"imagen":"assets/lab-170/20.png"},
+      {"imagen":"assets/lab-170/21.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 6.  Extracción de archivos que necesitamos para el laboratorio.",
+      "secciones":[
+      {"texto":"Ejecutaremos los siguientes comando para continuar con el laboratorio, los cuales incluyen lo necesario para montar la página web. <br> ** cd ~/sysops-activity-files ** <br> **tar xvzf static-website-v2.tar.gz** <br> **cd static-website**"},
+      {"imagen":"assets/lab-170/22.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 7. Cargar archivos a Amazon S3 mediante la AWS CLI",
+      "secciones":[
+      {"texto":"Ejecutando el siguiente comando habilitamos nuestro bucket como un website **aws s3 website s3://yayobucket-yahdiel-20260803/ --index-document index.html**"},
+      {"imagen":"assets/lab-170/23.png"},
+      {"texto":"Para cargar los archivos al bucket usaremos el comando **aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://yayobucket-yahdiel-20260803/ --recursive --acl public-read**"},
+      {"imagen":"assets/lab-170/24.png"},
+      {"texto":"Y comprobamos usando **aws s3 ls yayobucket-yahdiel-20260803**"},
+      {"imagen":"assets/lab-170/25.png"},
+      {"texto":"Para ingresar al website entraremos al bucket y en la sección de **propieties** ubicaremos **Static website hosting** y daremos clic en el URL."},
+      {"imagen":"assets/lab-170/26.png"},
+      {"imagen":"assets/lab-170/27.png"},
+      {"imagen":"assets/lab-170/28.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 8. Creando un batch file para realizar actualizaciones del website sean repetibles.",
+      "secciones":[
+      {"texto":"Para ver los comandos ejecutados recientemente usamos **history** y localizaremos la linea donde ejecutamos **aws s3 cp command**."},
+      {"imagen":"assets/lab-170/29.png"},
+      {"texto":"Cambiamos de directorio y creamos un empty file <br> **cd ~** <br> **touch update-website.sh**"},
+      {"texto":"Abriremos el empty file con el VI editor <br> **vi update-website.sh**"},
+      {"imagen":"assets/lab-170/30.png"},
+      {"texto":"Para editar el archivo ingresamos i y ahora usaremos el comando previamente localizado de aws s3 cp y agregamos el inicio para cualquier archivo bash <br> **#!/bin/bash aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://yayobucket-yahdiel-20260803/ --recursive --acl public-read** y salimos con ESC + :wq"},
+      {"imagen":"assets/lab-170/31.png"},
+      {"texto":"Para definir el archivo como un ejecutable batch file usamos **chmod +x update-website.sh** y abriremos el archivo index.html usando **vi sysops-activity-files/static-website/index.html**"},
+      {"texto":"Realizaremos los siguientes cambios: <br> bgcolor='aquamarine' por bgcolor='gainsboro' <br>  bgcolor='orange' por bgcolor='cornsilk' <br> Y ejecutamos el archivo usando **./update-website.sh**"},
+      {"imagen":"assets/lab-170/32.png"},
+      {"imagen":"assets/lab-170/33.png"},
+      {"texto":"Refrescamos el website y verificamos los cambios"},
+      {"imagen":"assets/lab-170/34.png"}
+    ]
+    }
+  ]
   },
   {
   "id": "Lab 171",
