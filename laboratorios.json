@@ -2654,7 +2654,7 @@
   "id": "Lab 170",
   "modulo": "Servidores",
   "numero": "Lab 170",
-  "titulo": "",
+  "titulo": "Creación de un sitio web en S3",
   "descripcion_general": "El propósito de este laboratorio es prácticar el uso del AWS CLI desde una EC2 instance para crear una S3, crear un usario de IAM que tenga acceso a la S3, cargar archivos de S3 para un host de una página web simple y crear un batch file que pueda actualizar la web estatica cuando se realicen cambios desde archivos locales.",
   "status": "done",
   "status_texto": "Completado",
@@ -2764,26 +2764,88 @@
   {
   "id": "Lab 171",
   "modulo": "Servidores",
-  "numero": "Lab 170",
-  "titulo": "",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "numero": "Lab 171",
+  "titulo": "Creación de instancias EC2.",
+  "descripcion_general": "El propósito de este laboratorio es aprender conocer las distintas formar de lanzar una instancia EC2 através de los recursos de AWS (Management console, AWS CLI)",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [""],
+  "tags": ["EC2 by AWS CLI", "EC2 Instance connect"],
   "pasos": [
-    {}]
+    {
+      "subtitulo":"Paso 1. Lanzando una EC2 usando AWS Management Console.",
+      "secciones":[
+      {"texto":"Usando la consola accedemos al servicio EC2 y dar clic en **Launch Instance**. <br> Configurando las siguientes opciones: <br> Dentro de **Name and tags**, **Name**: Bastion host <br> Para la AMI seleccionamos **Amazon Linux 2 AMI (HVM)**. <br> Para el tipo de **Instance type** seleccionamos **t3.micro**."},
+      {"imagen":"assets/lab-171/01.png"},
+      {"imagen":"assets/lab-171/02.png"},
+      {"imagen":"assets/lab-171/03.png"},
+      {"texto":"Para **Key pair (login)** dentro de ** Key pair name - required** seleccionamos **Proceed without key pair (Not recommended)**."},
+      {"imagen":"assets/lab-171/04.png"},
+      {"texto":"Dentro de la sección **Network settings** dar clic en **Edit**. <br> VPC - required, seleccionar **Lab VPC** <br> Para la **Subnet** seleccionamos **Public Subnet** y habilitar **Auto-assign public IP**. <br> Dentro de los **Security groups**, seleccionar **Create security group** y configuramos lo siguiente: <br> *Security group name - required ingresar **Bastion security group** <br> Description - required ingresar **Permit SSH connections**"},
+      {"imagen":"assets/lab-171/05.png"},
+      {"imagen":"assets/lab-171/06.png"},
+      {"texto":"Para la sección **Storage** lo mantendremos como está por defecto."},
+      {"imagen":"assets/lab-171/07.png"},
+      {"texto":"En la sección **Advanced details** dentro de **IAM instance profile** y seleccionar **Bastion-Role**."},
+      {"imagen":"assets/lab-171/08.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 2. Loggenadose en la instancia bastion host.",
+      "secciones":[
+      {"texto":"Seleccionamos la instancia **Bastion host** y daremos clic en **Connect**."},
+      {"imagen":"assets/lab-171/09.png"},
+      {"texto":"Dentro de Connect abrir el panel **EC2 Instance Connect** y daremos clic en **Connect**"},
+      {"imagen":"assets/lab-171/10.png"},
+      {"imagen":"assets/lab-171/11.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 3. Lanzando una instancia EC2 usando AWS CLI.",
+      "secciones":[
+      {"texto":"El primer paso es recuperar AIM para poder utilizarlo usando el commando: <br> #Set the Region <bz> AZ = `curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone` <br> export  AWS_DEFAULT_REGION = ${AZ::-1} <br> #Retrieve latest Linux AMI <br> AMI=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 --query 'Parameters[0].[Value]' --output text) <br> echo  $AMI. <br> El script llama a AWS Systems Manager (indicado con el comando ssm) y utiliza el comando get-parameters para recuperar el ID de AMI del Parameter Store."},
+      {"imagen":"assets/lab-171/12.png"},
+      {"texto":"Ahora recuperaremos la SUBNET ID para la public subnet: <br> SUBNET=$(aws ec2 describe-subnets --filters 'Name=tag:Name,Values=Public Subnet' --query Subnets[].SubnetId --output text) <br> echo $SUBNET <br> Este script ejecuta el comando aws ec2 con el subcomando describe-subnets para recuperar el ID de la subred denominada Public Subnet."},
+      {"imagen":"assets/lab-171/13.png"},
+      {"texto":"Ahora recuperaremos la SUBNET ID para la public subnet: <br> SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=WebSecurityGroup --query SecurityGroups[].GroupId --output text) <br> echo $SG <br> El script ejecuta el comando aws ec2 con el subcomando describe-security-groups para recuperar el ID del grupo de seguridad web."},
+      {"imagen":"assets/lab-171/14.png"},
+      {"texto":"**wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-RSJAWS-1-23732/171-lab-JAWS-create-ec2/s3/UserData.txt**"},
+      {"imagen":"assets/lab-171/15.png"},
+      {"texto":"**cat UserData.txt**"},
+      {"imagen":"assets/lab-171/16.png"},
+      {"texto":"Para lanzar la instancia usaremos el comando: <br> INSTANCE=$( aws ec2 run-instances --image-id $AMI --subnet-id $SUBNET --security-group-ids $SG --user-data file:///home/ec2-user/UserData.txt --instance-type t3.micro --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Web Server}]' --query 'Instances[*].InstanceId' --output text) <br> echo $INSTANCE"},
+      {"imagen":"assets/lab-171/17.png"},
+      {"texto":"aws ec2 describe-instances --instance-ids $INSTANCE"},
+      {"imagen":"assets/lab-171/18.png"},
+      {"texto":"aws ec2 describe-instances --instance-ids $INSTANCE --query 'Reservations[].Instances[].State.Name' --output text"},
+      {"imagen":"assets/lab-171/19.png"},
+      {"texto":"aws ec2 describe-instances --instance-ids $INSTANCE --query Reservations[].Instances[].PublicDnsName --output text"},
+      {"imagen":"assets/lab-171/20.png"},
+      {"imagen":"assets/lab-171/21.png"}
+    ]
+    }
+  ]
   },
   {
   "id": "Lab 172",
   "modulo": "Servidores",
-  "numero": "Lab 170",
-  "titulo": "",
+  "numero": "Lab 172",
+  "titulo": "Ejercicio de instancias de EC2",
   "descripcion_general": "El propósito de este laboratorio es",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [""],
+  "tags": ["EC2","WEB SERVER"],
   "pasos": [
-    {}]
+    {
+      "subtitulo":"Paso 2. Loggenadose en la instancia bastion host.",
+      "secciones":[
+      {"texto":"Seleccionamos la instancia **Bastion host** y daremos clic en **Connect**."},
+      {"imagen":"assets/lab-171/09.png"},
+      {"texto":"Dentro de Connect abrir el panel **EC2 Instance Connect** y daremos clic en **Connect**"},
+      {"imagen":"assets/lab-171/10.png"},
+      {"imagen":"assets/lab-171/11.png"}
+    ]
+    }
+    ]
   },
   {
   "id": "Lab 173",
