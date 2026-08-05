@@ -2973,18 +2973,132 @@
     }
   ]
 },
-  {
+{
   "id": "Lab 174",
   "modulo": "Escalado y resolución de nombres",
   "numero": "Lab 174",
-  "titulo": "",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "titulo": "Escalado y balanceo de carga de una arquitectura.",
+  "descripcion_general": "Implementar Elastic Load Balancing (ELB) y Amazon EC2 Auto Scaling para balancear cargas y escalar automáticamente la infraestructura.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [""],
+  "tags": ["ELB", "Auto Scaling", "EC2", "CloudWatch"],
   "pasos": [
-    {}]
-  },
+    {
+      "subtitulo":"Diagrama objetivo del laboratorio",
+      "secciones":[
+      {"imagen":"assets/lab-174/FinalArchitecture.png"}
+    ]
+    },
+    {
+      "subtitulo": "Paso 1. Creando una AMI para auto scaling.",
+      "secciones": [
+        {"texto": "Abrir la consola de **EC2**, ir a **Instances** y seleccionar la instancia **Web Server 1**."},
+        {"imagen":"assets/lab-174/01.png"},
+        {"texto": "Desde el menú **Actions**, elegir **Image and templates > Create image**."},
+        {"imagen":"assets/lab-174/02.png"},
+        {"texto": "Configurar: <br> **Image name**: Web Server AMI <br> **Image description - optional**: Lab AMI for Web Server"},
+        {"imagen":"assets/lab-174/03.png"},
+        {"texto": "Elegir **Create image**."},
+        {"imagen":"assets/lab-174/04.png"}
+      ]
+    },
+    {
+      "subtitulo": "Paso 2. Creando un load balancer",
+      "secciones": [
+        {"texto": "En la consola de EC2, ir a **Load Balancers** y elegir **Create load balancer**."},
+        {"imagen":"assets/lab-174/05.png"},
+        {"texto": "Para **Application Load Balancer**, elegir **Create**."},
+        {"imagen":"assets/lab-174/06.png"},
+        {"texto": "Configurar: <br> **Load balancer name**: LabELB <br> **VPC**: Lab VPC <br> **Mappings**: Seleccionar ambas Availability Zones y elegir **Public Subnet 1** y **Public Subnet 2**."},
+        {"imagen":"assets/lab-174/07.png"},
+        {"imagen":"assets/lab-174/08.png"},
+        {"imagen":"assets/lab-174/09.png"},
+        {"texto": "En **Security groups**, eliminar el grupo por defecto y seleccionar **Web Security Group**."},
+        {"imagen":"assets/lab-174/10.png"},
+        {"texto": "En **Listeners and routing**, hacer clic en **Create target group** (se abre una nueva pestaña)."},
+        {"imagen":"assets/lab-174/11.png"},
+        {"texto": "Configurar el Target Group: <br> **Choose a target type**: Instances <br> **Target group name**: lab-target-group"},
+        {"imagen":"assets/lab-174/12.png"},
+        {"texto": "Hacer clic en **Next**, luego en **Register targets** elegir **Create target group**, y cerrar esa pestaña."},
+        {"imagen":"assets/lab-174/13.png"},
+        {"texto": "Regresar a la pestaña del Load Balancer, actualizar el campo **Forward to** y seleccionar `lab-target-group`."},
+        {"imagen":"assets/lab-174/14.png"},
+        {"texto": "Hacer clic en **Create load balancer** y copiar el DNS name del load balancer."},
+        {"imagen":"assets/lab-174/15.png"}
+      ]
+    },
+    {
+      "subtitulo": "Paso 3. Creando una launch template",
+      "secciones": [
+        {"texto": "En la consola de EC2, ir a **Launch Templates** y elegir **Create launch template**."},
+        {"imagen":"assets/lab-174/16.png"},
+        {"texto": "Configurar:<br> **Launch template name - required**: lab-app-launch-template <br> **Template version description**: A web server for the load test app <br> **Auto Scaling guidance**: Seleccionar la opción de ayuda. <br> **Application and OS Images**: Seleccionar la pestaña **My AMIs** y elegir **Web Server AMI**.<br> **Instance type**: t3.micro. <br> **Key pair (login)**: Don't include in launch template. <br> **Network settings**: Seleccionar **Web Security Group**."},
+        {"imagen":"assets/lab-174/17.png"},
+        {"imagen":"assets/lab-174/18.png"},
+        {"imagen":"assets/lab-174/19.png"},
+        {"imagen":"assets/lab-174/20.png"},
+        {"imagen":"assets/lab-174/21.png"},
+        {"texto": "Hacer clic en **Create launch template**."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 4. Creando un Auto Scaling group",
+      "secciones": [
+        {"texto": "Seleccionar **lab-app-launch-template**, ir al menú **Actions** y elegir **Create Auto Scaling group**."},
+        {"imagen":"assets/lab-174/22.png"},
+        {"texto": "Configurar: <br> **Auto Scaling group name**: Lab Auto Scaling Group <br> **VPC**: Lab VPC <br> **Subnets**: Private Subnet 1 y Private Subnet 2."},
+        {"imagen":"assets/lab-174/23.png"},
+        {"imagen":"assets/lab-174/24.png"},
+        {"texto": "En **Load balancing**, elegir **Attach to an existing load balancer**, seleccionar **Choose from your load balancer target groups** y elegir lab-target-group | HTTP."},
+        {"imagen":"assets/lab-174/25.png"},
+        {"imagen":"assets/lab-174/26.png"},
+        {"texto": "En **Health checks**, seleccionar **ELB**."},
+        {"imagen":"assets/lab-174/27.png"},
+        {"texto": "En **Group size**, configurar: <br> **Desired capacity**: 2 <br> **Minimum capacity**: 2 <br> **Maximum capacity**: 4"},
+        {"imagen":"assets/lab-174/28.png"},
+        {"texto": "En **Scaling policies**, elegir **Target tracking scaling policy**: <br> **Metric type**: Average CPU utilization <br> **Target value**: 50"},
+        {"imagen":"assets/lab-174/29.png"},
+        {"texto": "En **Add tags**, agregar: <br> **Key**: Name <br> **Value**: Lab Instance"},
+        {"imagen":"assets/lab-174/30.png"},
+        {"texto": "Finalizar haciendo clic en **Create Auto Scaling group**."},
+        {"imagen":"assets/lab-174/31.png"}
+      ]
+    },
+    {
+      "subtitulo": "Paso 5. Verificando que load balancing está trabajando.",
+      "secciones": [
+        {"texto": "Ir a **Instances** para verificar que las nuevas instancias **Lab Instance** estén ejecutándose."},
+        {"imagen":"assets/lab-174/32.png"},
+        {"texto": "Ir a **Target Groups**, seleccionar **lab-target-group** y esperar a que el **Health status** de ambos objetivos cambie a **healthy**."},
+        {"imagen":"assets/lab-174/33.png"},
+        {"texto": "Abrir una nueva pestaña en el navegador, pegar el DNS name del load balancer copiado previamente para verificar que la aplicación responda."},
+        {"imagen":"assets/lab-174/34.png"}
+      ]
+    },
+    {
+      "subtitulo": "Paso 6. Probando auto scaling",
+      "secciones": [
+        {"texto": "Ir a **CloudWatch**, seleccionar **All alarms** y verificar la alarma con **AlarmHigh** en su nombre."},
+        {"imagen":"assets/lab-174/35.png"},
+        {"texto": "En la pestaña de la aplicación web del Load Test, hacer clic en **Load Test** junto al logo de AWS para generar carga de CPU."},
+        {"imagen":"assets/lab-174/36.png"},
+        {"texto": "Monitorear en CloudWatch cómo la alarma **AlarmHigh** cambia al estado **In alarm** tras superar el 50% de uso de CPU."},
+        {"imagen":"assets/lab-174/37.png"},
+        {"texto": "Ir a la consola de **EC2** para comprobar que el Auto Scaling group ha lanzado instancias adicionales (más de dos **Lab Instance**)."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 7. Finalizando la instancia Web Server 1.",
+      "secciones": [
+        {"texto": "En la consola de EC2, seleccionar la instancia **Web Server 1**."},
+        {"imagen":"assets/lab-174/38.png"},
+        {"texto": "Desde el menú **Instance state**, elegir **Terminate instance** y confirmar haciendo clic en **Terminate**."},
+        {"imagen":"assets/lab-174/39.png"}
+      ]
+    }
+  ]
+},
+
   {
   "id": "Lab 175",
   "modulo": "Escalado y resolución de nombres",
