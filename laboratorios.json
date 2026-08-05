@@ -2649,8 +2649,8 @@
       ]
     }
   ]
-  },
-  {
+},
+{
   "id": "Lab 170",
   "modulo": "Servidores",
   "numero": "Lab 170",
@@ -2660,6 +2660,12 @@
   "status_texto": "Completado",
   "tags": ["AWS CLI", "AMAZON S3", "EC2"],
   "pasos": [
+    {
+      "subtitulo":"Diagrama objetivo del laboratorio",
+      "secciones":[
+      {"imagen":"assets/lab-170/InstallApplication.png"}
+    ]
+    },
     {
       "subtitulo":"Paso 1. Generar listas de inventario para instancias administradas.",
       "secciones":[
@@ -2760,8 +2766,8 @@
     ]
     }
   ]
-  },
-  {
+},
+{
   "id": "Lab 171",
   "modulo": "Servidores",
   "numero": "Lab 171",
@@ -2771,6 +2777,12 @@
   "status_texto": "Completado",
   "tags": ["EC2 by AWS CLI", "EC2 Instance connect"],
   "pasos": [
+    {
+      "subtitulo":"Diagrama objetivo del laboratorio",
+      "secciones":[
+      {"imagen":"assets/lab-171/architecture.png"}
+    ]
+    },
     {
       "subtitulo":"Paso 1. Lanzando una EC2 usando AWS Management Console.",
       "secciones":[
@@ -2814,18 +2826,19 @@
       {"imagen":"assets/lab-171/16.png"},
       {"texto":"Para lanzar la instancia usaremos el comando: <br> INSTANCE=$( aws ec2 run-instances --image-id $AMI --subnet-id $SUBNET --security-group-ids $SG --user-data file:///home/ec2-user/UserData.txt --instance-type t3.micro --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Web Server}]' --query 'Instances[*].InstanceId' --output text) <br> echo $INSTANCE"},
       {"imagen":"assets/lab-171/17.png"},
-      {"texto":"aws ec2 describe-instances --instance-ids $INSTANCE"},
+      {"texto":"El siguiente comando nos presenta toda la información de la instancia en formato JSON: **aws ec2 describe-instances --instance-ids $INSTANCE**"},
       {"imagen":"assets/lab-171/18.png"},
-      {"texto":"aws ec2 describe-instances --instance-ids $INSTANCE --query 'Reservations[].Instances[].State.Name' --output text"},
+      {"texto":"Usando el siguiente comando podemos obtener el estado de la instancia: **aws ec2 describe-instances --instance-ids $INSTANCE --query 'Reservations[].Instances[].State.Name' --output text**"},
       {"imagen":"assets/lab-171/19.png"},
-      {"texto":"aws ec2 describe-instances --instance-ids $INSTANCE --query Reservations[].Instances[].PublicDnsName --output text"},
+      {"texto":"Este comando nos regresa el DNS de la instancia nombrada **aws ec2 describe-instances --instance-ids $INSTANCE --query Reservations[].Instances[].PublicDnsName --output text**"},
       {"imagen":"assets/lab-171/20.png"},
+      {"texto":"Podemos visualizar que la instancia Web server fue creada usando la consola AWS."},
       {"imagen":"assets/lab-171/21.png"}
     ]
     }
   ]
-  },
-  {
+},
+{
   "id": "Lab 172",
   "modulo": "Servidores",
   "numero": "Lab 172",
@@ -2836,21 +2849,57 @@
   "tags": ["EC2","WEB SERVER"],
   "pasos": [
     {
-      "subtitulo":"Paso 2. Loggenadose en la instancia bastion host.",
+      "subtitulo":"Paso 1. Creación de VPC.",
       "secciones":[
-      {"texto":"Seleccionamos la instancia **Bastion host** y daremos clic en **Connect**."},
-      {"imagen":"assets/lab-171/09.png"},
-      {"texto":"Dentro de Connect abrir el panel **EC2 Instance Connect** y daremos clic en **Connect**"},
-      {"imagen":"assets/lab-171/10.png"},
-      {"imagen":"assets/lab-171/11.png"}
+      {"texto":"Dentro del panel de VPC seleccionamos **Create VPC**, para que Amazon se encargue de aprovisionar todo lo relacionado con la VPC elegiremos **VPC and more**. <br> Solamente sera un subnet pública habilitada en una única AZ."},
+      {"imagen":"assets/lab-172/01.png"},
+      {"imagen":"assets/lab-172/02.png"},
+      {"imagen":"assets/lab-172/03.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 2. Lanzando la EC2 y conectandose con EC2 instance connect.",
+      "secciones":[
+      {"texto":"Dentro del servicio EC2 daremos clic en Launch instance y configuramos lo siguiente: <br> Name: Web Server <br> Para la AMI mantendremos la que se encuenta por defecto. <br> Instance type: t3.micro <br> Network settings > VPC - required > Seleccionamos la VPC creada anteriormente. <br> Subnet: Subnet Public 1 <br> Auto-assing public IP: Enable <br> Para el security group crearemos que permita el tráfico ssh <br> Configure storage: Seleccionamos **gp2**."},
+      {"imagen":"assets/lab-172/04.png"},
+      {"imagen":"assets/lab-172/05.png"},
+      {"imagen":"assets/lab-172/06.png"},
+      {"imagen":"assets/lab-172/07.png"},
+      {"imagen":"assets/lab-172/08.png"},
+      {"imagen":"assets/lab-172/09.png"},
+      {"texto":"En **Advance details** > **User data** habilitaremos Apache como host."},
+      {"imagen":"assets/lab-172/10.png"},
+      {"texto":"Esperamos a que la instancia se encuentre **Running** y daremos clic en **Connect**."},
+      {"imagen":"assets/lab-172/11.png"},
+      {"texto":"Clic en el panel **EC2 instance connect** y en el botón **connect**."},
+      {"imagen":"assets/lab-172/12.png"},
+      {"imagen":"assets/lab-172/13.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 3. Configurando Web server.",
+      "secciones":[
+      {"texto":"Crearemos un archivo de nombre **projects.html** y dentro pegaremos el siguiente código:"},
+      {"imagen":"assets/lab-172/15.png"},
+      {"imagen":"assets/lab-172/14.png"},
+      {"texto":"Ahora lo enviaremos a la carpeta correcta."},
+      {"imagen":"assets/lab-172/152.png"},
+      {"texto":"Debemos habilitar el tráfico http dentro del security group de la instancia."},
+      {"imagen":"assets/lab-172/16.png"},
+      {"texto":"Lo verificamos usando el comando **sudo systemctl status httpd**"},
+      {"imagen":"assets/lab-172/17.png"},
+      {"texto":"Finalmente accedemos al web server usando la IP pública de la instancia."},
+      {"imagen":"assets/lab-172/182.png"},
+      {"imagen":"assets/lab-172/18.png"}
+
     ]
     }
-    ]
-  },
-  {
+  ]
+},
+{
   "id": "Lab 173",
   "modulo": "Servidores",
-  "numero": "Lab 170",
+  "numero": "Lab 173",
   "titulo": "",
   "descripcion_general": "El propósito de este laboratorio es",
   "status": "done",
