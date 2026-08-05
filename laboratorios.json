@@ -2584,6 +2584,12 @@
   "status_texto": "Completado",
   "tags": ["System Manager"],
   "pasos": [
+        {
+      "subtitulo":"Diagrama objetivo del laboratorio",
+      "secciones":[
+      {"imagen":"assets/lab-169/InstallApplication.png"}
+    ]
+    },
     {
       "subtitulo":"Paso 1. Generar listas de inventario para instancias administradas.",
       "secciones":[
@@ -2660,12 +2666,6 @@
   "status_texto": "Completado",
   "tags": ["AWS CLI", "AMAZON S3", "EC2"],
   "pasos": [
-    {
-      "subtitulo":"Diagrama objetivo del laboratorio",
-      "secciones":[
-      {"imagen":"assets/lab-170/InstallApplication.png"}
-    ]
-    },
     {
       "subtitulo":"Paso 1. Generar listas de inventario para instancias administradas.",
       "secciones":[
@@ -2900,14 +2900,79 @@
   "id": "Lab 173",
   "modulo": "Servidores",
   "numero": "Lab 173",
-  "titulo": "",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "titulo": "Solución de problemas en la creación de una instancia de EC2.",
+  "descripcion_general": "El propósito de este laboratorio es implementar una instancia de EC2 mediante el uso de la Interfaz de Línea de Comandos de AWS (AWS CLI). Asimismo, busca aplicar técnicas básicas de resolución de problemas y la utilidad de código abierto nmap para solucionar incidencias en comandos de AWS CLI y en la configuración del servicio Amazon EC2.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [""],
+  "tags": ["EC2 by AWS CLI"],
   "pasos": [
-    {}]
-  },
+    {
+      "subtitulo":"Diagrama objetivo del laboratorio",
+      "secciones":[
+      {"imagen":"assets/lab-173/Architecture.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 1. Conectarse a la instancia CLI Host.",
+      "secciones":[
+      {"texto":"Ingresamos al servicio EC2 > instances y seleccionamos **CLI Host** para dar clic en **Connect**. Una vez dentro usamos el panel EC2 instance connect para acceder a la terminal CLI."},
+      {"imagen":"assets/lab-173/01.png"},
+      {"imagen":"assets/lab-173/02.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 2. Configurando AWS CLI.",
+      "secciones":[
+      {"texto":"Para acceder con credenciales usamos el comando **aws configure**, las claves podemos encontrarlas en el entorno del laboratorio."},
+      {"imagen":"assets/lab-173/03.png"},
+      {"imagen":"assets/lab-173/04.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 3. Creando una instancia EC2 através de AWS CLI.",
+      "secciones":[
+      {"texto":"Usaremos un script que nos proporciona el laboratorio. En primer lugar hay que moverlo al directorio correcto usando: **cd ~/sysops-activity-files/starters** y crearemos un backup usando: **cp create-lamp-instance-v2.sh create-lamp-instance.backup**"},
+      {"imagen":"assets/lab-173/05.png"},
+      {"texto":"Visualizamos el script usando el editor VI: **view create-lamp-instance-v2.sh**"},
+      {"imagen":"assets/lab-173/06.png"},
+      {"texto":"Visualizamos la User data: **cat create-lamp-instance-userdata-v2.txt**"},
+      {"imagen":"assets/lab-173/07.png"},
+      {"imagen":"assets/lab-173/08.png"},
+      {"texto":"Intentamos correr el script: **./create-lamp-instance-v2.sh**"},
+      {"imagen":"assets/lab-173/09.png"},
+      {"imagen":"assets/lab-173/10.png"},
+      {"texto":"Explorando el script notamos un error en la región dentro de la sección **open port in the security group**, para solucionarlo cambiaremos **us-east-1** por **$region** dentro del script."},
+      {"imagen":"assets/lab-173/11.png"},
+      {"imagen":"assets/lab-173/12.png"},
+      {"texto":"Y lo ejecutaremos nuevamente."},
+      {"imagen":"assets/lab-173/13.png"},
+      {"texto":"Si intentamos conectarnos mediante la IP pública nos toparemos con un error en la conexión."},
+      {"imagen":"assets/lab-173/14.png"},
+      {"texto":"Para conocer el estato de la instancia podemos instalar la herramienta nmap usando **sudo yum install -y nmap**."},
+      {"imagen":"assets/lab-173/15.png"},
+      {"texto":"Ahora ejecutamos **nmap -Pn <public-ip>**."},
+      {"imagen":"assets/lab-173/16.png"},
+      {"texto":"Podemos notar que el puerto HTTP no se encuentra abierto, por lo que es necesario habilitarlo mediante el uso de la consola AWS. Una vez habilitado podemos probar nuevamente."},
+      {"imagen":"assets/lab-173/18.png"},
+      {"imagen":"assets/lab-173/17.png"},
+      {"texto":"Al terminar ejecutamos **sudo tail -f /var/log/cloud-init-output.log** para visualizar los mensajes recibidos relacionados con la instalación de MariaDB y PHP."},
+      {"imagen":"assets/lab-173/19.png"}
+    ]
+    },
+    {
+      "subtitulo":"Paso 4. Verificando la funcionalidad del website.",
+      "secciones":[
+      {"texto":"Página principal"},
+      {"imagen":"assets/lab-173/20.png"},
+      {"texto":"Seleccionamos Menú y comprobamos realizando algunas ordenes."},
+      {"imagen":"assets/lab-173/21.png"},
+      {"imagen":"assets/lab-173/22.png"},
+      {"imagen":"assets/lab-173/23.png"},
+      {"imagen":"assets/lab-173/24.png"}
+    ]
+    }
+  ]
+},
   {
   "id": "Lab 174",
   "modulo": "Escalado y resolución de nombres",
