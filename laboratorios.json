@@ -3296,5 +3296,348 @@
       ]
     }
   ]
+},
+{
+  "id": "Lab 177",
+  "modulo": "Lambda and Serverless",
+  "numero": "Lab 177",
+  "titulo": "Word Count Automation with S3, Lambda, and SNS",
+  "descripcion_general": "Automatizar el conteo de palabras en archivos de texto subidos a un bucket de S3 utilizando una función Lambda en Python y enviar los resultados mediante notificaciones de Amazon SNS.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["Lambda", "S3", "SNS", "Python", "Serverless", "Event-Driven"],
+  "pasos": [
+    {
+      "subtitulo": "Paso 1: Crear un Tema de SNS (Simple Notification Service)",
+      "secciones": [
+        {"texto": "Abrir la consola de **Amazon SNS** y crear un nuevo **Topic** de tipo **Standard** con el nombre `WordCountTopic`."},
+        {"texto": "Crear una **Subscription** para este tema:<br>* **Protocol**: `Email`<br>* **Endpoint**: Ingresar tu dirección de correo electrónico."},
+        {"texto": "Revisar la bandeja de entrada del correo, abrir el mensaje de confirmación y hacer clic en el enlace para confirmar la suscripción."},
+        {"texto": "Copiar y guardar el **ARN** del tema SNS creado, ya que se necesitará en el código de la función."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 2: Crear el Bucket de S3",
+      "secciones": [
+        {"texto": "Abrir la consola de **Amazon S3** y crear un nuevo Bucket en la misma región que SNS y Lambda."},
+        {"texto": "Asignar un nombre único al bucket (por ejemplo, `word-count-bucket-xyz`)."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 3: Crear la Función Lambda",
+      "secciones": [
+        {"texto": "Abrir la consola de **AWS Lambda** y hacer clic en **Create function** (Author from scratch)."},
+        {"texto": "Configurar los parámetros básicos:<br>* **Function name**: `CountWordsFunction`<br>* **Runtime**: `Python 3.12`<br>* **Architecture**: `x86_64`"},
+        {"texto": "En **Permissions**, expandir **Change default execution role**, seleccionar **Use an existing role** y elegir `LambdaAccessRole`."},
+        {"texto": "Hacer clic en **Create function**."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 4: Configurar el Código de la Función Lambda",
+      "secciones": [
+        {"texto": "En la pestaña **Code** de la función Lambda, reemplazar el contenido con el script proporcionado para procesar el archivo, contar las palabras y publicar en SNS."},
+        {"texto": "Modificar la variable `SNS_TOPIC_ARN` con el ARN real del tema SNS creado en el Paso 1."},
+        {"texto": "Hacer clic en **Deploy** para guardar los cambios."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 5: Configurar el Desencadenador (Trigger) de S3",
+      "secciones": [
+        {"texto": "En la consola de Lambda, dentro de la función, hacer clic en **Add trigger**."},
+        {"texto": "Seleccionar **S3** y elegir el bucket creado en el Paso 2."},
+        {"texto": "En **Event type**, seleccionar **All object create events** (`s3:ObjectCreated:*`)."},
+        {"texto": "Aceptar los términos de reconocimiento y hacer clic en **Add**."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 6: Probar la Función",
+      "secciones": [
+        {"texto": "Crear archivos de texto de ejemplo (por ejemplo, `test1.txt` con algunas palabras) y subirlos al bucket de S3."},
+        {"texto": "Revisar el correo electrónico para verificar la recepción del mensaje con el asunto **Word Count Result** y el formato correspondiente."}
+      ]
+    }
+  ]
+},
+{
+  "id": "Lab 178",
+  "modulo": "Lambda and Serverless",
+  "numero": "Lab 178",
+  "titulo": "Automating Sales Reports with AWS Lambda, Layers, and SNS",
+  "descripcion_general": "Crear y configurar funciones Lambda, capas personalizadas con dependencias de Python, políticas de IAM, conectividad VPC a bases de datos MySQL, temas SNS y activadores programados mediante EventBridge.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["Lambda", "IAM", "Lambda Layers", "SNS", "CloudWatch", "EventBridge", "MySQL", "VPC"],
+  "pasos": [
+    {
+      "subtitulo": "Tarea 1: Observación de la configuración de roles IAM",
+      "secciones": [
+        {"texto": "En la consola de IAM, buscar el rol **salesAnalysisReportRole** y revisar en la pestaña **Trust relationships** que `lambda.amazonaws.com` sea una entidad confiable."},
+        {"texto": "Verificar en la pestaña **Permissions** las cuatro políticas asociadas: `AmazonSNSFullAccess`, `AmazonSSMReadOnlyAccess`, `AWSLambdaBasicRunRole` y `AWSLambdaRole`."},
+        {"texto": "Buscar el rol **salesAnalysisReportDERole** y verificar sus políticas asociadas: `AWSLambdaBasicRunRole` y `AWSLambdaVPCAccessRunRole`."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 2: Creación de una capa de Lambda y función de extracción de datos",
+      "secciones": [
+        {"texto": "Descargar los archivos requeridos: `pymysql-v3.zip` y `salesAnalysisReportDataExtractor-v3.zip`."},
+        {"texto": "En la consola de **Lambda**, ir a **Layers** y elegir **Create layer**:<br>* **Name**: `pymysqlLibrary`<br>* **Description**: `PyMySQL library modules`<br>* **Upload a .zip file**: Seleccionar `pymysql-v3.zip`<br>* **Compatible runtimes**: `Python 3.9`<br>Hacer clic en **Create**."},
+        {"texto": "Crear la función Lambda eligiendo **Create function** (Author from scratch):<br>* **Function name**: `salesAnalysisReportDataExtractor`<br>* **Runtime**: `Python 3.9`<br>* **Execution role**: Usar un rol existente (`salesAnalysisReportDERole`)."},
+        {"texto": "En la sección **Layers** de la función, hacer clic en **Add a layer**, seleccionar **Custom layers**, elegir `pymysqlLibrary` con versión `1` y hacer clic en **Add**."},
+        {"texto": "En **Runtime settings**, editar el Handler a `salesAnalysisReportDataExtractor.lambda_handler`."},
+        {"texto": "En **Code source**, hacer clic en **Upload from** > **.zip file** y subir `salesAnalysisReportDataExtractor-v3.zip`."},
+        {"texto": "Configurar la red de la función en la pestaña **Configuration** > **VPC**:<br>* **VPC**: `Cafe VPC`<br>* **Subnets**: `Cafe Public Subnet 1`<br>* **Security groups**: `CafeSecurityGroup`<br>Hacer clic en **Save**."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 3: Prueba y solución de problemas de la función de extracción de datos",
+      "secciones": [
+        {"texto": "En **Systems Manager** > **Parameter Store**, copiar los valores de los parámetros: `/cafe/dbUrl`, `/cafe/dbName`, `/cafe/dbUser` y `/cafe/dbPassword`."},
+        {"texto": "En la función Lambda, ir a la pestaña **Test**, crear un evento llamado `SARDETestEvent` con el JSON correspondiente a las credenciales obtenidas de Parameter Store y hacer clic en **Test** (se obtendrá un error de timeout inicialmente)."},
+        {"texto": "Solucionar el problema de timeout agregando una regla de entrada (Inbound rule) para el puerto **3306** en el grupo de seguridad de la base de datos (**CafeSecurityGroup**)."},
+        {"texto": "Abrir el sitio web de la cafetería usando la IP pública (`http://publicIP/cafe`), ir a **Menu** y realizar algunas órdenes para poblar datos en la base de datos."},
+        {"texto": "Volver a probar la función Lambda en la consola y verificar que el resultado devuelva un código `200` con los datos de las órdenes en el campo `body`."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 4: Configuración de notificaciones SNS",
+      "secciones": [
+        {"texto": "En la consola de **SNS**, ir a **Topics** y elegir **Create topic**:<br>* **Type**: `Standard`<br>* **Name**: `salesAnalysisReportTopic`<br>* **Display name**: `SARTopic`<br>Copiar y guardar el ARN del tema."},
+        {"texto": "Hacer clic en **Create subscription**:<br>* **Protocol**: `Email`<br>* **Endpoint**: Ingresar una dirección de correo accesible.<br>Hacer clic en **Create subscription**."},
+        {"texto": "Revisar la bandeja de entrada del correo, abrir el mensaje de **AWS Notifications** y hacer clic en **Confirm subscription**."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 5: Creación y configuración de la función salesAnalysisReport",
+      "secciones": [
+        {"texto": "Conectarse a la instancia **CLI Host** mediante EC2 Instance Connect y configurar las credenciales ejecutando `aws configure` (usando los datos de acceso del laboratorio y la región `us-west-2`)."},
+        {"texto": "Crear la función Lambda utilizando la CLI ejecutando:<br>aws create-function --function-name salesAnalysisReport --runtime python3.9 --zip-file fileb://salesAnalysisReport-v2.zip --handler salesAnalysisReport.lambda_handler --region us-west-2 --role <salesAnalysisReportRoleARN>"},
+        {"texto": "En la consola de Lambda, abrir la función `salesAnalysisReport`, ir a **Configuration** > **Environment variables** y agregar:<br>* **Key**: `topicARN`<br>* **Value**: El ARN del tema SNS `salesAnalysisReportTopic`."},
+        {"texto": "Ir a la pestaña **Test**, crear un evento de prueba llamado `SARTestEvent` y ejecutarlo para verificar que envíe el reporte por correo electrónico."},
+        {"texto": "Configurar un activador periódico en el panel **Function overview** haciendo clic en **Add trigger**:<br>* **Trigger**: `EventBridge (CloudWatch Events)`<br>* **Rule**: `Create a new rule`<br>* **Rule name**: `salesAnalysisReportDailyTrigger`<br>* **Rule type**: `Schedule expression`<br>* **Schedule expression**: Configurar una expresión Cron según las necesidades (por ejemplo, para pruebas a los 5 minutos o en producción de lunes a sábado a las 8 PM UTC)."}
+      ]
+    }
+  ]
+},
+{
+  "id": "Lab 179",
+  "modulo": "Databases and Migration",
+  "numero": "Lab 179",
+  "titulo": "Migrating to Amazon RDS",
+  "descripcion_general": "Migrar una base de datos local de MariaDB alojada en una instancia EC2 hacia una instancia administrada de Amazon RDS MariaDB, configurando componentes de red privados, grupos de seguridad, respaldos y reconfigurando la aplicación mediante AWS Systems Manager Parameter Store.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["RDS", "MariaDB", "EC2", "Migration", "VPC", "Subnets", "Security Groups", "Systems Manager", "CloudWatch"],
+  "pasos": [
+    {
+      "subtitulo": "Tarea 1: Generación de datos de pedidos en el sitio web de la cafetería",
+      "secciones": [
+        {"texto": "Abrir la aplicación web de la cafetería usando la URL `CafeInstanceURL`."},
+        {"texto": "Navegar a **Menu**, agregar al menos un artículo de cada categoría a la orden y hacer clic en **Submit Order**."},
+        {"texto": "Ir a la página **Order History** y registrar el número de pedidos realizados para compararlos posteriormente tras la migración."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 2: Creación de una instancia de Amazon RDS mediante la CLI de AWS",
+      "secciones": [
+        {"texto": "Conectarse a la instancia **CLI Host** mediante **EC2 Instance Connect** y configurar las credenciales ejecutando `aws configure` (con los datos de acceso y la región del laboratorio)."},
+        {"texto": "Crear el grupo de seguridad `CafeDatabaseSG` ejecutando:<br>`aws ec2 create-security-group --group-name CafeDatabaseSG --description \"Security group for Cafe database\" --vpc-id <CafeInstance VPC ID>`"},
+        {"texto": "Autorizar el tráfico entrante en el puerto **3306** desde `CafeSecurityGroup` ejecutando:<br>`aws ec2 authorize-security-group-ingress --group-id <CafeDatabaseSG Group ID> --protocol tcp --port 3306 --source-group <CafeSecurityGroup Group ID>`"},
+        {"texto": "Crear la subred privada 1 (`CafeDB Private Subnet 1`) en la misma zona de disponibilidad de la instancia de la cafetería:<br>`aws ec2 create-subnet --vpc-id <CafeInstance VPC ID> --cidr-block 10.200.2.0/23 --availability-zone <CafeInstance Availability Zone>`"},
+        {"texto": "Crear la subred privada 2 (`CafeDB Private Subnet 2`) en una zona de disponibilidad distinta:<br>`aws ec2 create-subnet --vpc-id <CafeInstance VPC ID> --cidr-block 10.200.10.0/23 --availability-zone <availability-zone>`"},
+        {"texto": "Crear el grupo de subredes de base de datos (`CafeDB Subnet Group`) asociando ambas subredes privadas:<br>`aws rds create-db-subnet-group --db-subnet-group-name \"CafeDB Subnet Group\" --db-subnet-group-description \"DB subnet group for Cafe\" --subnet-ids <Cafe Private Subnet 1 ID> <Cafe Private Subnet 2 ID>`"},
+        {"texto": "Crear la instancia de base de datos MariaDB (`CafeDBInstance`) ejecutando:<br>`aws rds create-db-instance --db-instance-identifier CafeDBInstance --engine mariadb --engine-version 10.11.11 --db-instance-class db.t3.micro --allocated-storage 20 --availability-zone <CafeInstance Availability Zone> --db-subnet-group-name \"CafeDB Subnet Group\" --vpc-security-group-ids <CafeDatabaseSG Group ID> --no-publicly-accessible --master-username root --master-user-password 'Re:Start!9'`"},
+        {"texto": "Monitorear el estado de la instancia con `aws rds describe-db-instances` hasta que el estado sea **available** y registrar la dirección del **Endpoint Address**."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 3: Migración de los datos de la aplicación a la instancia de Amazon RDS",
+      "secciones": [
+        {"texto": "Conectarse a la instancia `CafeInstance` mediante **EC2 Instance Connect**."},
+        {"texto": "Crear un respaldo de la base de datos local usando el comando `mysqldump`:<br>`mysqldump --user=root --password='Re:Start!9' --databases cafe_db --add-drop-database > cafedb-backup.sql`"},
+        {"texto": "Descargar el certificado CA global de Amazon RDS:<br>`curl -o global-bundle.pem https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem`"},
+        {"texto": "Restaurar el respaldo en la base de datos RDS ejecutando:<br>`mysql --user=root --password='Re:Start!9' --host=<RDS Instance Database Endpoint Address> --ssl-ca=./global-bundle.pem < cafedb-backup.sql`"},
+        {"texto": "Verificar la migración conectándose interactivamente a la base de datos RDS y ejecutando `select * from product;`."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 4: Configuración del sitio web para utilizar la instancia de Amazon RDS",
+      "secciones": [
+        {"texto": "Abrir la consola de **AWS Systems Manager** y seleccionar **Parameter Store**."},
+        {"texto": "Editar el parámetro `/cafe/dbUrl` y reemplazar su valor con el **Endpoint Address** de la instancia RDS de MariaDB."},
+        {"texto": "Abrir el sitio web de la cafetería y comprobar en la pestaña **Order History** que el número de pedidos coincida con los realizados antes de la migración."}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 5: Monitoreo de la base de datos de Amazon RDS",
+      "secciones": [
+        {"texto": "Abrir la consola de **Amazon RDS**, seleccionar la base de datos `cafedbinstance` y revisar la pestaña **Monitoring** para observar métricas como `CPUUtilization`, `DatabaseConnections`, `FreeStorageSpace`, entre otras."},
+        {"texto": "Establecer una conexión interactiva desde la terminal de `CafeInstance` para verificar cómo se actualiza la métrica `DatabaseConnections` en tiempo real en los gráficos de CloudWatch."}
+      ]
+    }
+  ]
+},
+{
+  "id": "Lab 180",
+  "modulo": "Networking and VPC",
+  "numero": "Lab 180",
+  "titulo": "Building a VPC with Public and Private Subnets, Bastion Host, and NAT Gateway",
+  "descripcion_general": "Crear una VPC personalizada con subredes públicas y privadas, un Internet Gateway, una NAT Gateway, tablas de ruteo configuradas y un servidor bastión para acceder de forma segura a instancias privadas.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["VPC", "Subnets", "Internet Gateway", "NAT Gateway", "Route Tables", "Bastion Host", "EC2", "Networking"],
+  "pasos": [
+    {
+      "subtitulo": "Task 1: Creating a VPC",
+      "secciones": [
+        {"texto": "En la consola de **VPC**, hacer clic en **Create VPC**:<br>* **Resources to create**: `VPC only`<br>* **Name tag**: `Lab VPC`<br>* **IPv4 CIDR**: `10.0.0.0/16`<br>Hacer clic en **Create VPC**."},
+        {"texto": "Editar la configuración de la VPC (`Actions` > `Edit VPC settings`), habilitar **Enable DNS hostnames** y guardar los cambios."}
+      ]
+    },
+    {
+      "subtitulo": "Task 2: Creating subnets",
+      "secciones": [
+        {"texto": "Crear la subred pública (**Public Subnet**):<br>* **VPC ID**: `Lab VPC`<br>* **Subnet name**: `Public Subnet`<br>* **Availability Zone**: Primera zona de disponibilidad disponible<br>* **IPv4 CIDR block**: `10.0.0.0/24`<br>Hacer clic en **Create subnet**."},
+        {"texto": "Habilitar la asignación automática de IP pública en `Public Subnet` (`Actions` > `Edit subnet settings` > **Enable auto-assign public IPv4 address**)."},
+        {"texto": "Crear la subred privada (**Private Subnet**):<br>* **VPC ID**: `Lab VPC`<br>* **Subnet name**: `Private Subnet`<br>* **Availability Zone**: Misma zona de disponibilidad<br>* **IPv4 CIDR block**: `10.0.2.0/23`<br>Hacer clic en **Create subnet**."}
+      ]
+    },
+    {
+      "subtitulo": "Task 3: Creating an internet gateway",
+      "secciones": [
+        {"texto": "En el panel de **Internet gateways**, hacer clic en **Create internet gateway** y nombrarlo `Lab IGW`."},
+        {"texto": "Seleccionar el IGW creado, hacer clic en **Actions** > **Attach to a VPC** y asociarlo con `Lab VPC`."}
+      ]
+    },
+    {
+      "subtitulo": "Task 4: Configuring route tables",
+      "secciones": [
+        {"texto": "Renombrar la tabla de ruteo por defecto asociada a `Lab VPC` como `Private Route Table`."},
+        {"texto": "Crear una nueva tabla de ruteo llamada `Public Route Table` asociada a `Lab VPC`."},
+        {"texto": "Editar las rutas de `Public Route Table` para agregar una ruta con destino `0.0.0.0/0` apuntando a `Lab IGW`."},
+        {"texto": "Asociar `Public Subnet` a la tabla `Public Route Table` desde la pestaña **Subnet associations**."}
+      ]
+    },
+    {
+      "subtitulo": "Task 5: Launching a bastion server in the public subnet",
+      "secciones": [
+        {"texto": "Lanzar una instancia EC2 nombrada `Bastion Server` con imagen **Amazon Linux 2023**, tipo `t3.micro` y sin par de llaves (`Proceed without a key pair`)."},
+        {"texto": "Configurar la red: seleccionar `Lab VPC`, `Public Subnet`, habilitar **Auto-assign public IP** y crear un grupo de seguridad llamado `Bastion Security Group` que permita tráfico **SSH** desde cualquier origen (`Anywhere`)."}
+      ]
+    },
+    {
+      "subtitulo": "Task 6: Creating a NAT gateway",
+      "secciones": [
+        {"texto": "En el panel de **NAT gateways**, hacer clic en **Create NAT gateway**:<br>* **Name**: `Lab NAT gateway`<br>* **Subnet**: `Public Subnet`<br>* **Elastic IP**: Asignar una IP elástica (`Allocate Elastic IP`)<br>Hacer clic en **Create a NAT gateway**."},
+        {"texto": "Configurar la tabla `Private Route Table` agregando una ruta con destino `0.0.0.0/0` apuntando a la `NAT gateway` creada."}
+      ]
+    },
+    {
+      "subtitulo": "Optional challenge: Testing the private subnet",
+      "secciones": [
+        {"texto": "Crear una instancia EC2 en la subred privada nombrada `Private Instance`, configurando un grupo de seguridad (`Private Instance SG`) que permita **SSH** únicamente desde el bloque de la VPC (`10.0.0.0/16`) y añadiendo el script de usuario para habilitar autenticación por contraseña (`lab-password`)."},
+        {"texto": "Conectarse al `Bastion Server` mediante **EC2 Instance Connect** y desde ahí conectarse por SSH a la IP privada de `Private Instance` usando la contraseña configurada."},
+        {"texto": "Ejecutar `ping -c 3 amazon.com` en la instancia privada para verificar que tiene salida a internet a través de la NAT Gateway."}
+      ]
+    }
+  ]
+},
+{
+  "id": "Lab 181",
+  "modulo": "Networking and VPC",
+  "numero": "Lab 181",
+  "titulo": "Troubleshooting a VPC and Analyzing VPC Flow Logs",
+  "descripcion_general": "Solucionar problemas de configuración en una VPC (tablas de ruteo y listas de control de acceso a la red), configurar y exportar registros de VPC Flow Logs a Amazon S3, y analizar dichos registros mediante la línea de comandos para rastrear intentos fallidos de conexión.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["VPC", "Flow Logs", "Troubleshooting", "S3", "Route Tables", "Network ACLs", "EC2", "CLI"],
+  "pasos": [
+    {
+      "subtitulo": "Task 1: Connecting to the CLI Host instance",
+      "secciones": [
+        {"texto": "Conectarse a la instancia `CLI Host` mediante **EC2 Instance Connect**."},
+        {"texto": "Configurar las credenciales de la CLI de AWS ejecutando `aws configure` e ingresando el `AccessKey`, `SecretKey`, la región `us-west-2` y el formato de salida `json`."}
+      ]
+    },
+    {
+      "subtitulo": "Task 2: Creating VPC Flow Logs",
+      "secciones": [
+        {"texto": "Crear un bucket de S3 único para almacenar los registros ejecutando:<br>`aws s3api create-bucket --bucket flowlog###### --region 'us-west-2' --create-bucket-configuration LocationConstraint='us-west-2'`"},
+        {"texto": "Obtener el ID de la VPC (`VPC1`) ejecutando el comando `aws ec2 describe-vpcs`."},
+        {"texto": "Crear los VPC Flow Logs para la VPC capturando todo el tráfico (`ALL`) hacia el bucket de S3 creado:<br>`aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::<flowlog######>`"}
+      ]
+    },
+    {
+      "subtitulo": "Task 3: Troubleshooting VPC configuration issues to allow access to resources",
+      "secciones": [
+        {"texto": "**Solución al problema web (Desafío 1)**: Investigar los componentes de red con comandos como `aws ec2 describe-route-tables`. Añadir una ruta faltante hacia Internet Gateway en la tabla de ruteo pública de la VPC usando:<br>`aws ec2 create-route --route-table-id 'VPC1PubRouteTableId' --gateway-id 'VPC1GatewayId' --destination-cidr-block '0.0.0.0/0'`"},
+        {"texto": "**Solución al problema SSH (Desafío 2)**: Revisar las Network ACLs asociadas a la subred pública mediante `aws ec2 describe-network-acls` y eliminar la regla restrictiva que bloqueaba el tráfico de entrada con:<br>`aws ec2 delete-network-acl-entry --network-acl-id 'acl-id' --ingress --rule-number 40`"},
+        {"texto": "Verificar el acceso exitoso ejecutando el comando `hostname` en el servidor web (debe retornar `web-server`)."}
+      ]
+    },
+    {
+      "subtitulo": "Task 4: Analyzing flow logs",
+      "secciones": [
+        {"texto": "Crear un directorio local (`flowlogs`), descargar los registros del bucket de S3 con `aws s3 cp` de forma recursiva y descomprimirlos usando `gunzip *.gz`."},
+        {"texto": "Analizar y filtrar los registros descargados utilizando `grep` para aislar los eventos de rechazo (**REJECT**) dirigidos al puerto `22` (SSH) desde la IP de origen local:<br>`grep -rn 22 . | grep REJECT | grep <ip-address>`"},
+        {"texto": "Traducir las marcas de tiempo Unix de los registros a formato legible usando el comando `date -d @<timestamp>` para correlacionarlos con los intentos de conexión realizados durante el laboratorio."}
+      ]
+    }
+  ]
+},
+{
+  "id": "Lab 182",
+  "modulo": "Storage and EBS",
+  "numero": "Lab 182",
+  "titulo": "Working with Amazon EBS",
+  "descripcion_general": "Crear y adjuntar un volumen de Amazon EBS a una instancia EC2, configurar un sistema de archivos (ext3), montarlo permanentemente, crear respaldos mediante snapshots y restaurar un nuevo volumen a partir de dicho snapshot.",
+  "status": "done",
+  "status_texto": "Completado",
+  "tags": ["EBS", "Volumes", "Snapshots", "EC2", "Storage", "File System", "Mount"],
+  "pasos": [
+    {
+      "subtitulo": "Task 1: Creating a new EBS volume",
+      "secciones": [
+        {"texto": "Identificar la Zona de Disponibilidad (AZ) de la instancia `Lab` existente en la consola de EC2."},
+        {"texto": "Ir a **Volumes** y hacer clic en **Create volume**:<br>* **Volume type**: `General Purpose SSD (gp2)`<br>* **Size (GiB)**: `1`<br>* **Availability Zone**: La misma AZ que la instancia `Lab`<br>* **Name Tag**: `My Volume`<br>Hacer clic en **Create volume**."}
+      ]
+    },
+    {
+      "subtitulo": "Task 2: Attaching the volume to an EC2 instance",
+      "secciones": [
+        {"texto": "Seleccionar `My Volume`, hacer clic en **Actions** > **Attach volume**."},
+        {"texto": "Elegir la instancia `Lab` y asignar el nombre de dispositivo `/dev/sdb`. Hacer clic en **Attach volume**."}
+      ]
+    },
+    {
+      "subtitulo": "Task 3: Connecting to the Lab EC2 instance",
+      "secciones": [
+        {"texto": "Conectarse a la instancia `Lab` mediante **EC2 Instance Connect** para abrir la terminal de comandos."}
+      ]
+    },
+    {
+      "subtitulo": "Task 4: Creating and configuring the file system",
+      "secciones": [
+        {"texto": "Verificar los volúmenes disponibles ejecutando `df -h`."},
+        {"texto": "Crear un sistema de archivos ext3 en el nuevo volumen:<br>`sudo mkfs -t ext3 /dev/sdb`"},
+        {"texto": "Crear el punto de montaje, montar el volumen y configurarlo en `/etc/fstab` para persistencia tras reinicios:<br>`sudo mkdir /mnt/data-store`<br>`sudo mount /dev/sdb /mnt/data-store`<br>`echo \"/dev/sdb   /mnt/data-store ext3 defaults,noatime 1 2\" | sudo tee -a /etc/fstab`"},
+        {"texto": "Crear un archivo de prueba en el volumen montado y verificar su contenido:<br>`sudo sh -c \"echo some text has been written > /mnt/data-store/file.txt\"`<br>`cat /mnt/data-store/file.txt`"}
+      ]
+    },
+    {
+      "subtitulo": "Task 5: Creating an Amazon EBS snapshot",
+      "secciones": [
+        {"texto": "En la consola de EC2, seleccionar `My Volume`, ir a **Actions** > **Create snapshot** y nombrarlo `My Snapshot`."},
+        {"texto": "En la terminal, eliminar el archivo de prueba creado previamente (`sudo rm /mnt/data-store/file.txt`) para comprobar posteriormente que el snapshot preserva el estado del archivo."}
+      ]
+    },
+    {
+      "subtitulo": "Task 6: Restoring the Amazon EBS snapshot",
+      "secciones": [
+        {"texto": "Seleccionar `My Snapshot` en la consola, hacer clic en **Actions** > **Create volume from snapshot**, mantener la AZ correspondiente y nombrarlo `Restored Volume`."},
+        {"texto": "Adjuntar `Restored Volume` a la instancia `Lab` usando el dispositivo `/dev/sdc`."},
+        {"texto": "En la terminal, crear un nuevo directorio de montaje (`/mnt/data-store2`), montar el volumen restaurado y verificar que el archivo `file.txt` original sigue presente:<br>`sudo mkdir /mnt/data-store2`<br>`sudo mount /dev/sdc /mnt/data-store2`<br>`ls /mnt/data-store2/file.txt`"}
+      ]
+    }
+  ]
 }
 ]
