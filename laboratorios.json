@@ -3203,16 +3203,98 @@
     }
   ]
 },
-  {
+{
   "id": "Lab 176",
   "modulo": "Escalado y resolución de nombres",
-  "numero": "Lab 174",
-  "titulo": "",
-  "descripcion_general": "El propósito de este laboratorio es",
+  "numero": "Lab 176",
+  "titulo": "Enrutamiento de conmutación por error de Route 53",
+  "descripcion_general": "Configurar verificaciones de salud, temas de SNS, alarmas en CloudWatch y políticas de failover en Route 53 para garantizar la alta disponibilidad entre instancias EC2.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": [""],
+  "tags": ["Route 53", "EC2", "Health Checks", "SNS", "CloudWatch", "DNS", "Failover"],
   "pasos": [
-    {}]
-  }
+    {
+      "subtitulo": "Tarea 1: Verificación de los sitios web de la cafetería",
+      "secciones": [
+        {"texto": "Obtener los valores de **CafeInstance1IPAddress**, **PrimaryWebSiteURL**, **SecondaryWebsiteURL** y **CafeInstance2IPAddress** desde los detalles del laboratorio."},
+        {"imagen":"assets/lab-176/01.png"},
+        {"texto": "Abrir la consola de **EC2**, ir a **Instances** y verificar que **CafeInstance1** y **CafeInstance2** estén ejecutándose en diferentes Zonas de Disponibilidad."},
+        {"imagen":"assets/lab-176/02.png"},
+        {"texto": "Abrir una pestaña en el navegador y pegar **PrimaryWebSiteURL** para comprobar la información del servidor primario. Repetir el proceso con **SecondaryWebsiteURL** para el servidor secundario."},
+        {"imagen":"assets/lab-176/03.png"},
+        {"imagen":"assets/lab-176/04.png"},
+        {"texto": "En uno de los sitios web, hacer clic en **Menu**, seleccionar cualquier artículo y elegir **Submit Order** para verificar el funcionamiento de la aplicación."},
+        {"imagen":"assets/lab-176/05.png"},
+        {"imagen":"assets/lab-176/06.png"},
+        {"imagen":"assets/lab-176/07.png"}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 2: Configuración de una verificación de salud en Route 53, SNS y CloudWatch",
+      "secciones": [
+        {"texto": "En la consola de AWS, abrir **Route 53** y en el panel de navegación izquierdo elegir **Health checks**."},
+        {"imagen":"assets/lab-176/08.png"},
+        {"texto": "Hacer clic en **Create health check** y configurar:<br>* **Name**: `Primary-Website-Health`<br>* **What to monitor**: `Endpoint`<br>* **Specify endpoint by**: `IP address`<br>* **IP address**: Pegar la dirección IP pública de `CafeInstance1`<br>* **Path**: `cafe`"},
+        {"imagen":"assets/lab-176/09.png"},
+        {"texto": "Expandir **Advanced configuration** y configurar:<br>* **Request interval**: `Fast (10 seconds)`<br>* **Failure threshold**: `2`<br>Hacer clic en **Next**, dejar los campos restantes por defecto y hacer clic en **Create health check**."},
+        {"imagen":"assets/lab-176/10.png"},
+        {"texto": "Crear el tema de SNS y suscribir tu correo<br>En la barra de búsqueda superior de AWS, escribe y selecciona **SNS** (Simple Notification Service)."},
+        {"texto": "En el panel izquierdo, haz clic en **Topics** y luego en **Create topic**.<br>* Selecciona el tipo **Standard**.<br>* **Name**: `Primary-Website-Health`<br>Baja hasta el final de la página y haz clic en **Create topic**."},
+        {"imagen":"assets/lab-176/15.png"},
+        {"texto": "Una vez creado el tema, haz clic en **Create subscription**:<br>* **Protocol**: Selecciona **Email**.<br>* **Endpoint**: Introduce tu dirección de correo electrónico accesible.<br>Haz clic en **Create subscription**."},
+        {"imagen":"assets/lab-176/16.png"},
+        {"texto": "Importante: Revisa tu bandeja de entrada de correo, busca el mensaje de **AWS Notifications** y haz clic en **Confirm subscription**."},
+        {"texto": "Crear la Alarma en CloudWatch vinculada al Health Check<br>En la barra de búsqueda superior, escribe y selecciona **CloudWatch**."},
+        {"texto": "En el panel de navegación izquierdo, expande **Alarms** y haz clic en **In alarms** (o **All alarms**), luego selecciona **Create alarm**."},
+        {"texto": "Haz clic en **Select metric**, navega o busca la categoría **Route 53 > Health Check Metrics**, busca la métrica llamada **HealthCheckStatus** correspondiente al ID de tu Health Check (`Primary-Website-Health`) y selecciónala. Haz clic en **Select metric**."},
+        {"imagen":"assets/lab-176/17.png"},
+        {"texto": "Configura las condiciones de la métrica:<br>* **Statistic**: `Minimum`<br>* **Condition**: `Lower than` (Menor que) o `Less than/Equal to`<br>* **Threshold value**: `1` (Esto significa que si el estado baja de 1, es decir, pasa a estado Unhealthy / 0, la alarma saltará).<br>Haz clic en **Next**."},
+        {"imagen":"assets/lab-176/18.png"},
+        {"texto": "Configura las notificaciones (SNS):<br>* **Alarm state trigger**: Selecciona **In alarm**.<br>* **Send a notification to the following SNS topic**: Selecciona **Use an existing SNS topic**.<br>* **Send notification to**: Elige el tema que creaste (`Primary-Website-Health`).<br>Haz clic en **Next**."},
+        {"imagen":"assets/lab-176/19.png"},
+        {"texto": "Añade un nombre a la alarma (por ejemplo, `Primary-Website-Health-Alarm`), avanza al final y haz clic en **Create alarm**."},
+        {"imagen":"assets/lab-176/20.png"},
+        {"imagen":"assets/lab-176/21.png"},
+        {"imagen":"assets/lab-176/22.png"}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 3: Configuración de registros en Route 53",
+      "secciones": [
+        {"texto": "En la consola de Route 53, ir a **Hosted zones** y seleccionar el dominio asignado (terminado en `.vocareum.training`)."},
+        {"imagen":"assets/lab-176/23.png"},
+        {"imagen":"assets/lab-176/24.png"},
+        {"imagen":"assets/lab-176/25.png"},
+        {"texto": "Hacer clic en **Create record** para el sitio primario y configurar:<br>* **Record name**: `www`<br>* **Record type**: `A - Routes traffic to an IPv4 address and some AWS resources`<br>* **Value**: Ingresar la IP de `CafeInstance1IPAddress`<br>* **TTL (seconds)**: `15`<br>* **Routing policy**: `Failover`<br>* **Failover record type**: `Primary`<br>* **Health check ID**: `Primary-Website-Health`<br>* **Record ID**: `FailoverPrimary`<br>Hacer clic en **Create records**."},
+        {"imagen":"assets/lab-176/26.png"},
+        {"imagen":"assets/lab-176/27.png"},
+        {"texto": "Hacer clic en **Create record** para el sitio secundario y configurar:<br>* **Record name**: `www`<br>* **Record type**: `A - Routes traffic to an IPv4 address and some AWS resources`<br>* **Value**: Ingresar la IP de `CafeInstance2IPAddress`<br>* **TTL (seconds)**: `15`<br>* **Routing policy**: `Failover`<br>* **Failover record type**: `Secondary`<br>* **Health check ID**: Dejar vacío.<br>* **Record ID**: `FailoverSecondary`<br>Hacer clic en **Create records**."},
+        {"imagen":"assets/lab-176/28.png"},
+        {"imagen":"assets/lab-176/29.png"},
+        {"imagen":"assets/lab-176/30.png"}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 4: Verificación de la resolución DNS",
+      "secciones": [
+        {"texto": "En la zona alojada de Route 53, seleccionar uno de los registros A creados y copiar el **Record name**."},
+        {"imagen":"assets/lab-176/31.png"},
+        {"texto": "Abrir una nueva pestaña en el navegador, pegar el nombre del registro añadiendo `/cafe` al final (por ejemplo: `http://www.XXXXXX.vocareum.training/cafe/`) para comprobar que carga el sitio primario."},
+        {"imagen":"assets/lab-176/32.png"}
+      ]
+    },
+    {
+      "subtitulo": "Tarea 5: Verificación de la funcionalidad de failover",
+      "secciones": [
+        {"texto": "Ir a la consola de **EC2** > **Instances**, seleccionar `CafeInstance1`, hacer clic en **Instance state** y elegir **Stop instance** (confirmar haciendo clic en **Stop**)."},
+        {"imagen":"assets/lab-176/33.png"},
+        {"texto": "Ir a **Route 53** > **Health checks**, seleccionar `Primary-Website-Health` y esperar en la pestaña **Monitoring** hasta que el estado cambie a **Unhealthy**."},
+        {"imagen":"assets/lab-176/34.png"},
+        {"imagen":"assets/lab-176/35.png"},
+        {"texto": "Actualizar la pestaña del navegador con el sitio web de la cafetería y verificar que la Zona de Disponibilidad haya cambiado a la del servidor secundario (`CafeInstance2`)."},
+        {"imagen":"assets/lab-176/36.png"}
+      ]
+    }
+  ]
+}
 ]
