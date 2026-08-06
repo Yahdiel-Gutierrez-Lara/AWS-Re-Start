@@ -3098,21 +3098,7 @@
     }
   ]
 },
-
-  {
-  "id": "Lab 175",
-  "modulo": "Escalado y resolución de nombres",
-  "numero": "Lab 175",
-  "titulo": "",
-  "descripcion_general": "El propósito de este laboratorio es",
-  "status": "done",
-  "status_texto": "Completado",
-  "tags": [""],
-  "pasos": [
-    {}]
-  },
-
-  {
+{
   "id": "Lab 175",
   "modulo": "Escalado y resolución de nombres",
   "numero": "Lab 175",
@@ -3123,49 +3109,96 @@
   "tags": ["AWS CLI", "EC2", "Auto Scaling", "ELB", "AMI"],
   "pasos": [
     {
+      "subtitulo":"Diagrama objetivo del laboratorio",
+      "secciones":[
+      {"imagen":"assets/lab-174/FinalArchitecture.png"}
+    ]
+    },
+    {
       "subtitulo": "Tarea 1: Creación de una nueva AMI para Amazon EC2 Auto Scaling",
       "secciones": [
         {"texto": "Abrir la consola de **EC2**, ir a **Instances**, seleccionar la instancia **Command Host** y hacer clic en **Connect** usando EC2 Instance Connect."},
+        {"imagen":"assets/lab-175/01.png"},
+        {"imagen":"assets/lab-175/02.png"},
+        {"imagen":"assets/lab-175/03.png"},
         {"texto": "Confirmar la región ejecutando:<br>curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region"},
+        {"imagen":"assets/lab-175/04.png"},
         {"texto": "Actualizar las credenciales de AWS CLI ejecutando: <br> aws configure <br> **AWS Access Key ID**: Presionar Enter. <br> **AWS Secret Access Key**: Presionar Enter. <br> **Default region name**: Ingresar la región. <br> **Default output format**: json <br> Navegar al directorio de scripts ejecutando: <br> cd /home/ec2-user/"},
+        {"imagen":"assets/lab-175/05.png"},
+        {"imagen":"assets/lab-175/06.png"},
         {"texto": "Inspeccionar el script ejecutando:<br>more UserData.txt<br>Obtener los valores de **KEYNAME**, **AMIID**, **HTTPACCESS** y **SUBNETID** desde los detalles del laboratorio."},
+        {"imagen":"assets/lab-175/07.png"},
         {"texto": "Ejecutar el comando de creación de la instancia modificando las variables correspondientes:<br>aws ec2 run-instances --key-name KEYNAME --instance-type t3.micro --image-id AMIID --user-data file:///home/ec2-user/UserData.txt --security-group-ids HTTPACCESS --subnet-id SUBNETID --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]' --output text --query 'Instances[*].InstanceId'"},
+        {"imagen":"assets/lab-175/09.png"},
+        {"imagen":"assets/lab-175/10.png"},
         {"texto": "Monitorear el estado de la instancia reemplazando **NEW-INSTANCE-ID**:<br>aws ec2 wait instance-running --instance-ids NEW-INSTANCE-ID"},
+        {"imagen":"assets/lab-175/11.png"},
         {"texto": "Obtener el DNS público reemplazando **NEW-INSTANCE-ID**:<br>aws ec2 describe-instances --instance-id NEW-INSTANCE-ID --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'<br>Esperar 5 minutos y verificar el acceso ingresando a `http://PUBLIC-DNS-ADDRESS/index.php` en el navegador."},
-        {"texto": "Crear una nueva AMI reemplazando **NEW-INSTANCE-ID**:<br>aws ec2 create-image --name WebServerAMI --instance-id NEW-INSTANCE-ID"}
+        {"imagen":"assets/lab-175/12.png"},
+        {"texto": "Crear una nueva AMI reemplazando **NEW-INSTANCE-ID**:<br>aws ec2 create-image --name WebServerAMI --instance-id NEW-INSTANCE-ID"},
+        {"imagen":"assets/lab-175/14.png"}
       ]
     },
     {
       "subtitulo": "Tarea 2: Creación de un entorno de Auto Scaling",
       "secciones": [
         {"texto": "En la consola de EC2, ir a **Load Balancers** y elegir **Create load balancer** para un **Application Load Balancer**."},
+        {"imagen":"assets/lab-175/15.png"},
+        {"imagen":"assets/lab-175/16.png"},
         {"texto": "Configurar:<br>* **Load balancer name**: `WebServerELB`<br>* **VPC**: `Lab VPC`<br>* **Mappings**: Seleccionar ambas Availability Zones con **Public Subnet 1** y **Public Subnet 2**."},
+        {"imagen":"assets/lab-175/17.png"},
+        {"imagen":"assets/lab-175/18.png"},
         {"texto": "En **Security groups**, remover el grupo por defecto y seleccionar **HTTPAccess**."},
+        {"imagen":"assets/lab-175/19.png"},
         {"texto": "En **Listeners and routing**, hacer clic en **Create target group** (se abre una nueva pestaña):<br>* **Choose a target type**: `Instances`<br>* **Target group name**: `webserver-app`<br>* **Health check path**: `/index.php`<br>Hacer clic en **Next**, luego en **Register targets** elegir **Create target group** y cerrar la pestaña."},
+        {"imagen":"assets/lab-175/20.png"},
+        {"imagen":"assets/lab-175/21.png"},
+        {"imagen":"assets/lab-175/22.png"},
         {"texto": "Regresar a la pestaña del Load Balancer, actualizar el campo **Forward to** y seleccionar `webserver-app`. Hacer clic en **Create load balancer**."},
+        {"imagen":"assets/lab-175/23.png"},
+        {"imagen":"assets/lab-175/24.png"},
         {"texto": "Ir a **Launch Templates** y elegir **Create launch template**:<br>* **Launch template name - required**: `web-app-launch-template`<br>* **Template version description**: `A web server for the load test app`<br>* **Auto Scaling guidance**: Seleccionar la opción de ayuda.<br>* **Application and OS Images**: Seleccionar la pestaña **My AMIs** y elegir `WebServerAMI`.<br>* **Instance type**: `t3.micro` (o `t2.micro` si hay error de disponibilidad).<br>* **Key pair (login)**: `Don't include in launch template`.<br>* **Network settings**: Seleccionar **HTTPAccess**.<br>Hacer clic en **Create launch template**."},
+        {"imagen":"assets/lab-175/25.png"},
+        {"imagen":"assets/lab-175/26.png"},
+        {"imagen":"assets/lab-175/27.png"},
+        {"imagen":"assets/lab-175/28.png"},
+        {"imagen":"assets/lab-175/29.png"},
         {"texto": "Seleccionar `web-app-launch-template`, ir a **Actions** y elegir **Create Auto Scaling group**."},
+        {"imagen":"assets/lab-175/30.png"},
         {"texto": "Configurar:<br>* **Auto Scaling group name**: `Web App Auto Scaling Group`<br>* **VPC**: `Lab VPC`<br>* **Subnets**: `Private Subnet 1` y `Private Subnet 2`."},
+        {"imagen":"assets/lab-175/31.png"},
+        {"imagen":"assets/lab-175/32.png"},
         {"texto": "En **Load balancing**, elegir **Attach to an existing load balancer**, seleccionar **Choose from your load balancer target groups** y elegir `webserver-app | HTTP`."},
+        {"imagen":"assets/lab-175/33.png"},
         {"texto": "En **Health checks**, activar **Turn on Elastic Load Balancing health checks**."},
         {"texto": "En **Group size**:<br>* **Desired capacity**: `2`<br>* **Minimum capacity**: `2`<br>* **Maximum capacity**: `4`"},
+        {"imagen":"assets/lab-175/34.png"},
+        {"imagen":"assets/lab-175/35.png"},
         {"texto": "En **Scaling policies**, elegir **Target tracking scaling policy**:<br>* **Metric type**: `Average CPU utilization`<br>* **Target value**: `50`"},
-        {"texto": "En **Add tags**:<br>* **Key**: `Name`<br>* **Value**: `WebApp`<br>Hacer clic en **Create Auto Scaling group**."}
+        {"imagen":"assets/lab-175/36.png"},
+        {"texto": "En **Add tags**:<br>* **Key**: `Name`<br>* **Value**: `WebApp`<br>Hacer clic en **Create Auto Scaling group**."},
+        {"imagen":"assets/lab-175/37.png"}
+
       ]
     },
     {
       "subtitulo": "Tarea 3: Verificación de la configuración de Auto Scaling",
       "secciones": [
         {"texto": "En la consola de EC2, ir a **Instances** y observar la creación de las dos nuevas instancias nombradas **WebApp** hasta que el **Status check** muestre `2/2 checks passed`."},
-        {"texto": "Ir a **Target Groups**, seleccionar `webserver-app` y verificar en la pestaña **Targets** que el **Health status** cambie a `healthy`."}
+        {"imagen":"assets/lab-175/38.png"},
+        {"imagen":"assets/lab-175/39.png"},
+        {"texto": "Ir a **Target Groups**, seleccionar `webserver-app` y verificar en la pestaña **Targets** que el **Health status** cambie a `healthy`."},
+        {"imagen":"assets/lab-175/40.png"}
       ]
     },
     {
       "subtitulo": "Tarea 4: Prueba de la configuración de Auto Scaling",
       "secciones": [
         {"texto": "Abrir una nueva pestaña en el navegador, pegar el DNS name del load balancer y presionar Enter."},
+        {"imagen":"assets/lab-175/13.png"},
         {"texto": "Hacer clic en **Start Stress** para simular una carga de CPU al 100%."},
-        {"texto": "Ir a la sección de **Auto Scaling Groups**, seleccionar `Web App Auto Scaling Group` y revisar la pestaña **Activity** para confirmar que se añade una nueva instancia tras superar el 50% de uso de CPU."}
+        {"texto": "Ir a la sección de **Auto Scaling Groups**, seleccionar `Web App Auto Scaling Group` y revisar la pestaña **Activity** para confirmar que se añade una nueva instancia tras superar el 50% de uso de CPU."},
+        {"imagen":"assets/lab-175/41.png"}
       ]
     }
   ]
