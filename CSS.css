@@ -27,7 +27,7 @@
         /* Contenedor con scroll específico para los módulos en la barra lateral */
     .sidebar-modules-container {
       max-height: 150px; /* Ajusta este valor según la altura de tus elementos para que entren exactamente 5 */
-      overflow-y: auto;
+      overflow-y: 150px;
       overflow-x: hidden;
     }
 
@@ -121,7 +121,7 @@
 
     .progress-fill {
       height: 100%;
-      width: 60%;
+      width: 100%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       border-radius: 2px;
     }
