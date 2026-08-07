@@ -24,6 +24,25 @@
 
     /* ── Sidebar ── */
 
+        /* Contenedor con scroll específico para los módulos en la barra lateral */
+    .sidebar-modules-container {
+      max-height: 240px; /* Ajusta este valor según la altura de tus elementos para que entren exactamente 5 */
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Opcional: Personalizar la barra de scroll para que luzca limpia */
+    .sidebar-modules-container::-webkit-scrollbar {
+      width: 4px;
+    }
+    .sidebar-modules-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .sidebar-modules-container::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
     .sidebar { /* O el selector que uses para tu barra lateral */
     height: 100vh;          /* Ocupa toda la altura de la ventana */
     position: sticky;       /* O fixed, para que se mantenga fija al hacer scroll en la página principal */
