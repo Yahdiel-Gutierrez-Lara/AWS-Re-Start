@@ -3299,7 +3299,7 @@
 },
 {
   "id": "Lab 177",
-  "modulo": "Lambda and Serverless",
+  "modulo": "Serverless and Containers",
   "numero": "Lab 177",
   "titulo": "Word Count Automation with S3, Lambda, and SNS",
   "descripcion_general": "Automatizar el conteo de palabras en archivos de texto subidos a un bucket de S3 utilizando una función Lambda en Python y enviar los resultados mediante notificaciones de Amazon SNS.",
@@ -3360,7 +3360,7 @@
 },
 {
   "id": "Lab 178",
-  "modulo": "Lambda and Serverless",
+  "modulo": "Serverless and Containers",
   "numero": "Lab 178",
   "titulo": "Automating Sales Reports with AWS Lambda, Layers, and SNS",
   "descripcion_general": "Crear y configurar funciones Lambda, capas personalizadas con dependencias de Python, políticas de IAM, conectividad VPC a bases de datos MySQL, temas SNS y activadores programados mediante EventBridge.",
