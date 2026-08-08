@@ -3420,7 +3420,7 @@
 },
 {
   "id": "Lab 179",
-  "modulo": "Databases and Migration",
+  "modulo": "Servicios de bases de datos de AWS",
   "numero": "Lab 179",
   "titulo": "Migrating to Amazon RDS",
   "descripcion_general": "Migrar una base de datos local de MariaDB alojada en una instancia EC2 hacia una instancia administrada de Amazon RDS MariaDB, configurando componentes de red privados, grupos de seguridad, respaldos y reconfigurando la aplicación mediante AWS Systems Manager Parameter Store.",
@@ -3478,23 +3478,23 @@
 },
 {
   "id": "Lab 180",
-  "modulo": "Networking and VPC",
+  "modulo": "Servicios de redes de AWS",
   "numero": "Lab 180",
-  "titulo": "Building a VPC with Public and Private Subnets, Bastion Host, and NAT Gateway",
+  "titulo": "Creación de una VPC con subredes públicas y privadas, servidor bastión y NAT Gateway",
   "descripcion_general": "Crear una VPC personalizada con subredes públicas y privadas, un Internet Gateway, una NAT Gateway, tablas de ruteo configuradas y un servidor bastión para acceder de forma segura a instancias privadas.",
   "status": "done",
   "status_texto": "Completado",
   "tags": ["VPC", "Subnets", "Internet Gateway", "NAT Gateway", "Route Tables", "Bastion Host", "EC2", "Networking"],
   "pasos": [
     {
-      "subtitulo": "Task 1: Creating a VPC",
+      "subtitulo": "Paso 1: Creación de una VPC",
       "secciones": [
         {"texto": "En la consola de **VPC**, hacer clic en **Create VPC**:<br>* **Resources to create**: `VPC only`<br>* **Name tag**: `Lab VPC`<br>* **IPv4 CIDR**: `10.0.0.0/16`<br>Hacer clic en **Create VPC**."},
         {"texto": "Editar la configuración de la VPC (`Actions` > `Edit VPC settings`), habilitar **Enable DNS hostnames** y guardar los cambios."}
       ]
     },
     {
-      "subtitulo": "Task 2: Creating subnets",
+      "subtitulo": "Paso 2: Creación de subredes",
       "secciones": [
         {"texto": "Crear la subred pública (**Public Subnet**):<br>* **VPC ID**: `Lab VPC`<br>* **Subnet name**: `Public Subnet`<br>* **Availability Zone**: Primera zona de disponibilidad disponible<br>* **IPv4 CIDR block**: `10.0.0.0/24`<br>Hacer clic en **Create subnet**."},
         {"texto": "Habilitar la asignación automática de IP pública en `Public Subnet` (`Actions` > `Edit subnet settings` > **Enable auto-assign public IPv4 address**)."},
@@ -3502,14 +3502,14 @@
       ]
     },
     {
-      "subtitulo": "Task 3: Creating an internet gateway",
+      "subtitulo": "Paso 3: Creación de un Internet Gateway",
       "secciones": [
         {"texto": "En el panel de **Internet gateways**, hacer clic en **Create internet gateway** y nombrarlo `Lab IGW`."},
         {"texto": "Seleccionar el IGW creado, hacer clic en **Actions** > **Attach to a VPC** y asociarlo con `Lab VPC`."}
       ]
     },
     {
-      "subtitulo": "Task 4: Configuring route tables",
+      "subtitulo": "Paso 4: Configuración de tablas de ruteo",
       "secciones": [
         {"texto": "Renombrar la tabla de ruteo por defecto asociada a `Lab VPC` como `Private Route Table`."},
         {"texto": "Crear una nueva tabla de ruteo llamada `Public Route Table` asociada a `Lab VPC`."},
@@ -3518,21 +3518,21 @@
       ]
     },
     {
-      "subtitulo": "Task 5: Launching a bastion server in the public subnet",
+      "subtitulo": "Paso 5: Lanzamiento de un servidor bastión en la subred pública",
       "secciones": [
         {"texto": "Lanzar una instancia EC2 nombrada `Bastion Server` con imagen **Amazon Linux 2023**, tipo `t3.micro` y sin par de llaves (`Proceed without a key pair`)."},
         {"texto": "Configurar la red: seleccionar `Lab VPC`, `Public Subnet`, habilitar **Auto-assign public IP** y crear un grupo de seguridad llamado `Bastion Security Group` que permita tráfico **SSH** desde cualquier origen (`Anywhere`)."}
       ]
     },
     {
-      "subtitulo": "Task 6: Creating a NAT gateway",
+      "subtitulo": "Paso 6: Creación de una NAT Gateway",
       "secciones": [
         {"texto": "En el panel de **NAT gateways**, hacer clic en **Create NAT gateway**:<br>* **Name**: `Lab NAT gateway`<br>* **Subnet**: `Public Subnet`<br>* **Elastic IP**: Asignar una IP elástica (`Allocate Elastic IP`)<br>Hacer clic en **Create a NAT gateway**."},
         {"texto": "Configurar la tabla `Private Route Table` agregando una ruta con destino `0.0.0.0/0` apuntando a la `NAT gateway` creada."}
       ]
     },
     {
-      "subtitulo": "Optional challenge: Testing the private subnet",
+      "subtitulo": "Paso 7: Reto opcional: Pruebas de la subred privada",
       "secciones": [
         {"texto": "Crear una instancia EC2 en la subred privada nombrada `Private Instance`, configurando un grupo de seguridad (`Private Instance SG`) que permita **SSH** únicamente desde el bloque de la VPC (`10.0.0.0/16`) y añadiendo el script de usuario para habilitar autenticación por contraseña (`lab-password`)."},
         {"texto": "Conectarse al `Bastion Server` mediante **EC2 Instance Connect** y desde ahí conectarse por SSH a la IP privada de `Private Instance` usando la contraseña configurada."},
@@ -3541,101 +3541,353 @@
     }
   ]
 },
-{
-  "id": "Lab 181",
-  "modulo": "Networking and VPC",
-  "numero": "Lab 181",
-  "titulo": "Troubleshooting a VPC and Analyzing VPC Flow Logs",
-  "descripcion_general": "Solucionar problemas de configuración en una VPC (tablas de ruteo y listas de control de acceso a la red), configurar y exportar registros de VPC Flow Logs a Amazon S3, y analizar dichos registros mediante la línea de comandos para rastrear intentos fallidos de conexión.",
+    {
+      "id": "Lab 181",
+      "modulo": "Servicios de redes de AWS",
+      "numero": "Lab 181",
+      "titulo": "Solución de problemas de una VPC y análisis de registros de flujo de VPC",
+      "descripcion_general": "Solucionar problemas de configuración en una VPC (tablas de ruteo y listas de control de acceso a la red), configurar y exportar registros de VPC Flow Logs a Amazon S3, y analizar dichos registros mediante la línea de comandos para rastrear intentos fallidos de conexión.",
+      "status": "done",
+      "status_texto": "Completado",
+      "tags": ["VPC", "Flow Logs", "Troubleshooting", "S3", "Route Tables", "Network ACLs", "EC2", "CLI"],
+      "pasos": [
+        {
+          "subtitulo": "Paso 1: Conexión a la instancia del host CLI",
+          "secciones": [
+            {"texto": "Conectarse a la instancia `CLI Host` mediante **EC2 Instance Connect**."},
+            {"texto": "Configurar las credenciales de la CLI de AWS ejecutando `aws configure` e ingresando el `AccessKey`, `SecretKey`, la región `us-west-2` y el formato de salida `json`."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 2: Creación de registros de flujo de VPC",
+          "secciones": [
+            {"texto": "Crear un bucket de S3 único para almacenar los registros ejecutando:<br>`aws s3api create-bucket --bucket flowlog###### --region 'us-west-2' --create-bucket-configuration LocationConstraint='us-west-2'`"},
+            {"texto": "Obtener el ID de la VPC (`VPC1`) ejecutando el comando `aws ec2 describe-vpcs`."},
+            {"texto": "Crear los VPC Flow Logs para la VPC capturando todo el tráfico (`ALL`) hacia el bucket de S3 creado:<br>`aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::<flowlog######>`"}
+          ]
+        },
+        {
+          "subtitulo": "Paso 3: Solución de problemas de configuración de VPC para permitir el acceso a los recursos",
+          "secciones": [
+            {"texto": "**Solución al problema web (Desafío 1)**: Investigar los componentes de red con comandos como `aws ec2 describe-route-tables`. Añadir una ruta faltante hacia Internet Gateway en la tabla de ruteo pública de la VPC usando:<br>`aws ec2 create-route --route-table-id 'VPC1PubRouteTableId' --gateway-id 'VPC1GatewayId' --destination-cidr-block '0.0.0.0/0'`"},
+            {"texto": "**Solución al problema SSH (Desafío 2)**: Revisar las Network ACLs asociadas a la subred pública mediante `aws ec2 describe-network-acls` y eliminar la regla restrictiva que bloqueaba el tráfico de entrada con:<br>`aws ec2 delete-network-acl-entry --network-acl-id 'acl-id' --ingress --rule-number 40`"},
+            {"texto": "Verificar el acceso exitoso ejecutando el comando `hostname` en el servidor web (debe retornar `web-server`)."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 4: Análisis de registros de flujo",
+          "secciones": [
+            {"texto": "Crear un directorio local (`flowlogs`), descargar los registros del bucket de S3 con `aws s3 cp` de forma recursiva y descomprimirlos usando `gunzip *.gz`."},
+            {"texto": "Analizar y filtrar los registros descargados utilizando `grep` para aislar los eventos de rechazo (**REJECT**) dirigidos al puerto `22` (SSH) desde la IP de origen local:<br>`grep -rn 22 . | grep REJECT | grep <ip-address>`"},
+            {"texto": "Traducir las marcas de tiempo Unix de los registros a formato legible usando el comando `date -d @<timestamp>` para correlacionarlos con los intentos de conexión realizados durante el laboratorio."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Lab 182",
+      "modulo": "Archivado y almacenado",
+      "numero": "Lab 182",
+      "titulo": "Trabajando con Amazon EBS",
+      "descripcion_general": "Crear y adjuntar un volumen de Amazon EBS a una instancia EC2, configurar un sistema de archivos (ext3), montarlo permanentemente, crear respaldos mediante snapshots y restaurar un nuevo volumen a partir de dicho snapshot.",
+      "status": "done",
+      "status_texto": "Completado",
+      "tags": ["EBS", "Volumes", "Snapshots", "EC2", "Storage", "File System", "Mount"],
+      "pasos": [
+        {
+          "subtitulo": "Paso 1: Creación de un nuevo volumen EBS",
+          "secciones": [
+            {"texto": "Identificar la Zona de Disponibilidad (AZ) de la instancia `Lab` existente en la consola de EC2."},
+            {"texto": "Ir a **Volumes** y hacer clic en **Create volume**:<br>* **Volume type**: `General Purpose SSD (gp2)`<br>* **Size (GiB)**: `1`<br>* **Availability Zone**: La misma AZ que la instancia `Lab`<br>* **Name Tag**: `My Volume`<br>Hacer clic en **Create volume**."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 2: Adjuntar el volumen a una instancia EC2",
+          "secciones": [
+            {"texto": "Seleccionar `My Volume`, hacer clic en **Actions** > **Attach volume**."},
+            {"texto": "Elegir la instancia `Lab` y asignar el nombre de dispositivo `/dev/sdb`. Hacer clic en **Attach volume**."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 3: Conexión a la instancia EC2 Lab",
+          "secciones": [
+            {"texto": "Conectarse a la instancia `Lab` mediante **EC2 Instance Connect** para abrir la terminal de comandos."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 4: Creación y configuración del sistema de archivos",
+          "secciones": [
+            {"texto": "Verificar los volúmenes disponibles ejecutando `df -h`."},
+            {"texto": "Crear un sistema de archivos ext3 en el nuevo volumen:<br>`sudo mkfs -t ext3 /dev/sdb`"},
+            {"texto": "Crear el punto de montaje, montar el volumen y configurarlo en `/etc/fstab` para persistencia tras reinicios:<br>`sudo mkdir /mnt/data-store`<br>`sudo mount /dev/sdb /mnt/data-store`<br>`echo \"/dev/sdb   /mnt/data-store ext3 defaults,noatime 1 2\" | sudo tee -a /etc/fstab`"},
+            {"texto": "Crear un archivo de prueba en el volumen montado y verificar su contenido:<br>`sudo sh -c \"echo some text has been written > /mnt/data-store/file.txt\"`<br>`cat /mnt/data-store/file.txt`"}
+          ]
+        },
+        {
+          "subtitulo": "Paso 5: Creación de una instantánea (snapshot) de Amazon EBS",
+          "secciones": [
+            {"texto": "En la consola de EC2, seleccionar `My Volume`, ir a **Actions** > **Create snapshot** y nombrarlo `My Snapshot`."},
+            {"texto": "En la terminal, eliminar el archivo de prueba creado previamente (`sudo rm /mnt/data-store/file.txt`) para comprobar posteriormente que el snapshot preserva el estado del archivo."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 6: Restauración de la instantánea de Amazon EBS",
+          "secciones": [
+            {"texto": "Seleccionar `My Snapshot` en la consola, hacer clic en **Actions** > **Create volume from snapshot**, mantener la AZ correspondiente y nombrarlo `Restored Volume`."},
+            {"texto": "Adjuntar `Restored Volume` a la instancia `Lab` usando el dispositivo `/dev/sdc`."},
+            {"texto": "En la terminal, crear un nuevo directorio de montaje (`/mnt/data-store2`), montar el volumen restaurado y verificar que el archivo `file.txt` original sigue presente:<br>`sudo mkdir /mnt/data-store2`<br>`sudo mount /dev/sdc /mnt/data-store2`<br>`ls /mnt/data-store2/file.txt`"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Lab 183",
+      "modulo": "Archivado y almacenado",
+      "numero": "Lab 183",
+      "titulo": "Gestión de almacenamiento: Instantáneas EBS y sincronización con S3 y versionado",
+      "descripcion_general": "Administrar volúmenes de Amazon EBS creando y automatizando respaldos mediante snapshots y un script en Python (cron), y sincronizar archivos locales con un bucket de Amazon S3 aplicando versionado para la recuperación de archivos eliminados.",
+      "status": "done",
+      "status_texto": "Completado",
+      "tags": ["EBS", "Snapshots", "S3", "Versioning", "CLI", "Python", "Automation", "Storage"],
+      "pasos": [
+        {
+          "subtitulo": "Paso 1: Creación y configuración de recursos",
+          "secciones": [
+            {"texto": "Crear un bucket de S3 único en la consola de Amazon S3."},
+            {"texto": "Modificar el rol IAM de la instancia EC2 `Processor` (`Actions` > `Security` > `Modify IAM role`) y asignar el rol `S3BucketAccess`."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 2: Tomar instantáneas de su instancia",
+          "secciones": [
+            {"texto": "Conectarse a la instancia `Command Host` mediante **EC2 Instance Connect**."},
+            {"texto": "Obtener el ID del volumen EBS y el ID de la instancia `Processor` mediante comandos de la CLI (`aws ec2 describe-instances`)."},
+            {"texto": "Detener la instancia `Processor`, crear un snapshot manual de su volumen con `aws ec2 create-snapshot`, esperar a que finalice y reiniciar la instancia."},
+            {"texto": "Configurar una tarea programada (**cron**) para generar snapshots cada minuto para pruebas:<br>`echo \"* * * * *  aws ec2 create-snapshot --volume-id VOLUME-ID 2>&1 >> /tmp/cronlog\" > cronjob`<br>`crontab cronjob`"},
+            {"texto": "Detener el cron job con `crontab -r` y ejecutar el script de mantenimiento `python3.8 snapshotter_v2.py` para conservar únicamente los últimos dos snapshots del volumen."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 3: Reto: Sincronizar archivos con Amazon S3",
+          "secciones": [
+            {"texto": "Conectarse a la instancia `Processor` y descargar los archivos de muestra con `wget` seguido de `unzip files.zip`."},
+            {"texto": "Activar el versionado en el bucket de S3 ejecutando:<br>`aws s3api put-bucket-versioning --bucket S3-BUCKET-NAME --versioning-configuration Status=Enabled`"},
+            {"texto": "Sincronizar los archivos locales con S3 usando:<br>`aws s3 sync files s3://S3-BUCKET-NAME/files/`"},
+            {"texto": "Eliminar un archivo local (`rm files/file1.txt`) y sincronizar reflejando los borrados con la opción `--delete`:<br>`aws s3 sync files s3://S3-BUCKET-NAME/files/ --delete`"},
+            {"texto": "Listar las versiones de los objetos (`aws s3api list-object-versions`) para identificar el `VersionId` de la versión eliminada."},
+            {"texto": "Restaurar el archivo descargando la versión específica con `aws s3api get-object` y volver a sincronizar el directorio con S3 para completar la recuperación."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Lab 184",
+      "modulo": "Archivado y almacenado",
+      "numero": "Lab 184",
+      "titulo": "Laboratorio de reto: Amazon S3",
+      "descripcion_general": "Crear y configurar un bucket de Amazon S3, subir objetos, modificar la propiedad de objetos para habilitar ACLs y permitir acceso público, verificar el acceso mediante URL en el navegador, y listar el contenido del bucket utilizando la CLI de AWS desde una instancia de comandos.",
+      "status": "done",
+      "status_texto": "Completado",
+      "tags": ["S3", "Buckets", "ACLs", "Public Access", "CLI", "Storage", "Challenge"],
+      "pasos": [
+        {
+          "subtitulo": "Paso 1 y 2: Conexión al host CLI y configuración del CLI de AWS",
+          "secciones": [
+            {"texto": "Conectarse a la instancia `CLI Host` mediante **EC2 Instance Connect**."},
+            {"texto": "Configurar las credenciales de la CLI de AWS ejecutando `aws configure` e ingresando el `AccessKey`, `SecretKey`, la región `us-west-2` y el formato de salida `json`."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 3: Desarrollo del reto paso a paso",
+          "secciones": [
+            {"texto": "Crear un bucket de S3 único en la región `us-west-2` desde la consola de Amazon S3."},
+            {"texto": "Subir un archivo de prueba (`prueba.txt`) al bucket creado mediante el botón **Upload**."},
+            {"texto": "Intentar acceder al objeto mediante su `Object URL` en el navegador y comprobar el error de acceso denegado (`AccessDenied`)."},
+            {"texto": "Modificar la propiedad de objetos (`Object ownership`) en la pestaña **Permissions** del bucket, cambiando a **ACLs enabled**."},
+            {"texto": "Hacer el objeto públicamente accesible seleccionando **Make public using ACL** en el menú *Object actions* del archivo."},
+            {"texto": "Comprobar que el archivo se muestra correctamente en el navegador y listar el contenido del bucket desde la terminal con el comando:<br>`aws s3 ls s3://tu-nombre-de-bucket/`"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Lab 185",
+      "modulo": "Archivado y almacenado",
+      "numero": "Lab 185",
+      "titulo": "Gestión de buckets compartidos en S3, permisos IAM y notificaciones de eventos con SNS",
+      "descripcion_general": "Crear un bucket compartido en Amazon S3, configurar políticas de grupos y usuarios IAM, probar permisos de lectura/escritura y restricciones de seguridad, e integrar notificaciones de eventos de S3 hacia un tópico de Amazon SNS con confirmación por correo electrónico.",
+      "status": "done",
+      "status_texto": "Completado",
+      "tags": ["S3", "IAM", "SNS", "Event Notifications", "CLI", "Storage", "Security"],
+      "pasos": [
+        {
+          "subtitulo": "Paso 1 y 2: Configuración de la CLI de AWS e inicialización del bucket compartido en S3",
+          "secciones": [
+            {"texto": "Conectarse a la instancia `CLI Host` mediante **EC2 Instance Connect** y configurar las credenciales con `aws configure`."},
+            {"texto": "Crear un bucket único de S3 (`aws s3 mb s3://<cafe-xxxnnn> --region 'us-west-2'`) y sincronizar las imágenes de prueba iniciales hacia el prefijo `/images` mediante `aws s3 sync`."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 3: Revisión de permisos IAM y pruebas con mediacouser",
+          "secciones": [
+            {"texto": "Revisar las políticas adjuntas al grupo IAM `mediaco` y al usuario `mediacouser` (permisos acotados al prefijo `images/` para ver, escribir y eliminar)."},
+            {"texto": "Crear credenciales de acceso para `mediacouser`, iniciar sesión en una ventana de incógnito de la consola de AWS, y probar las operaciones de visualización, subida y eliminación de objetos."},
+            {"texto": "Verificar las restricciones de seguridad intentando modificar los permisos del bucket o acceder a la raíz, comprobando que se genera un error de acceso denegado (*Insufficient permissions*)."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 4: Configuración de notificaciones de eventos en el bucket S3",
+          "secciones": [
+            {"texto": "Crear un tópico de Amazon SNS estándar llamado `s3NotificationTopic` y actualizar su política de acceso para permitir publicaciones desde el bucket de S3."},
+            {"texto": "Crear una suscripción por correo electrónico al tópico SNS y confirmar la suscripción desde el buzón de entrada."},
+            {"texto": "Crear el archivo de configuración JSON (`s3EventNotification.json`) para capturar eventos `s3:ObjectCreated:*` y `s3:ObjectRemoved:*` en el prefijo `images/`, y asociarlo al bucket con el comando:<br>`aws s3api put-bucket-notification-configuration --bucket <cafe-xxxnnn> --notification-configuration file://s3EventNotification.json`"}
+          ]
+        },
+        {
+          "subtitulo": "Paso 5: Pruebas de notificaciones de eventos en el bucket compartido S3",
+          "secciones": [
+            {"texto": "Configurar las credenciales de la CLI con el perfil de `mediacouser`."},
+            {"texto": "Probar la subida de un nuevo archivo (`aws s3api put-object`) y la eliminación de un objeto (`aws s3api delete-object`), verificando la recepción de las alertas de correo correspondientes vía SNS."},
+            {"texto": "Intentar una operación no autorizada (como cambiar las ACLs de un objeto mediante `put-object-acl`) y comprobar que el sistema bloquea la acción con un error `AccessDenied`."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Lab 186",
+      "modulo": "Monitoreo y seguridad",
+      "numero": "Lab 186",
+      "titulo": "Monitoreo de infraestructura: CloudWatch, Systems Manager y AWS Config",
+      "descripcion_general": "Instalar y configurar el agente de CloudWatch mediante AWS Systems Manager para recolectar métricas del sistema y logs de aplicaciones, crear filtros de métricas y alarmas para eventos de error, configurar notificaciones en tiempo real con CloudWatch Events y SNS, y auditar el cumplimiento de la infraestructura mediante reglas de AWS Config.",
+      "status": "done",
+      "status_texto": "Completado",
+      "tags": ["CloudWatch", "Systems Manager", "CloudWatch Logs", "CloudWatch Metrics", "SNS", "AWS Config", "Monitoring", "Compliance"],
+      "pasos": [
+        {
+          "subtitulo": "Paso 1: Instalación del agente de CloudWatch",
+          "secciones": [
+            {"texto": "Instalar el paquete del agente de CloudWatch en la instancia `Web Server` utilizando **Systems Manager Run Command** con el documento `AWS-ConfigureAWSPackage` (Acción: *Install*, Nombre: `AmazonCloudWatchAgent`)."},
+            {"texto": "Crear un parámetro en el **Parameter Store** llamado `Monitor-Web-Server` que contenga la configuración JSON para recolectar los logs de Apache (`HttpAccessLog`, `HttpErrorLog`) y métricas de sistema (CPU, disco, memoria)."},
+            {"texto": "Ejecutar un nuevo Run Command con el documento `AmazonCloudWatch-ManageAgent` (Modo: *ec2*, Origen de configuración: *ssm*, Ubicación: `Monitor-Web-Server`) para iniciar el agente en el servidor web."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 2: Monitoreo de registros de aplicaciones mediante CloudWatch Logs",
+          "secciones": [
+            {"texto": "Generar tráfico de prueba en el servidor web (incluyendo accesos a páginas inexistentes para provocar errores HTTP 404)."},
+            {"texto": "Verificar en CloudWatch **Log groups** la recepción de los logs `HttpAccessLog` y `HttpErrorLog` desde el flujo de la instancia."},
+            {"texto": "Crear un filtro de métricas en CloudWatch Logs (`404Errors`) usando el patrón `[ip, id, user, timestamp, request, status_code=404, size]`."},
+            {"texto": "Configurar una alarma de CloudWatch asociada al filtro para enviar notificaciones vía SNS (correo electrónico) cuando los errores 404 superen el umbral establecido."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 3: Monitoreo de métricas de instancias mediante CloudWatch",
+          "secciones": [
+            {"texto": "Explorar las métricas estándar de infraestructura en la consola de EC2 e investigar las métricas personalizadas e internas capturadas por el agente de CloudWatch (`CWAgent`) en la sección de Métricas."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 4: Creación de notificaciones en tiempo real",
+          "secciones": [
+            {"texto": "Crear una regla en **CloudWatch Events** llamada `Instance_Stopped_Terminated` para detectar cambios de estado de instancias EC2 (*stopped* o *terminated*)."},
+            {"texto": "Configurar como destino de la regla el tópico SNS predeterminado para recibir alertas inmediatas por correo electrónico al detener la instancia `Web Server`."}
+          ]
+        },
+        {
+          "subtitulo": "Paso 5: Monitoreo del cumplimiento de la infraestructura",
+          "secciones": [
+            {"texto": "Habilitar e inicializar **AWS Config** en la cuenta."},
+            {"texto": "Agregar reglas administradas de AWS Config: `required-tags` (para verificar que los recursos tengan la etiqueta `project`) y `ec2-volume-inuse-check` (para detectar volúmenes EBS huérfanos o no adjuntos)."},
+            {"texto": "Auditar el estado de cumplimiento (*Compliant* / *Non-compliant*) de los recursos de la infraestructura tras la evaluación."}
+          ]
+        }
+      ]
+    },
+    {
+  "id": "Lab 187",
+  "modulo": "Monitoreo y seguridad",
+  "numero": "Lab 187",
+  "titulo": "Trabajo con AWS CloudTrail: Auditoría, Análisis de Logs y Resolución de Incidentes",
+  "descripcion_general": "Crear un CloudTrail trail para auditar acciones en la cuenta de AWS, analizar registros mediante comandos de Linux (grep) y consultas SQL en Amazon Athena para identificar a un intruso, y resolver problemas de seguridad en una instancia EC2 y en la cuenta de IAM.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": ["VPC", "Flow Logs", "Troubleshooting", "S3", "Route Tables", "Network ACLs", "EC2", "CLI"],
+  "tags": ["CloudTrail", "Athena", "IAM", "Security", "EC2", "Logs", "Auditing"],
   "pasos": [
     {
-      "subtitulo": "Task 1: Connecting to the CLI Host instance",
+      "subtitulo": "Paso 1: Modificación de un grupo de seguridad y observación del sitio web",
       "secciones": [
-        {"texto": "Conectarse a la instancia `CLI Host` mediante **EC2 Instance Connect**."},
-        {"texto": "Configurar las credenciales de la CLI de AWS ejecutando `aws configure` e ingresando el `AccessKey`, `SecretKey`, la región `us-west-2` y el formato de salida `json`."}
+        {"texto": "Navegar a la consola de **EC2**, localizar el grupo de seguridad de la instancia `Café Web Server` y añadir una regla de entrada (*Inbound rule*) para habilitar el puerto **SSH (22)** restringido exclusivamente a la IP propia (`My IP`)."},
+        {"texto": "Copiar la dirección IP pública de la instancia y acceder al sitio web en el navegador (`http://<WebServerIP>/cafe/`) para verificar que opera de manera normal."}
       ]
     },
     {
-      "subtitulo": "Task 2: Creating VPC Flow Logs",
+      "subtitulo": "Paso 2: Creación de un registro de CloudTrail y observación del sitio web hackeado",
       "secciones": [
-        {"texto": "Crear un bucket de S3 único para almacenar los registros ejecutando:<br>`aws s3api create-bucket --bucket flowlog###### --region 'us-west-2' --create-bucket-configuration LocationConstraint='us-west-2'`"},
-        {"texto": "Obtener el ID de la VPC (`VPC1`) ejecutando el comando `aws ec2 describe-vpcs`."},
-        {"texto": "Crear los VPC Flow Logs para la VPC capturando todo el tráfico (`ALL`) hacia el bucket de S3 creado:<br>`aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::<flowlog######>`"}
+        {"texto": "En la consola de **CloudTrail**, crear un nuevo trail llamado `monitor` configurando un nuevo bucket de S3 (`monitoring####`) y un alias de KMS (`<iniciales>-KMS`)."},
+        {"texto": "Actualizar el navegador (presionando `Shift` para evitar la caché) y observar que el sitio web ha sido alterado con una imagen de hackeo."},
+        {"texto": "Inspeccionar los grupos de seguridad de la instancia en EC2 y verificar la existencia de una nueva regla no autorizada que abre el puerto SSH (22) a todo el mundo (`0.0.0.0/0`)."}
       ]
     },
     {
-      "subtitulo": "Task 3: Troubleshooting VPC configuration issues to allow access to resources",
+      "subtitulo": "Paso 3: Análisis de los registros de CloudTrail utilizando grep y la CLI de AWS",
       "secciones": [
-        {"texto": "**Solución al problema web (Desafío 1)**: Investigar los componentes de red con comandos como `aws ec2 describe-route-tables`. Añadir una ruta faltante hacia Internet Gateway en la tabla de ruteo pública de la VPC usando:<br>`aws ec2 create-route --route-table-id 'VPC1PubRouteTableId' --gateway-id 'VPC1GatewayId' --destination-cidr-block '0.0.0.0/0'`"},
-        {"texto": "**Solución al problema SSH (Desafío 2)**: Revisar las Network ACLs asociadas a la subred pública mediante `aws ec2 describe-network-acls` y eliminar la regla restrictiva que bloqueaba el tráfico de entrada con:<br>`aws ec2 delete-network-acl-entry --network-acl-id 'acl-id' --ingress --rule-number 40`"},
-        {"texto": "Verificar el acceso exitoso ejecutando el comando `hostname` en el servidor web (debe retornar `web-server`)."}
+        {"texto": "Conectarse a la instancia `Café Web Server` mediante SSH (usando PuTTY en Windows o terminal en macOS/Linux)."},
+        {"texto": "Crear un directorio local (`ctraillogs`), descargar los registros del bucket de S3 con `aws s3 cp --recursive` y descomprimirlos usando `gunzip *.gz`."},
+        {"texto": "Analizar los archivos JSON extraídos mediante comandos `grep` y bucles en la terminal, o utilizar comandos de la CLI de AWS (`aws cloudtrail lookup-events`) filtrando por recursos y grupos de seguridad para rastrear el origen del cambio."}
       ]
     },
     {
-      "subtitulo": "Task 4: Analyzing flow logs",
+      "subtitulo": "Paso 4: Análisis de los registros de CloudTrail mediante Amazon Athena",
       "secciones": [
-        {"texto": "Crear un directorio local (`flowlogs`), descargar los registros del bucket de S3 con `aws s3 cp` de forma recursiva y descomprimirlos usando `gunzip *.gz`."},
-        {"texto": "Analizar y filtrar los registros descargados utilizando `grep` para aislar los eventos de rechazo (**REJECT**) dirigidos al puerto `22` (SSH) desde la IP de origen local:<br>`grep -rn 22 . | grep REJECT | grep <ip-address>`"},
-        {"texto": "Traducir las marcas de tiempo Unix de los registros a formato legible usando el comando `date -d @<timestamp>` para correlacionarlos con los intentos de conexión realizados durante el laboratorio."}
+        {"texto": "Desde la consola de CloudTrail, hacer clic en **Create Athena table**, seleccionando el bucket de S3 de monitorización para definir la estructura de la base de datos."},
+        {"texto": "Abrir el servicio **Athena**, configurar la ubicación de resultados de consulta en el bucket S3 (`s3://monitoring####/results/`) y ejecutar consultas SQL para filtrar columnas como `useridentity.userName`, `eventname` y `eventsource`."},
+        {"texto": "Identificar al usuario responsable del cambio no autorizado en las reglas de seguridad (el usuario `chaos`), la hora exacta del ataque y su método de acceso."}
+      ]
+    },
+    {
+      "subtitulo": "Paso 5: Análisis posterior del hackeo y mejora de la seguridad",
+      "secciones": [
+        {"texto": "Verificar los usuarios del sistema operativo en la instancia con `aureport --auth`, detectar la sesión activa del usuario malicioso (`chaos-user`), terminar su proceso mediante `kill -9` y eliminar el usuario del sistema con `userdel -r`."},
+        {"texto": "Auditar y modificar la configuración de SSH en `/etc/ssh/sshd_config` (deshabilitando la autenticación por contraseña y asegurando el uso de llaves) y reiniciar el servicio `sshd`."},
+        {"texto": "Eliminar la regla de seguridad insegura (puerto 22 abierto a `0.0.0.0/0`) en la consola de EC2."},
+        {"texto": "Restaurar la imagen original del sitio web moviendo el archivo de respaldo en `/var/www/html/cafe/images/`."},
+        {"texto": "Eliminar de forma permanente al usuario intruso (`chaos`) desde la consola de administración de **IAM**."}
       ]
     }
   ]
 },
 {
-  "id": "Lab 182",
-  "modulo": "Storage and EBS",
-  "numero": "Lab 182",
-  "titulo": "Working with Amazon EBS",
-  "descripcion_general": "Crear y adjuntar un volumen de Amazon EBS a una instancia EC2, configurar un sistema de archivos (ext3), montarlo permanentemente, crear respaldos mediante snapshots y restaurar un nuevo volumen a partir de dicho snapshot.",
+  "id": "Lab 188",
+  "modulo": "Administración del consumo de recursos",
+  "numero": "Lab 188",
+  "titulo": "Gestión de Recursos con Etiquetas en AWS (Tagging)",
+  "descripcion_general": "Inspeccionar, filtrar y manipular etiquetas de instancias EC2 mediante la CLI de AWS utilizando consultas JMESPath, automatizar operaciones de apagado y encendido por lotes con scripts de PHP (stopinator), y aplicar políticas de cumplimiento eliminando instancias que carezcan de etiquetas requeridas.",
   "status": "done",
   "status_texto": "Completado",
-  "tags": ["EBS", "Volumes", "Snapshots", "EC2", "Storage", "File System", "Mount"],
+  "tags": ["EC2", "Tagging", "AWS CLI", "JMESPath", "PHP SDK", "Automation", "Security"],
   "pasos": [
     {
-      "subtitulo": "Task 1: Creating a new EBS volume",
+      "subtitulo": "Paso 1: Uso de etiquetas para gestionar recursos mediante la CLI de AWS",
       "secciones": [
-        {"texto": "Identificar la Zona de Disponibilidad (AZ) de la instancia `Lab` existente en la consola de EC2."},
-        {"texto": "Ir a **Volumes** y hacer clic en **Create volume**:<br>* **Volume type**: `General Purpose SSD (gp2)`<br>* **Size (GiB)**: `1`<br>* **Availability Zone**: La misma AZ que la instancia `Lab`<br>* **Name Tag**: `My Volume`<br>Hacer clic en **Create volume**."}
+        {"texto": "Conectarse al `Command Host` mediante SSH utilizando la llave provista."},
+        {"texto": "Ejecutar comandos `aws ec2 describe-instances` aplicando filtros por etiquetas (`--filter`) y consultas avanzadas con JMESPath (`--query`) para extraer identificadores, zonas de disponibilidad y valores específicos de etiquetas (`Project`, `Environment`, `Version`)."},
+        {"texto": "Modificar de forma automatizada las etiquetas de versión de las instancias de desarrollo editando y ejecutando el script `change-resource-tags.sh`."}
       ]
     },
     {
-      "subtitulo": "Task 2: Attaching the volume to an EC2 instance",
+      "subtitulo": "Paso 2: Detener y reiniciar recursos basados en etiquetas",
       "secciones": [
-        {"texto": "Seleccionar `My Volume`, hacer clic en **Actions** > **Attach volume**."},
-        {"texto": "Elegir la instancia `Lab` y asignar el nombre de dispositivo `/dev/sdb`. Hacer clic en **Attach volume**."}
+        {"texto": "Navegar al directorio `aws-tools` y examinar el script en PHP `stopinator.php`, el cual utiliza el SDK de AWS para interactuar con instancias según sus etiquetas."},
+        {"texto": "Ejecutar el script especificando los parámetros de filtrado para detener las instancias del entorno de desarrollo (`./stopinator.php -t\"Project=ERPSystem;Environment=development\"`)."},
+        {"texto": "Verificar en la consola de EC2 que las instancias se encuentran detenidas y volver a ejecutarlas empleando el parámetro de encendido (`-s`)."}
       ]
     },
     {
-      "subtitulo": "Task 3: Connecting to the Lab EC2 instance",
+      "subtitulo": "Paso 3: Reto: Terminar instancias que no cumplen con los lineamientos de etiquetas",
       "secciones": [
-        {"texto": "Conectarse a la instancia `Lab` mediante **EC2 Instance Connect** para abrir la terminal de comandos."}
-      ]
-    },
-    {
-      "subtitulo": "Task 4: Creating and configuring the file system",
-      "secciones": [
-        {"texto": "Verificar los volúmenes disponibles ejecutando `df -h`."},
-        {"texto": "Crear un sistema de archivos ext3 en el nuevo volumen:<br>`sudo mkfs -t ext3 /dev/sdb`"},
-        {"texto": "Crear el punto de montaje, montar el volumen y configurarlo en `/etc/fstab` para persistencia tras reinicios:<br>`sudo mkdir /mnt/data-store`<br>`sudo mount /dev/sdb /mnt/data-store`<br>`echo \"/dev/sdb   /mnt/data-store ext3 defaults,noatime 1 2\" | sudo tee -a /etc/fstab`"},
-        {"texto": "Crear un archivo de prueba en el volumen montado y verificar su contenido:<br>`sudo sh -c \"echo some text has been written > /mnt/data-store/file.txt\"`<br>`cat /mnt/data-store/file.txt`"}
-      ]
-    },
-    {
-      "subtitulo": "Task 5: Creating an Amazon EBS snapshot",
-      "secciones": [
-        {"texto": "En la consola de EC2, seleccionar `My Volume`, ir a **Actions** > **Create snapshot** y nombrarlo `My Snapshot`."},
-        {"texto": "En la terminal, eliminar el archivo de prueba creado previamente (`sudo rm /mnt/data-store/file.txt`) para comprobar posteriormente que el snapshot preserva el estado del archivo."}
-      ]
-    },
-    {
-      "subtitulo": "Task 6: Restoring the Amazon EBS snapshot",
-      "secciones": [
-        {"texto": "Seleccionar `My Snapshot` en la consola, hacer clic en **Actions** > **Create volume from snapshot**, mantener la AZ correspondiente y nombrarlo `Restored Volume`."},
-        {"texto": "Adjuntar `Restored Volume` a la instancia `Lab` usando el dispositivo `/dev/sdc`."},
-        {"texto": "En la terminal, crear un nuevo directorio de montaje (`/mnt/data-store2`), montar el volumen restaurado y verificar que el archivo `file.txt` original sigue presente:<br>`sudo mkdir /mnt/data-store2`<br>`sudo mount /dev/sdc /mnt/data-store2`<br>`ls /mnt/data-store2/file.txt`"}
+        {"texto": "Simular una infracción de seguridad removiendo la etiqueta `Environment` en un par de instancias de la subred privada desde la consola de EC2."},
+        {"texto": "Revisar y ejecutar el script `terminate-instances.php` proporcionando la región y el ID de la subred como argumentos para identificar y terminar automáticamente las instancias no conformes."},
+        {"texto": "Validar la correcta aplicación de la política de cumplimiento 'tag-or-terminate' sobre los recursos huérfanos o mal etiquetados."}
       ]
     }
   ]
